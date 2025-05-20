@@ -24,6 +24,7 @@ const GalaxyMap: React.FC<GalaxyMapProps> = ({ categories }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [mapOffset, setMapOffset] = useState({ x: 0, y: 0 });
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   useEffect(() => {
     const updateDimensions = () => {
@@ -58,17 +59,15 @@ const GalaxyMap: React.FC<GalaxyMapProps> = ({ categories }) => {
 
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
-    const delta = -e.deltaY * 0.001; // Adjust sensitivity
+    const delta = -e.deltaY * 0.001;
     const newZoom = Math.min(Math.max(zoomLevel + delta, 0.5), 3);
     setZoomLevel(newZoom);
     
-    // Adjust offset to zoom towards mouse position
     const rect = containerRef.current?.getBoundingClientRect();
     if (rect) {
       const mouseX = e.clientX - rect.left;
       const mouseY = e.clientY - rect.top;
       
-      // Calculate zoom center offset
       const dx = (mouseX - rect.width / 2) * delta * 0.5;
       const dy = (mouseY - rect.height / 2) * delta * 0.5;
       
@@ -86,16 +85,14 @@ const GalaxyMap: React.FC<GalaxyMapProps> = ({ categories }) => {
     }
   };
 
-  // Calculate category ring size based on number of subnets and their market caps
   const getCategoryRingSize = (category: CategoryType) => {
-    const baseSize = mapDimensions.width * 0.15; // Base size for rings
+    const baseSize = mapDimensions.width * 0.15;
     const maxSubnets = Math.max(...categories.map(c => c.subnets.length));
     const subnetCount = category.subnets.length;
-    const marketCapFactor = Math.sqrt(category.marketCapTotal / 130000); // Scale based on market cap
+    const marketCapFactor = Math.sqrt(category.marketCapTotal / 130000);
     
-    // Calculate size based on subnet count and market cap
     const size = baseSize * (1 + (subnetCount / maxSubnets) * 0.5) * marketCapFactor;
-    return Math.max(size, baseSize); // Ensure minimum size
+    return Math.max(size, baseSize);
   };
 
   const getCategoryCenter = (categoryIndex: number) => {
@@ -107,16 +104,13 @@ const GalaxyMap: React.FC<GalaxyMapProps> = ({ categories }) => {
     };
   };
 
-  // Calculate subnet positions in a spiral pattern
   const getSubnetPosition = (categoryIndex: number, subnetIndex: number, totalSubnets: number, ringSize: number) => {
     const center = getCategoryCenter(categoryIndex);
-    const maxRadius = ringSize * 0.4; // Use 40% of ring size for subnet placement
+    const maxRadius = ringSize * 0.4;
     
-    // Calculate spiral parameters
-    const a = 2; // Controls spacing between spiral arms
-    const b = maxRadius / (2 * Math.PI); // Controls how quickly spiral expands
+    const a = 2;
+    const b = maxRadius / (2 * Math.PI);
     
-    // Calculate position on spiral
     const angle = subnetIndex * (2 * Math.PI) / a;
     const radius = Math.min(b * angle, maxRadius);
     
@@ -129,7 +123,7 @@ const GalaxyMap: React.FC<GalaxyMapProps> = ({ categories }) => {
   return (
     <div 
       ref={containerRef}
-      className="galaxy-container w-full h-full overflow-hidden cursor-move"
+      className="galaxy-container w-full h-full overflow-hidden cursor-move relative"
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
@@ -137,6 +131,27 @@ const GalaxyMap: React.FC<GalaxyMapProps> = ({ categories }) => {
       onWheel={handleWheel}
       onClick={handleBackgroundClick}
     >
+      {/* Legend */}
+      <div className="absolute top-4 left-4 bg-slate-800/90 backdrop-blur-sm rounded-lg border border-slate-700/50 p-4 z-20">
+        <div className="text-sm font-medium mb-3">Categories</div>
+        <div className="grid gap-2">
+          {categories.map((category) => (
+            <div 
+              key={category.id} 
+              className="flex items-center gap-2 cursor-pointer transition-all duration-200 hover:bg-slate-700/30 px-2 py-1 rounded-lg"
+              onMouseEnter={() => setHoveredCategory(category.id)}
+              onMouseLeave={() => setHoveredCategory(null)}
+            >
+              <div 
+                className="w-3 h-3 rounded-full"
+                style={{ backgroundColor: getCategoryColor(category.id) }}
+              />
+              <span className="text-sm text-slate-300">{category.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div 
         className="transform transition-transform duration-300 ease-out h-full w-full"
         style={{ 
@@ -149,24 +164,27 @@ const GalaxyMap: React.FC<GalaxyMapProps> = ({ categories }) => {
           const ringSize = getCategoryRingSize(category);
           const color = getCategoryColor(category.id);
           const isSelected = selectedCategory === category.id;
+          const isHovered = hoveredCategory === category.id;
           
           return (
             <div key={`ring-${category.id}`} className="absolute">
               {/* Category ring */}
               <div
-                className="absolute rounded-full transition-all duration-300"
+                className={`absolute rounded-full transition-all duration-300 ${isHovered ? 'scale-105' : ''}`}
                 style={{
                   width: `${ringSize}px`,
                   height: `${ringSize}px`,
                   left: `${center.x - ringSize/2}px`,
                   top: `${center.y - ringSize/2}px`,
-                  border: `4px solid ${color.replace('rgb', 'rgba').replace(')', ', 0.4)')}`,
+                  border: `4px solid ${color.replace('rgb', 'rgba').replace(')', isHovered ? ', 0.8)' : ', 0.4)')}`,
                   boxShadow: `
-                    0 0 ${ringSize * 0.1}px ${color.replace('rgb', 'rgba').replace(')', ', 0.2)')},
+                    0 0 ${ringSize * (isHovered ? 0.2 : 0.1)}px ${color.replace('rgb', 'rgba').replace(')', isHovered ? ', 0.4)' : ', 0.2)')},
                     inset 0 0 ${ringSize * 0.05}px ${color.replace('rgb', 'rgba').replace(')', ', 0.1)')}
                   `,
-                  backgroundColor: color.replace('rgb', 'rgba').replace(')', ', 0.05)'),
-                  zIndex: isSelected ? 15 : 5,
+                  backgroundColor: color.replace('rgb', 'rgba').replace(')', isHovered ? ', 0.15)' : ', 0.05)'),
+                  zIndex: isSelected || isHovered ? 15 : 5,
+                  opacity: hoveredCategory && !isHovered ? 0.3 : 1,
+                  filter: isHovered ? 'brightness(1.2)' : 'none',
                 }}
               >
                 {/* Category name */}
