@@ -29,8 +29,8 @@ const LandingPage: React.FC = () => {
     },
     {
       icon: <FileText />,
-      title: 'AI Reports',
-      description: 'Detailed subnet analysis with scores based on deep subnet fundamentals analysis',
+      title: 'Subnet Reports',
+      description: 'Detailed subnet analysis with scores based on deep subnet fundamental analysis',
       screenshots: ['/screenshots/ai-reports.png'],
       details: [
         'Comprehensive subnet analysis',
@@ -43,7 +43,7 @@ const LandingPage: React.FC = () => {
       icon: <RssIcon />,
       title: 'News Feed',
       description: 'Real-time updates and daily recaps from across the ecosystem',
-      screenshots: ['/screenshots/news-feature.png'],
+      screenshots: ['/screenshots/news-feature.png', 'news-2.png'],
       details: []
     },
     {

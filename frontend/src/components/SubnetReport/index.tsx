@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowLeft, Users, DollarSign, BarChart3, Globe, Download, ExternalLink, GitBranch, Star, TrendingUp, Shield, Code, MessageSquare } from 'lucide-react';
+import { ArrowLeft, Users, DollarSign, BarChart3, Globe, Download, ExternalLink, GitBranch, Star, TrendingUp, Shield, Code, MessageSquare, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 
 const SubnetReport: React.FC = () => {
   const subnet = {
@@ -46,6 +47,105 @@ const SubnetReport: React.FC = () => {
       description: 'Strategic partnership with major cloud provider announced',
       type: 'partnership'
     }
+  ];
+
+  const categoryAnalysis = [
+    {
+      name: 'Mission',
+      score: 5,
+      summary: 'Provide a decentralized alternative to major Web2 AI services like OpenAI\'s API, offering better accessibility, broader model diversity, and superior performance.',
+      keyInsight: 'Clear mission with specific benchmarks against Web2 competitors.',
+      criteria: [
+        {
+          question: 'Is the subnet\'s mission clearly stated and easy to understand?',
+          answer: 'Yes. Focused on decentralizing AI compute with a clear value proposition.'
+        },
+        {
+          question: 'Does the mission address a real-world need or opportunity?',
+          answer: 'Yes. Addresses high AI compute costs and centralization issues.'
+        },
+        {
+          question: 'Is the subnet\'s stated purpose differentiated from others in the ecosystem?',
+          answer: 'Yes. Chutes aims to be the first fully decentralized OpenAI alternative.'
+        }
+      ]
+    },
+    {
+      name: 'Team',
+      score: 3,
+      summary: 'Founded by experienced Bittensor developers Namoray and BonOliver (with Jon Durbin as a key contributor). Operated by Rayon Labs.',
+      keyInsight: 'Strong technical team but limited public visibility of key members.',
+      criteria: [
+        {
+          question: 'Is the team experienced and credible?',
+          answer: 'Yes. Core members have strong Bittensor backgrounds.'
+        },
+        {
+          question: 'Is the team public and transparent?',
+          answer: 'Partially. Some members are public, but not all.'
+        },
+        {
+          question: 'Is the team\'s track record verifiable?',
+          answer: 'Limited public information, but strong technical output.'
+        }
+      ]
+    },
+    {
+      name: 'Product & Revenue',
+      score: 4,
+      summary: 'The Chutes AI compute platform is live and has started generating revenue through paid access and enterprise integrations. The Squad AI agent platform, also built by the team, is currently in beta.',
+      keyInsight: 'Live product with early revenue and enterprise traction.',
+      criteria: [
+        {
+          question: 'Is the product live and accessible?',
+          answer: 'Yes. Platform is live and in use.'
+        },
+        {
+          question: 'Is there evidence of revenue or real usage?',
+          answer: 'Yes. Paid access and enterprise integrations.'
+        },
+        {
+          question: 'Is the product differentiated?',
+          answer: 'Yes. Decentralized compute with unique agent platform.'
+        }
+      ]
+    },
+    {
+      name: 'Community',
+      score: 4,
+      summary: 'Active Discord and Twitter presence. Community-driven development and regular updates.',
+      keyInsight: 'Strong, growing community with regular engagement.',
+      criteria: [
+        {
+          question: 'Is there an active community?',
+          answer: 'Yes. Discord and Twitter are active.'
+        },
+        {
+          question: 'Is the community engaged in development?',
+          answer: 'Yes. Community feedback is incorporated.'
+        },
+        {
+          question: 'Are there regular updates and events?',
+          answer: 'Yes. Frequent updates and community calls.'
+        }
+      ]
+    }
+  ];
+
+  const collaborations = [
+    { name: 'Subnet-21 Compute Node', logo: '', description: 'Joint compute infrastructure' },
+    { name: 'Subnet-10 Infinite Games', logo: '', description: 'AI-powered prediction markets' }
+  ];
+
+  // Sample data for the chart
+  const chartData = [
+    { date: '2024-01', emissions: 2.1, rating: 3.8 },
+    { date: '2024-02', emissions: 2.3, rating: 4.0 },
+    { date: '2024-03', emissions: 2.7, rating: 4.2 },
+    { date: '2024-04', emissions: 3.0, rating: 4.3 },
+    { date: '2024-05', emissions: 3.4, rating: 4.4 },
+    { date: '2024-06', emissions: 3.8, rating: 4.5 },
+    { date: '2024-07', emissions: 4.1, rating: 4.6 },
   ];
 
   const renderStars = (rating: number) => {
@@ -168,6 +268,16 @@ const SubnetReport: React.FC = () => {
               </div>
             </div>
 
+            {/* Category Analysis Section */}
+            <div>
+              <h2 className="text-2xl font-bold mb-6">Category Analysis</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {categoryAnalysis.map((cat, idx) => (
+                  <CategoryCard key={cat.name} category={cat} />
+                ))}
+              </div>
+            </div>
+
             {/* Timeline */}
             <div className="card p-6">
               <h2 className="text-lg font-semibold mb-6">Recent Updates</h2>
@@ -236,90 +346,78 @@ const SubnetReport: React.FC = () => {
               </div>
             </div>
 
-            {/* Quick Stats */}
+            {/* TAO Emissions & Rating Chart */}
             <div className="card p-6">
-              <h2 className="text-lg font-semibold mb-4">Quick Stats</h2>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-slate-400">
-                    <Shield size={16} />
-                    <span>Validators</span>
-                  </div>
-                  <span className="font-medium">{subnet.stats.validators}</span>
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-slate-400">
-                    <Code size={16} />
-                    <span>Open Source</span>
-                  </div>
-                  <span className="font-medium">Yes</span>
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-slate-400">
-                    <GitBranch size={16} />
-                    <span>Latest Version</span>
-                  </div>
-                  <span className="font-medium">v2.1.0</span>
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-slate-400">
-                    <MessageSquare size={16} />
-                    <span>Community Size</span>
-                  </div>
-                  <span className="font-medium">25,000+</span>
-                </div>
+              <h2 className="text-lg font-semibold mb-4">TAO Emissions & Rating Over Time</h2>
+              <div className="h-64 w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={chartData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                    <XAxis dataKey="date" tick={{ fill: '#94a3b8', fontSize: 12 }} axisLine={false} tickLine={false} />
+                    <YAxis yAxisId="left" orientation="left" tick={{ fill: '#94a3b8', fontSize: 12 }} axisLine={false} tickLine={false} domain={[0, 5]} />
+                    <YAxis yAxisId="right" orientation="right" tick={{ fill: '#a5b4fc', fontSize: 12 }} axisLine={false} tickLine={false} domain={[0, 5]} hide />
+                    <Tooltip contentStyle={{ background: '#1e293b', border: 'none', borderRadius: 8, color: '#fff' }} />
+                    <Legend wrapperStyle={{ color: '#cbd5e1', fontSize: 14 }} />
+                    <Line yAxisId="left" type="monotone" dataKey="emissions" name="TAO Emissions (%)" stroke="#6366f1" strokeWidth={3} dot={{ r: 5 }} activeDot={{ r: 7 }} />
+                    <Line yAxisId="right" type="monotone" dataKey="rating" name="Subnet Rating" stroke="#10b981" strokeWidth={3} dot={{ r: 5 }} activeDot={{ r: 7 }} />
+                  </LineChart>
+                </ResponsiveContainer>
               </div>
             </div>
 
-            {/* Performance */}
-            <div className="card p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-lg font-semibold">Performance</h2>
-                <select className="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-sm">
-                  <option>Last 30 days</option>
-                  <option>Last 90 days</option>
-                  <option>Last year</option>
-                </select>
-              </div>
-              
-              <div className="space-y-4">
+            {/* Collaborations Section */}
                 <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-slate-400">Uptime</span>
-                    <span className="text-sm font-medium text-emerald-400">99.9%</span>
-                  </div>
-                  <div className="h-2 bg-slate-700 rounded-full">
-                    <div className="h-full w-[99.9%] bg-emerald-500 rounded-full" />
-                  </div>
+              <h2 className="text-2xl font-bold mb-4 mt-10">Collaborations</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {collaborations.map((collab, idx) => (
+                  <div key={collab.name} className="card p-4 flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center">
+                      {/* Optionally add logo here */}
                 </div>
-                
                 <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-slate-400">Response Time</span>
-                    <span className="text-sm font-medium text-indigo-400">120ms</span>
+                      <div className="font-semibold">{collab.name}</div>
+                      <div className="text-slate-400 text-sm">{collab.description}</div>
                   </div>
-                  <div className="h-2 bg-slate-700 rounded-full">
-                    <div className="h-full w-[85%] bg-indigo-500 rounded-full" />
                   </div>
-                </div>
-                
-                <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-slate-400">Success Rate</span>
-                    <span className="text-sm font-medium text-purple-400">98.5%</span>
-                  </div>
-                  <div className="h-2 bg-slate-700 rounded-full">
-                    <div className="h-full w-[98.5%] bg-purple-500 rounded-full" />
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  );
+};
+
+// CategoryCard component
+const CategoryCard = ({ category }: { category: any }) => {
+  const [expanded, setExpanded] = React.useState(false);
+  return (
+    <div className="card p-6 relative">
+      <div className="flex items-center justify-between mb-2">
+        <h3 className="text-lg font-bold">{category.name}</h3>
+        <span className={`rounded-full px-3 py-1 text-sm font-semibold ${category.score >= 4 ? 'bg-emerald-600/20 text-emerald-400' : category.score >= 3 ? 'bg-orange-500/20 text-orange-400' : 'bg-red-500/20 text-red-400'}`}>{category.score}</span>
+      </div>
+      <div className="mb-2 text-slate-200 font-medium">{category.summary}</div>
+      <div className="mb-2 text-xs text-slate-400 uppercase tracking-wide">Key Insight</div>
+      <div className="mb-4 text-slate-300">{category.keyInsight}</div>
+      <button
+        className="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 text-sm mb-2"
+        onClick={() => setExpanded((e) => !e)}
+      >
+        See {category.criteria.length} assessment criteria
+        <ChevronDown size={16} className={`transition-transform ${expanded ? 'rotate-180' : ''}`} />
+      </button>
+      {expanded && (
+        <div className="space-y-3 mt-2">
+          {category.criteria.map((crit: any, idx: number) => (
+            <div key={idx}>
+              <div className="font-semibold text-slate-200">{crit.question}</div>
+              <div className="text-slate-300">{crit.answer}</div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
