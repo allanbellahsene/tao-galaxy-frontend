@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Zap, ArrowRight, Compass, FileText, RssIcon, Bot, Users, ArrowUpRight, Github, Twitter, LineChart, Code, Search, BookOpen, BarChart, Rocket, Brain } from 'lucide-react';
+import { Zap, ArrowRight, Compass, FileText, RssIcon, Bot, Users, ArrowUpRight, Github, Twitter, LineChart, Code, Search, BookOpen, BarChart, Rocket, Brain, ChevronLeft, ChevronRight } from 'lucide-react';
 import { fadeIn, staggerContainer } from './animations';
 
 interface FormData {
@@ -14,7 +14,7 @@ interface Feature {
   icon: React.ReactNode;
   title: string;
   description: string;
-  image: string;
+  screenshots: string[];
   details: string[];
 }
 
@@ -35,20 +35,25 @@ const LandingPage: React.FC = () => {
   const [activeFeature, setActiveFeature] = useState(0);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [showBetaModal, setShowBetaModal] = useState(false);
+  const [screenshotIndex, setScreenshotIndex] = useState(0);
 
   const features: Feature[] = [
     {
       icon: <Compass />,
       title: 'Subnet Explorer',
       description: 'Interactive visual map with powerful filters to discover and analyze subnets',
-      image: '/screenshots/subnet-explorer.png',
+      screenshots: [
+        '/screenshots/subnet-explorer.png',
+        '/screenshots/subnet-explorer-screenshot2.png'
+      ],
       details: []
     },
     {
       icon: <FileText />,
       title: 'AI Reports',
       description: 'Detailed subnet analysis with scores based on deep subnet fundamentals analysis',
-      image: '/screenshots/ai-reports.png',
+      screenshots: ['/screenshots/ai-reports.png'],
       details: [
         'Comprehensive subnet analysis',
         'Performance metrics tracking',
@@ -60,14 +65,14 @@ const LandingPage: React.FC = () => {
       icon: <RssIcon />,
       title: 'News Feed',
       description: 'Real-time updates and daily recaps from across the ecosystem',
-      image: '/screenshots/news-feature.png',
+      screenshots: ['/screenshots/news-feature.png', '/screenshots/news-2.png'],
       details: []
     },
     {
       icon: <Bot />,
       title: 'MCP AI Assistant',
       description: 'Ask anything about Bittensor or any subnet and get structured, accurate answers',
-      image: '/screenshots/ai-assistant.png',
+      screenshots: ['/screenshots/ai-assistant.png'],
       details: [
         'Natural language queries',
         'Context-aware responses',
@@ -76,6 +81,10 @@ const LandingPage: React.FC = () => {
       ]
     }
   ];
+
+  React.useEffect(() => {
+    setScreenshotIndex(0);
+  }, [activeFeature]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -96,10 +105,10 @@ const LandingPage: React.FC = () => {
       title: 'Investors & Analysts',
       subtitle: 'Discover, understand, and evaluate subnets—faster and with more confidence.',
       features: [
-        'Explore new opportunities visually',
-        'Compare teams, traction, and transparency with AI-driven scores',
-        'Stay ahead with real-time ecosystem updates',
-        'Make smarter, faster allocation decisions'
+      'Explore new opportunities visually',
+      'Compare teams, traction, and transparency with AI-driven scores',
+      'Stay ahead with real-time ecosystem updates',
+      'Make smarter, faster allocation decisions'
       ]
     },
     {
@@ -107,10 +116,10 @@ const LandingPage: React.FC = () => {
       title: 'Subnet Owners',
       subtitle: 'Show the world what you\'re building—and why it matters.',
       features: [
-        'Showcase your team, product, and progress',
-        'Attract investors, miners, and collaborators',
-        'Let your growth speak for itself through verified reports and news',
-        'Build stronger community engagement'
+      'Showcase your team, product, and progress',
+      'Attract investors, miners, and collaborators',
+      'Let your growth speak for itself through verified reports and news',
+      'Build stronger community engagement'
       ]
     },
     {
@@ -118,11 +127,11 @@ const LandingPage: React.FC = () => {
       title: 'Developers',
       subtitle: 'Find the best places to build, mine, or contribute.',
       features: [
-        'Discover subnets with real traction',
-        'Track launches and activity spikes',
-        'Identify collaboration or reward opportunities with clarity',
-        'Access comprehensive development resources'
-      ]
+      'Discover subnets with real traction',
+      'Track launches and activity spikes',
+      'Identify collaboration or reward opportunities with clarity',
+      'Access comprehensive development resources'
+    ]
     }
   ];
 
@@ -138,13 +147,19 @@ const LandingPage: React.FC = () => {
             <div className="hidden md:flex items-center gap-6">
               <a href="#features" className="text-sm text-slate-300 hover:text-white transition-colors">Features</a>
               <a href="#about" className="text-sm text-slate-300 hover:text-white transition-colors">About</a>
-              <Link to="/app" className="btn btn-primary bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500">
-                Launch App
-              </Link>
+              <button 
+                onClick={() => document.getElementById('join-waitlist')?.scrollIntoView({ behavior: 'smooth' })}
+                className="btn btn-primary bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500"
+              >
+                Join Waitlist
+              </button>
             </div>
-            <Link to="/app" className="md:hidden btn btn-primary bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500">
-              Launch
-            </Link>
+            <button 
+              onClick={() => document.getElementById('join-waitlist')?.scrollIntoView({ behavior: 'smooth' })}
+              className="md:hidden btn btn-primary bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500"
+            >
+              Join Waitlist
+            </button>
           </div>
         </div>
       </nav>
@@ -185,26 +200,32 @@ const LandingPage: React.FC = () => {
             </motion.p>
             
             <motion.div variants={fadeIn} className="flex flex-col md:flex-row items-center justify-center gap-4">
-              <Link 
-                to="/app" 
+              <button 
+                onClick={() => setShowBetaModal(true)}
                 className="w-full md:w-auto btn px-8 py-4 text-lg bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-xl shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:scale-105"
               >
                 Explore the Galaxy
-              </Link>
-              <button className="w-full md:w-auto btn bg-slate-800/80 backdrop-blur-sm hover:bg-slate-700 px-8 py-4 text-lg rounded-xl border border-slate-700/50 transition-all duration-300 hover:scale-105">
-                Join the Waitlist
+              </button>
+              <button 
+                onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full md:w-auto btn bg-slate-800/80 backdrop-blur-sm hover:bg-slate-700 px-8 py-4 text-lg rounded-xl border border-slate-700/50 transition-all duration-300 hover:scale-105"
+              >
+                Learn More
               </button>
             </motion.div>
           </div>
         </div>
       </motion.section>
 
-      <section id="features" className="py-16 md:py-24 relative overflow-hidden">
+      <section id="features" className="py-16 md:py-24 relative overflow-hidden bg-slate-950">
         <div className="container mx-auto px-4 relative">
           <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">
-              Powerful Features for the Bittensor Ecosystem
+              Why TAO Galaxy?
             </h2>
+            <p className="text-base md:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
+              As Bittensor grows exponentially, navigating its ecosystem becomes increasingly complex. TAO Galaxy provides the clarity, research tools, and user-friendly discovery platform needed to understand and participate in the network effectively.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -248,18 +269,41 @@ const LandingPage: React.FC = () => {
                   </span>
                 </div>
                 <div
-                  className="flex-1 bg-slate-950 flex items-center justify-center cursor-zoom-in"
+                  className="flex-1 bg-slate-950 flex items-center justify-center cursor-zoom-in relative"
                   onClick={() => {
-                    setPreviewImage(features[activeFeature].image);
+                    setPreviewImage(features[activeFeature].screenshots[screenshotIndex]);
                     setIsPreviewOpen(true);
                   }}
                 >
                   <img
-                    src={features[activeFeature].image}
+                    src={features[activeFeature].screenshots[screenshotIndex]}
                     alt={features[activeFeature].title}
                     className="w-full h-full object-cover rounded-b-3xl transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
                     style={{ minHeight: 180, maxHeight: 360 }}
                   />
+                  {features[activeFeature].screenshots.length > 1 && (
+                    <>
+                      <button
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-800/70 hover:bg-slate-700/80 rounded-full p-1.5 text-slate-300 shadow-lg z-10"
+                        onClick={e => { e.stopPropagation(); setScreenshotIndex(i => (i - 1 + features[activeFeature].screenshots.length) % features[activeFeature].screenshots.length); }}
+                        aria-label="Previous screenshot"
+                      >
+                        <ChevronLeft size={20} />
+                      </button>
+                      <button
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-800/70 hover:bg-slate-700/80 rounded-full p-1.5 text-slate-300 shadow-lg z-10"
+                        onClick={e => { e.stopPropagation(); setScreenshotIndex(i => (i + 1) % features[activeFeature].screenshots.length); }}
+                        aria-label="Next screenshot"
+                      >
+                        <ChevronRight size={20} />
+                      </button>
+                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1 z-10">
+                        {features[activeFeature].screenshots.map((_, idx) => (
+                          <span key={idx} className={`w-2 h-2 rounded-full ${idx === screenshotIndex ? 'bg-indigo-400' : 'bg-slate-600/60'} transition-colors`} />
+                        ))}
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -309,7 +353,7 @@ const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 relative overflow-hidden">
+      <section id="join-waitlist" className="py-16 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.1),transparent_70%)]" />
         <div className="container mx-auto px-4 relative">
           <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
@@ -324,7 +368,7 @@ const LandingPage: React.FC = () => {
 
           <div className="max-w-xl mx-auto">
             <div className="card p-6 md:p-8 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm">
-              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+              <form action="https://formspree.io/f/mgvkbwqn" method="POST" className="space-y-4 md:space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
                     Name
@@ -333,14 +377,11 @@ const LandingPage: React.FC = () => {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     required
                     className="w-full bg-slate-800/50 border border-slate-700/50 rounded-lg px-4 py-3 focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/25 transition-all duration-200"
                     placeholder="Your name"
                   />
                 </div>
-
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
                     Email
@@ -349,14 +390,11 @@ const LandingPage: React.FC = () => {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     required
                     className="w-full bg-slate-800/50 border border-slate-700/50 rounded-lg px-4 py-3 focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/25 transition-all duration-200"
                     placeholder="your@email.com"
                   />
                 </div>
-
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">
                     Message
@@ -364,15 +402,12 @@ const LandingPage: React.FC = () => {
                   <textarea
                     id="message"
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
                     required
                     rows={4}
                     className="w-full bg-slate-800/50 border border-slate-700/50 rounded-lg px-4 py-3 focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/25 transition-all duration-200"
                     placeholder="Tell us about yourself and your interest in TAO Galaxy"
                   />
                 </div>
-
                 <button
                   type="submit"
                   className="w-full btn py-3 md:py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-xl shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:scale-105"
@@ -439,16 +474,16 @@ const LandingPage: React.FC = () => {
           onClick={() => setIsPreviewOpen(false)}
         >
           <div className="relative w-full h-full flex items-center justify-center p-4">
-            <img
-              src={previewImage}
-              alt="Preview"
+          <img
+            src={previewImage}
+            alt="Preview"
               className="max-w-full max-h-full w-auto h-auto object-contain rounded-lg shadow-2xl border-2 border-slate-800"
-              onClick={e => e.stopPropagation()}
-            />
-            <button
+            onClick={e => e.stopPropagation()}
+          />
+          <button
               className="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-slate-300 transition-colors p-2"
-              onClick={() => setIsPreviewOpen(false)}
-            >
+            onClick={() => setIsPreviewOpen(false)}
+          >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-8 w-8"
@@ -464,6 +499,46 @@ const LandingPage: React.FC = () => {
                 />
               </svg>
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* Beta Access Modal */}
+      {showBetaModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          onClick={() => setShowBetaModal(false)}
+        >
+          <div className="relative w-full max-w-lg mx-4 bg-slate-900 rounded-2xl shadow-2xl border border-slate-800 overflow-hidden">
+            <div className="p-8">
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center">
+                  <Rocket className="w-8 h-8 text-indigo-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">Coming Soon!</h3>
+                <p className="text-slate-300">
+                  TAO Galaxy is currently in beta. Join our waitlist to get priority access when we launch.
+                </p>
+              </div>
+              
+              <div className="space-y-4">
+                <button
+                  onClick={() => {
+                    setShowBetaModal(false);
+                    document.getElementById('join-waitlist')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="w-full btn py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-xl shadow-lg shadow-indigo-500/25 transition-all duration-300"
+                >
+                  Join Waitlist
+                </button>
+                <button
+                  onClick={() => setShowBetaModal(false)}
+                  className="w-full btn py-3 bg-slate-800/80 hover:bg-slate-700 rounded-xl border border-slate-700/50 transition-all duration-300"
+                >
+                  Maybe Later
+          </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
