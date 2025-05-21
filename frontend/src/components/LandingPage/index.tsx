@@ -32,12 +32,7 @@ const LandingPage: React.FC = () => {
       title: 'Subnet Reports',
       description: 'Detailed subnet analysis with scores based on deep subnet fundamental analysis',
       screenshots: ['/screenshots/ai-reports.png'],
-      details: [
-        'Comprehensive subnet analysis',
-        'Performance metrics tracking',
-        'Risk assessment scores',
-        'Historical data analysis'
-      ]
+      details: []
     },
     {
       icon: <RssIcon />,
