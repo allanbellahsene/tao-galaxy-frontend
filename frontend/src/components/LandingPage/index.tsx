@@ -43,7 +43,7 @@ const LandingPage: React.FC = () => {
       icon: <RssIcon />,
       title: 'News Feed',
       description: 'Real-time updates and daily recaps from across the ecosystem',
-      screenshots: ['/screenshots/news-feature.png', 'news-2.png'],
+      screenshots: ['/screenshots/news-feature.png', '/screenshots/news-2.png'],
       details: []
     },
     {
