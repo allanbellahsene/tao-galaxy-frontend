@@ -435,21 +435,36 @@ const LandingPage: React.FC = () => {
       {/* Modal/Lightbox for screenshot preview */}
       {isPreviewOpen && previewImage && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
           onClick={() => setIsPreviewOpen(false)}
         >
-          <img
-            src={previewImage}
-            alt="Preview"
-            className="max-w-3xl max-h-[90vh] rounded-2xl shadow-2xl border-4 border-slate-800"
-            onClick={e => e.stopPropagation()}
-          />
-          <button
-            className="absolute top-8 right-8 text-white text-3xl font-bold"
-            onClick={() => setIsPreviewOpen(false)}
-          >
-            &times;
-          </button>
+          <div className="relative w-full h-full flex items-center justify-center p-4">
+            <img
+              src={previewImage}
+              alt="Preview"
+              className="max-w-full max-h-full w-auto h-auto object-contain rounded-lg shadow-2xl border-2 border-slate-800"
+              onClick={e => e.stopPropagation()}
+            />
+            <button
+              className="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-slate-300 transition-colors p-2"
+              onClick={() => setIsPreviewOpen(false)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       )}
     </div>
