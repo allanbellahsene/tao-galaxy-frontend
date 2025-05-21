@@ -76,7 +76,7 @@ const GalaxyView: React.FC = () => {
             >
               <X size={12} />
             </button>
-            <h3 className="text-base font-semibold mb-1 text-slate-100">Welcome to TAO Galaxy</h3>
+            <h3 className="text-base font-semibold mb-1 text-slate-100">TEST NETLIFY</h3>
             <div className="flex items-center justify-center gap-2 w-full">
               {welcomeStep === 1 && (
                 <button onClick={() => setWelcomeStep(0)} className="p-1 rounded hover:bg-slate-700/40 transition-colors text-slate-400" aria-label="Previous">
