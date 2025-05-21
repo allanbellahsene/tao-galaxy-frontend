@@ -11,7 +11,7 @@ const genAISubnets = [
     id: 'subnet-1',
     name: 'Apex',
     description: 'Advanced GenAI subnet for text and code generation',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 48000,
     emissions: 2.66,
     weeklyChange: 5.2,
@@ -27,7 +27,7 @@ const genAISubnets = [
     id: 'subnet-2',
     name: 'Omron',
     description: 'Specialized GenAI subnet for medical applications',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 13000,
     emissions: 0.63,
     weeklyChange: 3.1,
@@ -43,7 +43,7 @@ const genAISubnets = [
     id: 'subnet-3',
     name: 'Targon',
     description: 'High-performance GenAI subnet for enterprise solutions',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 122000,
     emissions: 6.29,
     weeklyChange: 8.7,
@@ -59,7 +59,7 @@ const genAISubnets = [
     id: 'subnet-4',
     name: 'Three Gen',
     description: 'Innovative GenAI solutions for creative industries',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 41000,
     emissions: 2.12,
     weeklyChange: 4.5,
@@ -75,7 +75,7 @@ const genAISubnets = [
     id: 'subnet-5',
     name: 'Nineteen',
     description: 'Next-generation AI models and applications',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 55000,
     emissions: 2.94,
     weeklyChange: 6.2,
@@ -94,7 +94,7 @@ const trainingSubnets = [
     id: 'subnet-6',
     name: 'Templar',
     description: 'Advanced training infrastructure for large-scale models',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 90000,
     emissions: 4.85,
     weeklyChange: 7.3,
@@ -110,7 +110,7 @@ const trainingSubnets = [
     id: 'subnet-7',
     name: 'Pre-training',
     description: 'Specialized subnet for model pre-training tasks',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 25000,
     emissions: 1.28,
     weeklyChange: 3.8,
@@ -129,7 +129,7 @@ const modelDevSubnets = [
     id: 'subnet-8',
     name: 'OpenKaito',
     description: 'Open-source model development platform',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 58000,
     emissions: 3.26,
     weeklyChange: 5.9,
@@ -145,7 +145,7 @@ const modelDevSubnets = [
     id: 'subnet-9',
     name: 'Dippy Roleplay',
     description: 'Specialized model development for interactive AI',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 12000,
     emissions: 0.58,
     weeklyChange: 2.8,
@@ -164,7 +164,7 @@ const predictionsSubnets = [
     id: 'subnet-10',
     name: 'Infinite Games',
     description: 'AI-powered prediction markets and gaming',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 8000,
     emissions: 0.45,
     weeklyChange: 2.1,
@@ -180,7 +180,7 @@ const predictionsSubnets = [
     id: 'subnet-11',
     name: 'Zeus',
     description: 'Advanced prediction models for financial markets',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 9000,
     emissions: 0.57,
     weeklyChange: 2.4,
@@ -199,7 +199,7 @@ const infraSubnets = [
     id: 'subnet-12',
     name: 'SubVortex',
     description: 'Core infrastructure services for the network',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 5000,
     emissions: 0.27,
     weeklyChange: 1.5,
@@ -215,7 +215,7 @@ const infraSubnets = [
     id: 'subnet-13',
     name: 'Horde',
     description: 'Distributed computing and storage infrastructure',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 17000,
     emissions: 0.99,
     weeklyChange: 3.2,
@@ -231,7 +231,7 @@ const infraSubnets = [
     id: 'subnet-14',
     name: 'Data Universe',
     description: 'Data management and analytics infrastructure',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 34000,
     emissions: 1.77,
     weeklyChange: 4.8,
@@ -247,7 +247,7 @@ const infraSubnets = [
     id: 'subnet-15',
     name: 'TAOHash',
     description: 'High-performance computing infrastructure',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 124000,
     emissions: 6.90,
     weeklyChange: 8.9,
@@ -266,7 +266,7 @@ const defiSubnets = [
     id: 'subnet-16',
     name: 'PTN',
     description: 'Premier DeFi platform for advanced trading',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 130000,
     emissions: 6.83,
     weeklyChange: 9.2,
@@ -282,7 +282,7 @@ const defiSubnets = [
     id: 'subnet-17',
     name: 'Sturdy',
     description: 'Stable DeFi infrastructure and services',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 25000,
     emissions: 1.14,
     weeklyChange: 3.7,
@@ -301,7 +301,7 @@ const aiToolSubnets = [
     id: 'subnet-18',
     name: 'De_Val',
     description: 'AI development tools and utilities',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 8000,
     emissions: 0.43,
     weeklyChange: 2.2,
@@ -317,7 +317,7 @@ const aiToolSubnets = [
     id: 'subnet-19',
     name: 'BitAds',
     description: 'AI-powered advertising platform',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 3000,
     emissions: 0.19,
     weeklyChange: 1.2,
@@ -333,7 +333,7 @@ const aiToolSubnets = [
     id: 'subnet-20',
     name: 'BitAgent',
     description: 'AI agent development and deployment platform',
-    status: 'active',
+    status: 'active' as const,
     marketCap: 6000,
     emissions: 0.36,
     weeklyChange: 1.8,
@@ -347,54 +347,93 @@ const aiToolSubnets = [
   }
 ];
 
+const computeSubnets = [
+  {
+    id: 'subnet-21',
+    name: 'Compute Node',
+    description: 'High-performance compute infrastructure',
+    status: 'active' as const,
+    marketCap: 75000,
+    emissions: 3.85,
+    weeklyChange: 6.2,
+    validators: 220,
+    age: 145,
+    metrics: [
+      { name: 'TPS', value: '780', percentage: 78 },
+      { name: 'Uptime', value: '99.9%', percentage: 98 },
+      { name: 'Response', value: '100ms', percentage: 95 }
+    ]
+  },
+  {
+    id: 'subnet-22',
+    name: 'GridCompute',
+    description: 'Distributed computing network',
+    status: 'active' as const,
+    marketCap: 45000,
+    emissions: 2.28,
+    weeklyChange: 4.1,
+    validators: 175,
+    age: 92,
+    metrics: [
+      { name: 'TPS', value: '620', percentage: 62 },
+      { name: 'Uptime', value: '99.7%', percentage: 96 },
+      { name: 'Response', value: '180ms', percentage: 87 }
+    ]
+  }
+];
+
+// Helper function to ensure correct status type
+const ensureStatusType = <T extends { status: string }>(obj: T): T & { status: 'active' | 'inactive' } => ({
+  ...obj,
+  status: obj.status as 'active' | 'inactive'
+});
+
+// Update all subnet arrays to have the correct status type
+for (const subnet of [...trainingSubnets, ...modelDevSubnets, ...predictionsSubnets, ...infraSubnets, ...defiSubnets, ...aiToolSubnets, ...computeSubnets]) {
+  ensureStatusType(subnet);
+}
+
 export const mockCategories: CategoryType[] = [
   {
-    id: 'genai',
-    name: 'GenAI',
-    description: 'Generative AI subnets focused on text, image, and multimodal generation',
-    marketCapTotal: calculateCategoryTotal(genAISubnets),
-    subnets: genAISubnets
+    id: 'core-infrastructure',
+    name: 'Core Infrastructure',
+    description: 'Fundamental network infrastructure, compute resources, and storage services',
+    marketCapTotal: calculateCategoryTotal([...infraSubnets, ...computeSubnets]),
+    subnets: [...infraSubnets, ...computeSubnets]
   },
   {
-    id: 'training',
-    name: 'Training',
-    description: 'Subnets dedicated to AI model training and optimization',
-    marketCapTotal: calculateCategoryTotal(trainingSubnets),
-    subnets: trainingSubnets
-  },
-  {
-    id: 'modeldev',
-    name: 'Model Dev',
-    description: 'Platforms for AI model development and testing',
-    marketCapTotal: calculateCategoryTotal(modelDevSubnets),
-    subnets: modelDevSubnets
-  },
-  {
-    id: 'predictions',
-    name: 'Predictions',
-    description: 'AI-powered prediction and forecasting platforms',
-    marketCapTotal: calculateCategoryTotal(predictionsSubnets),
-    subnets: predictionsSubnets
-  },
-  {
-    id: 'infra',
-    name: 'Infrastructure',
-    description: 'Core infrastructure and services supporting the ecosystem',
-    marketCapTotal: calculateCategoryTotal(infraSubnets),
-    subnets: infraSubnets
+    id: 'ai-ml',
+    name: 'AI & Machine Learning',
+    description: 'AI model development, training, and deployment services',
+    marketCapTotal: calculateCategoryTotal([...genAISubnets, ...trainingSubnets, ...modelDevSubnets, ...aiToolSubnets]),
+    subnets: [...genAISubnets, ...trainingSubnets, ...modelDevSubnets, ...aiToolSubnets]
   },
   {
     id: 'defi',
-    name: 'DeFi',
-    description: 'Decentralized Finance subnets offering financial services',
+    name: 'DeFi & Trading',
+    description: 'Decentralized finance and trading services',
     marketCapTotal: calculateCategoryTotal(defiSubnets),
     subnets: defiSubnets
   },
   {
-    id: 'aitool',
-    name: 'AI Tools',
-    description: 'Specialized tools and utilities for AI development',
-    marketCapTotal: calculateCategoryTotal(aiToolSubnets),
-    subnets: aiToolSubnets
+    id: 'data-services',
+    name: 'Data Services',
+    description: 'Data management, analysis, and predictive systems',
+    marketCapTotal: calculateCategoryTotal([...predictionsSubnets, ...infraSubnets.filter(s => s.name.includes('Data'))]),
+    subnets: [...predictionsSubnets, ...infraSubnets.filter(s => s.name.includes('Data'))]
+  },
+  {
+    id: 'security',
+    name: 'Security & Trust',
+    description: 'Network security and content verification services',
+    marketCapTotal: calculateCategoryTotal([...infraSubnets.filter(s => s.description.toLowerCase().includes('security'))]),
+    subnets: [...infraSubnets.filter(s => s.description.toLowerCase().includes('security'))]
+  },
+  {
+    id: 'scientific',
+    name: 'Scientific Computing',
+    description: 'Scientific research and computational services',
+    marketCapTotal: calculateCategoryTotal([...infraSubnets.filter(s => s.description.toLowerCase().includes('scientific'))]),
+    subnets: [...infraSubnets.filter(s => s.description.toLowerCase().includes('scientific'))]
   }
 ];

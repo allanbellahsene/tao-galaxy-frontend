@@ -1,13 +1,13 @@
 // Category color mapping
 const categoryColors: Record<string, string> = {
-  'genai': 'rgb(99, 102, 241)', // indigo
-  'training': 'rgb(16, 185, 129)', // emerald
-  'modeldev': 'rgb(14, 165, 233)', // sky
-  'predictions': 'rgb(249, 115, 22)', // orange
-  'infra': 'rgb(168, 85, 247)', // purple
-  'defi': 'rgb(239, 68, 68)', // red
-  'aitool': 'rgb(234, 179, 8)', // yellow
-  'default': 'rgb(99, 102, 241)' // default to indigo
+  'ai-&-machine-learning': 'rgb(99, 102, 241)', // indigo
+  'core-infrastructure': 'rgb(168, 85, 247)', // purple
+  'data-services': 'rgb(14, 165, 233)', // sky
+  'defi-&-trading': 'rgb(239, 68, 68)', // red
+  'scientific-computing': 'rgb(16, 185, 129)', // emerald
+  'uncategorized': 'rgb(234, 179, 8)', // yellow
+  'security-&-trust': 'rgb(249, 115, 22)', // orange
+  'default': 'rgb(99, 102, 241)' // fallback
 };
 
 export const getCategoryColor = (categoryId: string): string => {

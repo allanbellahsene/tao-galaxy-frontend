@@ -4,7 +4,7 @@ import GalaxyMap from './GalaxyMap';
 import GalaxyControls from './GalaxyControls';
 import SubnetDetail from './SubnetDetail';
 import { useAppContext } from '../../context/AppContext';
-import { mockCategories } from '../../data/mockData';
+import { CategoryType } from '../../types';
 
 const GalaxyView: React.FC = () => {
   const { 
@@ -17,14 +17,16 @@ const GalaxyView: React.FC = () => {
   } = useAppContext();
   
   const [isLoading, setIsLoading] = useState(true);
+  const [categories, setCategories] = useState<CategoryType[]>([]);
 
   useEffect(() => {
-    // Simulate loading data
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-    
-    return () => clearTimeout(timer);
+    fetch('/subnets_frontend_ready.json')
+      .then(res => res.json())
+      .then((data: CategoryType[]) => {
+        setCategories(data);
+        setIsLoading(false);
+      })
+      .catch(() => setIsLoading(false));
   }, []);
 
   if (isLoading) {
@@ -52,7 +54,7 @@ const GalaxyView: React.FC = () => {
         </div>
       </div>
 
-      <GalaxyMap categories={mockCategories} />
+      {categories.length > 0 && <GalaxyMap categories={categories} />}
       <GalaxyControls 
         zoomLevel={zoomLevel}
         onZoomIn={() => setZoomLevel(Math.min(zoomLevel + 0.2, 2))}

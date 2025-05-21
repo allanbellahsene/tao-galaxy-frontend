@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, ArrowUpRight, TrendingUp, Zap, Users, Clock, ChevronDown, Github, Twitter, ExternalLink } from 'lucide-react';
 import { useAppContext } from '../../context/AppContext';
-import { mockCategories } from '../../data/mockData';
+import { CategoryType } from '../../types';
 import { formatNumber } from '../../utils/format';
 import { getCategoryColor } from '../../utils/colors';
 
@@ -9,11 +9,18 @@ const SubnetDetail: React.FC = () => {
   const { selectedSubnet, setSelectedSubnet } = useAppContext();
   const [showEli5, setShowEli5] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [categories, setCategories] = useState<CategoryType[]>([]);
+
+  useEffect(() => {
+    fetch('/subnets_frontend_ready.json')
+      .then(res => res.json())
+      .then((data: CategoryType[]) => setCategories(data));
+  }, []);
   
   let subnet = null;
   let category = null;
   
-  mockCategories.forEach(cat => {
+  categories.forEach(cat => {
     const found = cat.subnets.find(sub => sub.id === selectedSubnet);
     if (found) {
       subnet = found;

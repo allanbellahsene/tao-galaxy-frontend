@@ -8,16 +8,24 @@ interface SubnetProps {
   categoryColor: string;
   isVisible: boolean;
   categoryName: string;
+  packedRadius?: number; // D3 packed radius
+  isLargestSubnet?: boolean; // new prop
+  showSubnetId?: boolean; // new prop for gradual reveal
 }
 
-const Subnet: React.FC<SubnetProps> = ({ subnet, position, categoryColor, isVisible }) => {
+const Subnet: React.FC<SubnetProps> = ({ subnet, position, categoryColor, isVisible, packedRadius, isLargestSubnet, showSubnetId }) => {
   const { setSelectedSubnet, selectedSubnet, zoomLevel } = useAppContext();
   
-  // Scale based on market cap - using 130000 as max reference (PTN's market cap)
-  const baseSize = 50;
-  const maxMarketCap = 130000;
-  const scaleFactor = Math.sqrt(subnet.marketCap / maxMarketCap); // Square root for more balanced scaling
-  const finalSize = Math.max(25, baseSize * scaleFactor);
+  // Use packedRadius if provided, otherwise fallback to market cap scaling
+  let finalSize: number;
+  if (packedRadius) {
+    finalSize = packedRadius * 2;
+  } else {
+    const baseSize = 40;
+    const maxMarketCap = 100000000;
+    const scaleFactor = Math.sqrt(subnet.marketCap / maxMarketCap);
+    finalSize = Math.max(20, baseSize * scaleFactor);
+  }
   
   const isSelected = selectedSubnet === subnet.id;
   const pulseColor = categoryColor.replace(')', ', 0.4)').replace('rgb', 'rgba');
@@ -58,20 +66,15 @@ const Subnet: React.FC<SubnetProps> = ({ subnet, position, categoryColor, isVisi
       onClick={handleSubnetClick}
     >
       <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-        {/* Subnet ID - always visible */}
-        <div 
-          className="font-bold"
-          style={{ fontSize: Math.max(12, finalSize * 0.3) }}
-        >
-          {subnetId}
-        </div>
-        
-        {/* Subnet name - only visible when zoomed in */}
-        {zoomLevel > 1.2 && (
-          <div 
-            className="text-xs opacity-80 mt-1"
-            style={{ fontSize: Math.max(10, finalSize * 0.2) }}
-          >
+        {/* Subnet ID - gradual reveal */}
+        {showSubnetId && (
+          <div className="font-bold" style={{ fontSize: Math.max(12, finalSize * 0.3) }}>
+            {subnetId}
+          </div>
+        )}
+        {/* Subnet name - only at high zoom */}
+        {zoomLevel > 2.0 && (
+          <div className="text-xs opacity-80 mt-1" style={{ fontSize: Math.max(10, finalSize * 0.2) }}>
             {subnet.name}
           </div>
         )}

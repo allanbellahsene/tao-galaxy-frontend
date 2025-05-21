@@ -8,13 +8,17 @@ interface CategoryProps {
   category: CategoryType;
   position: Position;
   isExpanded: boolean;
+  allCategories: CategoryType[];
+  packedSubnets?: any[]; // D3 packed children
+  radius?: number; // D3 packed radius
 }
 
-const Category: React.FC<CategoryProps> = ({ category, position, isExpanded }) => {
+const Category: React.FC<CategoryProps> = ({ category, position, isExpanded, allCategories, packedSubnets, radius }) => {
   const { setSelectedCategory, zoomLevel, selectedSubnet } = useAppContext();
   
-  // Calculate total diameter needed based on subnet sizes
-  const maxMarketCap = 130000; // PTN's market cap as reference
+  // Dynamically calculate the max market cap from all subnets in all categories
+  const allSubnets = allCategories.flatMap(cat => cat.subnets);
+  const maxMarketCap = Math.max(...allSubnets.map(subnet => subnet.marketCap || 0), 1); // avoid division by zero
   const baseSubnetSize = 50; // Base size for subnets
   const padding = 10; // Padding between subnets
   
@@ -29,6 +33,65 @@ const Category: React.FC<CategoryProps> = ({ category, position, isExpanded }) =
   // Adding padding for each subnet and a base padding
   const ringDiameter = totalDiameter + (padding * (category.subnets.length + 1));
   
+  // If packedSubnets is provided, use D3 layout
+  if (packedSubnets && radius) {
+    const color = getCategoryColor(category.id);
+    const glowColor = color.replace(')', ', 0.3)').replace('rgb', 'rgba');
+    const handleCategoryClick = (e: React.MouseEvent) => {
+      e.stopPropagation();
+      setSelectedCategory(isExpanded ? null : category.id);
+    };
+    return (
+      <div
+        className={`absolute category-node rounded-full transition-all duration-500 overflow-hidden ${isExpanded ? 'animate-glow' : ''}`}
+        style={{
+          width: `${radius * 2}px`,
+          height: `${radius * 2}px`,
+          left: `${position.x - radius}px`,
+          top: `${position.y - radius}px`,
+          background: `radial-gradient(circle at 30% 30%, 
+            ${color.replace('rgb', 'rgba').replace(')', ', 0.9)')} 0%,
+            ${color} 45%,
+            ${color.replace('rgb', 'rgba').replace(')', ', 0.6)')} 65%,
+            ${glowColor} 85%,
+            transparent 100%
+          )`,
+          boxShadow: `
+            0 0 ${radius * 0.3}px ${glowColor},
+            inset 0 0 ${radius * 0.15}px rgba(255, 255, 255, 0.2)
+          `,
+          zIndex: isExpanded ? 10 : 5,
+          opacity: selectedSubnet ? 0.8 : 1,
+        }}
+        onClick={handleCategoryClick}
+      >
+        {/* Category name */}
+        {zoomLevel > 0.8 && (
+          <div 
+            className="absolute inset-0 flex items-center justify-center text-white font-medium"
+            style={{ fontSize: Math.min(18, radius * 0.1) }}
+          >
+            {category.name}
+          </div>
+        )}
+        {/* Subnets container - D3 packed */}
+        <div className="absolute inset-0 rounded-full overflow-hidden">
+          {packedSubnets.map((subnetNode: any) => (
+            <Subnet
+              key={subnetNode.data.id}
+              subnet={subnetNode.data}
+              position={{ x: subnetNode.x, y: subnetNode.y }}
+              categoryColor={color}
+              isVisible={true}
+              categoryName={category.name}
+              packedRadius={subnetNode.r}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   const color = getCategoryColor(category.id);
   const glowColor = color.replace(')', ', 0.3)').replace('rgb', 'rgba');
   

@@ -11,6 +11,53 @@ const LandingPage: React.FC = () => {
     message: ''
   });
 
+  const [activeFeature, setActiveFeature] = useState(0);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
+
+  const features = [
+    {
+      icon: <Compass />,
+      title: 'Subnet Explorer',
+      description: 'Interactive visual map with powerful filters to discover and analyze subnets',
+      image: '/screenshots/subnet-explorer.png',
+      details: [
+      ]
+    },
+    {
+      icon: <FileText />,
+      title: 'AI Reports',
+      description: 'Detailed subnet analysis with scores based on deep subnet fundamentals analysis',
+      image: '/screenshots/ai-reports.png',
+      details: [
+        'Comprehensive subnet analysis',
+        'Performance metrics tracking',
+        'Risk assessment scores',
+        'Historical data analysis'
+      ]
+    },
+    {
+      icon: <RssIcon />,
+      title: 'News Feed',
+      description: 'Real-time updates and daily recaps from across the ecosystem',
+      image: '/screenshots/news-feature.png',
+      details: [
+      ]
+    },
+    {
+      icon: <Bot />,
+      title: 'MCP AI Assistant',
+      description: 'Ask anything about Bittensor or any subnet and get structured, accurate answers',
+      image: '/screenshots/ai-assistant.png',
+      details: [
+        'Natural language queries',
+        'Context-aware responses',
+        'Technical documentation',
+        'Integration guides'
+      ]
+    }
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
@@ -24,7 +71,6 @@ const LandingPage: React.FC = () => {
     }));
   };
 
-  // Define common features for each role to ensure equal height
   const roleFeatures = {
     investors: [
       'Explore new opportunities visually',
@@ -36,19 +82,18 @@ const LandingPage: React.FC = () => {
       'Showcase your team, product, and progress',
       'Attract investors, miners, and collaborators',
       'Let your growth speak for itself through verified reports and news',
-      'Build stronger community engagement' // Added to match length
+      'Build stronger community engagement'
     ],
     developers: [
       'Discover subnets with real traction',
       'Track launches and activity spikes',
       'Identify collaboration or reward opportunities with clarity',
-      'Access comprehensive development resources' // Added to match length
+      'Access comprehensive development resources'
     ]
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950">
-      {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-sm border-b border-slate-800">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -67,14 +112,12 @@ const LandingPage: React.FC = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <motion.section 
         variants={staggerContainer}
         initial="hidden"
         animate="show"
         className="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden"
       >
-        {/* Animated background elements */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.15),transparent_50%)]" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-indigo-500/10 animate-[spin_60s_linear_infinite]" />
@@ -119,7 +162,6 @@ const LandingPage: React.FC = () => {
         </div>
       </motion.section>
 
-      {/* Features Section */}
       <section id="features" className="py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
         <div className="container mx-auto px-4 relative">
@@ -134,53 +176,69 @@ const LandingPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: <Compass />,
-                title: 'Subnet Explorer',
-                description: 'Interactive visual map with powerful filters to discover and analyze subnets'
-              },
-              {
-                icon: <FileText />,
-                title: 'AI Reports',
-                description: 'Detailed subnet analysis with scores based on deep subnet fundamentals analysis'
-              },
-              {
-                icon: <RssIcon />,
-                title: 'News Feed',
-                description: 'Real-time updates and daily recaps from across the ecosystem'
-              },
-              {
-                icon: <Bot />,
-                title: 'MCP AI Assistant',
-                description: 'Ask anything about Bittensor or any subnet and get structured, accurate answers'
-              }
-            ].map((feature, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group"
-              >
-                <div className="card p-6 hover:border-indigo-500/50 transition-all duration-300 hover:scale-105 bg-gradient-to-br from-slate-800/80 to-slate-900/80">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center text-indigo-400 mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {feature.icon}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {features.map((feature, index) => (
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`group cursor-pointer ${activeFeature === index ? 'ring-2 ring-indigo-500' : ''}`}
+                  onClick={() => setActiveFeature(index)}
+                >
+                  <div className="card p-6 hover:border-indigo-500/50 transition-all duration-300 hover:scale-105 bg-gradient-to-br from-slate-800/80 to-slate-900/80 h-full">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center text-indigo-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                      {feature.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-300">
+                      {feature.title}
+                    </h3>
+                    <p className="text-slate-300 text-sm">{feature.description}</p>
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-300">
-                    {feature.title}
-                  </h3>
-                  <p className="text-slate-300">{feature.description}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative flex items-center justify-center"
+            >
+              {/* Polished browser-like frame for screenshot */}
+              <div className="w-full max-w-2xl mx-auto bg-slate-900 rounded-3xl shadow-2xl border-2 border-slate-800 overflow-hidden flex flex-col" style={{ minHeight: 340 }}>
+                {/* Browser header bar */}
+                <div className="flex items-center px-6 py-3 bg-slate-800 border-b border-slate-700" style={{ minHeight: 48 }}>
+                  <span className="w-3 h-3 bg-red-400 rounded-full mr-2"></span>
+                  <span className="w-3 h-3 bg-yellow-400 rounded-full mr-2"></span>
+                  <span className="w-3 h-3 bg-green-400 rounded-full"></span>
+                  <span className="ml-6 text-sm text-slate-400 font-mono truncate" style={{ maxWidth: 220 }}>
+                    {features[activeFeature].title}
+                  </span>
                 </div>
-              </motion.div>
-            ))}
+                {/* Screenshot */}
+                <div
+                  className="flex-1 bg-slate-950 flex items-center justify-center cursor-zoom-in"
+                  onClick={() => {
+                    setPreviewImage(features[activeFeature].image);
+                    setIsPreviewOpen(true);
+                  }}
+                >
+                  <img
+                    src={features[activeFeature].image}
+                    alt={features[activeFeature].title}
+                    className="w-full h-full object-cover rounded-b-3xl transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
+                    style={{ minHeight: 220, maxHeight: 420 }}
+                  />
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Who Is TAO Galaxy For? Section */}
       <section id="about" className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/10 to-purple-900/10" />
         <div className="container mx-auto px-4 relative">
@@ -242,7 +300,6 @@ const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Quote Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900" />
         <div className="container mx-auto px-4 relative">
@@ -256,13 +313,12 @@ const LandingPage: React.FC = () => {
               "If we want to onboard the next wave into Bittensor, this is the tool that gets them there."
             </p>
             <footer className="text-slate-400">
-              - Core Contributor
+              - Allan, Founder of TAO Galaxy
             </footer>
           </motion.blockquote>
         </div>
       </section>
 
-      {/* Contact Form Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.1),transparent_70%)]" />
         <div className="container mx-auto px-4 relative">
@@ -276,7 +332,6 @@ const LandingPage: React.FC = () => {
             </p>
           </div>
 
-          {/* Contact Form */}
           <div className="max-w-xl mx-auto">
             <div className="card p-8 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm">
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -340,7 +395,6 @@ const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="py-12 border-t border-slate-800 relative">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -368,6 +422,27 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
       </footer>
+
+      {/* Modal/Lightbox for screenshot preview */}
+      {isPreviewOpen && previewImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+          onClick={() => setIsPreviewOpen(false)}
+        >
+          <img
+            src={previewImage}
+            alt="Preview"
+            className="max-w-3xl max-h-[90vh] rounded-2xl shadow-2xl border-4 border-slate-800"
+            onClick={e => e.stopPropagation()}
+          />
+          <button
+            className="absolute top-8 right-8 text-white text-3xl font-bold"
+            onClick={() => setIsPreviewOpen(false)}
+          >
+            &times;
+          </button>
+        </div>
+      )}
     </div>
   );
 };
