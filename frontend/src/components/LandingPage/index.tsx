@@ -51,8 +51,8 @@ const LandingPage: React.FC = () => {
     },
     {
       icon: <FileText />,
-      title: 'AI Reports',
-      description: 'Detailed subnet analysis with scores based on deep subnet fundamentals analysis',
+      title: 'Subnet Reports',
+      description: 'Detailed subnet analysis with scores based on deep subnet fundamental analysis',
       screenshots: ['/screenshots/ai-reports.png'],
       details: [
         'Comprehensive subnet analysis',
@@ -189,7 +189,8 @@ const LandingPage: React.FC = () => {
               variants={fadeIn}
               className="text-4xl md:text-7xl font-bold mb-6 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-200 to-purple-300 leading-tight"
             >
-              The Intelligence Layer of Bittensor
+              Bittensor, Made Simple
+
             </motion.h1>
             
             <motion.p 
