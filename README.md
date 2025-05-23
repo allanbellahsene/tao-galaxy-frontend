@@ -1,6 +1,6 @@
-# TAO Galaxy - Bittensor Subnet Explorer
+# TAO Galaxy - Bittensor Explorer
 
-A comprehensive dashboard for exploring, analyzing, and staying updated on the Bittensor ecosystem. TAO Galaxy provides an interactive subnet explorer, AI-powered reports, and real-time news aggregation.
+A comprehensive platform for exploring, analyzing, and staying updated on the Bittensor ecosystem. TAO Galaxy provides an interactive subnet explorer, AI-powered reports, and real-time news aggregation.
 
 ## 🌟 Features
 
