@@ -23,3 +23,29 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Backend Python files
+backend/__pycache__/
+backend/*.pyc
+backend/.env
+backend/venv/
+backend/.venv/
+
+# Prevent root-level frontend config files (keep them in frontend/ only)
+/package.json
+/package-lock.json
+/vite.config.ts
+/tsconfig*.json
+/index.html
+/eslint.config.js
+/postcss.config.js
+/tailwind.config.js
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

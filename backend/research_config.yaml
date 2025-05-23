@@ -1,0 +1,294 @@
+# Research Agent Configuration
+# This file contains all the questions, prompts, and criteria used by the AI research agent
+
+# System prompts for different analysis types
+system_prompts:
+  base_analyst: |
+    You are a senior blockchain and AI project analyst with 10+ years of experience in evaluating startups, 
+    technology projects, and investment opportunities. You specialize in the Bittensor ecosystem and understand 
+    the nuances of decentralized AI networks.
+    
+    Your analysis style is:
+    - Thorough and evidence-based
+    - Objective and unbiased
+    - Focused on actionable insights
+    - Aware of both opportunities and risks
+    
+    You have deep knowledge of:
+    - Blockchain technology and tokenomics
+    - AI/ML technologies and their applications
+    - Software development practices
+    - Business models and market dynamics
+    - Team assessment and execution capabilities
+
+  research_specialist: |
+    You are conducting detailed research on Bittensor subnets. Your goal is to provide comprehensive, 
+    accurate analysis that will inform investment and strategic decisions.
+    
+    CRITICAL INSTRUCTIONS:
+    1. Base ALL answers strictly on the provided context and evidence
+    2. If information is not available, explicitly state "Information not available in sources"
+    3. Provide specific evidence and quotes from sources when possible
+    4. Assign confidence levels based on source quality and information completeness
+    5. Use structured formatting for consistency
+    6. Flag any red flags or concerning information immediately
+    7. Be conservative in assessments when evidence is limited
+
+# Research question categories with detailed criteria
+research_categories:
+  basic_info:
+    name: "Basic Information & Value Proposition"
+    description: "Core understanding of the subnet's purpose and positioning"
+    weight: 15
+    questions:
+      mission_statement:
+        question: "What is the subnet's mission statement or primary goal?"
+        guidance: "Look for clear, specific statements about what they're trying to achieve. Avoid vague or marketing language."
+        evidence_sources: ["website_content", "whitepaper", "documentation"]
+        
+      problem_solving:
+        question: "What specific problem does this subnet aim to solve?"
+        guidance: "Identify the concrete problem, its scale, and why current solutions are inadequate."
+        evidence_sources: ["website_content", "documentation", "blog_posts"]
+        
+      target_audience:
+        question: "Who is the target audience or user base for this subnet?"
+        guidance: "Be specific about user personas, market segments, and use cases."
+        evidence_sources: ["website_content", "marketing_materials", "community_posts"]
+        
+      unique_value_proposition:
+        question: "What makes this subnet unique compared to competitors?"
+        guidance: "Focus on concrete differentiators, not generic claims."
+        evidence_sources: ["website_content", "technical_docs", "comparisons"]
+
+  team:
+    name: "Team & Leadership"
+    description: "Assessment of team quality, experience, and execution capability"
+    weight: 25
+    questions:
+      team_size:
+        question: "How many team members does this subnet have?"
+        guidance: "Count full-time equivalents and core contributors. Distinguish between team and advisors."
+        evidence_sources: ["team_page", "github_contributors", "linkedin_profiles"]
+        
+      team_experience:
+        question: "What is the experience level and background of the team?"
+        guidance: "Focus on relevant experience in AI, blockchain, or the specific problem domain."
+        evidence_sources: ["team_bios", "linkedin_profiles", "previous_work"]
+        
+      leadership_quality:
+        question: "Who are the key leaders and what are their credentials?"
+        guidance: "Evaluate track record, education, and relevant achievements."
+        evidence_sources: ["team_page", "social_profiles", "previous_projects"]
+        
+      team_transparency:
+        question: "How transparent is the team about their identities and backgrounds?"
+        guidance: "Assess if team members are publicly identifiable with verifiable backgrounds."
+        evidence_sources: ["website", "social_media", "public_profiles"]
+
+  product:
+    name: "Product & Technology"
+    description: "Technical implementation, product status, and innovation assessment"
+    weight: 25
+    questions:
+      product_status:
+        question: "What is the current status of their product/service (concept, MVP, beta, live)?"
+        guidance: "Look for concrete evidence of development stage, not just claims."
+        evidence_sources: ["demos", "documentation", "github_activity", "user_reports"]
+        
+      technical_approach:
+        question: "What technical approach or methodology do they use?"
+        guidance: "Understand the technical architecture and innovation level."
+        evidence_sources: ["technical_docs", "whitepapers", "github_code", "architecture_diagrams"]
+        
+      product_differentiation:
+        question: "How does their product differ from existing solutions?"
+        guidance: "Focus on technical and functional differences, not marketing positioning."
+        evidence_sources: ["feature_comparisons", "technical_specs", "competitive_analysis"]
+        
+      scalability:
+        question: "How scalable is their technical solution?"
+        guidance: "Assess both technical scalability and resource requirements."
+        evidence_sources: ["architecture_docs", "performance_tests", "technical_discussions"]
+
+  business:
+    name: "Business Model & Market"
+    description: "Commercial viability and market opportunity assessment"
+    weight: 20
+    questions:
+      revenue_model:
+        question: "What is their revenue model or monetization strategy?"
+        guidance: "Look for specific, realistic revenue streams with clear value exchange."
+        evidence_sources: ["business_plan", "tokenomics", "pricing_models"]
+        
+      market_size:
+        question: "What is the size of their target market?"
+        guidance: "Seek quantitative data and realistic market sizing."
+        evidence_sources: ["market_research", "tam_sam_som", "industry_reports"]
+        
+      competitive_landscape:
+        question: "Who are their main competitors?"
+        guidance: "Identify direct and indirect competitors with honest assessment."
+        evidence_sources: ["competitive_analysis", "market_research", "comparisons"]
+        
+      partnership_strategy:
+        question: "Do they have notable partnerships or collaborations?"
+        guidance: "Verify partnerships and assess their strategic value."
+        evidence_sources: ["partnership_announcements", "integrations", "collaborations"]
+
+  development:
+    name: "Development & Progress"
+    description: "Execution track record and development momentum"
+    weight: 20
+    questions:
+      development_activity:
+        question: "How active is their development (based on GitHub, updates, etc.)?"
+        guidance: "Measure actual code commits, documentation updates, and consistent progress."
+        evidence_sources: ["github_activity", "commit_history", "release_notes"]
+        
+      roadmap_clarity:
+        question: "How clear and detailed is their development roadmap?"
+        guidance: "Assess specificity, timeline realism, and milestone definition."
+        evidence_sources: ["roadmap_docs", "project_plans", "milestone_tracking"]
+        
+      milestone_achievement:
+        question: "Have they achieved their stated milestones?"
+        guidance: "Compare planned vs actual achievements with evidence."
+        evidence_sources: ["progress_reports", "milestone_updates", "feature_releases"]
+        
+      community_engagement:
+        question: "How engaged is their community?"
+        guidance: "Measure active participation, not just follower counts."
+        evidence_sources: ["discord_activity", "social_engagement", "community_metrics"]
+
+  risks:
+    name: "Risk Assessment"
+    description: "Identification and evaluation of key risks and challenges"
+    weight: 15
+    questions:
+      technical_risks:
+        question: "What are the main technical risks or challenges?"
+        guidance: "Identify specific technical hurdles and their likelihood/impact."
+        evidence_sources: ["technical_discussions", "known_issues", "complexity_analysis"]
+        
+      market_risks:
+        question: "What market risks does the subnet face?"
+        guidance: "Consider market timing, adoption barriers, and competitive threats."
+        evidence_sources: ["market_analysis", "adoption_challenges", "competitive_pressure"]
+        
+      regulatory_risks:
+        question: "Are there any regulatory or compliance concerns?"
+        guidance: "Assess regulatory landscape and compliance requirements."
+        evidence_sources: ["legal_docs", "compliance_statements", "regulatory_analysis"]
+        
+      team_risks:
+        question: "Are there any team-related risks (key person dependency, etc.)?"
+        guidance: "Identify dependencies on specific individuals or skill gaps."
+        evidence_sources: ["team_structure", "key_person_analysis", "succession_planning"]
+
+# Answer format specifications
+answer_format:
+  required_fields:
+    - question
+    - answer
+    - confidence_level
+    - evidence_sources
+    - evidence_quality
+    - flags
+    - human_review_required
+    
+  confidence_levels:
+    high:
+      description: "Strong evidence from multiple reliable sources"
+      threshold: "Multiple verified sources with consistent information"
+      human_review: false
+      
+    medium:
+      description: "Some evidence but limited or partially contradictory"
+      threshold: "Single reliable source or multiple sources with minor inconsistencies"
+      human_review: false
+      
+    low:
+      description: "Limited evidence or significant uncertainty"
+      threshold: "Weak sources, significant gaps, or contradictory information"
+      human_review: true
+      
+    no_data:
+      description: "No relevant information available"
+      threshold: "No sources contain relevant information"
+      human_review: true
+
+  evidence_quality_criteria:
+    excellent: "Primary sources (official docs, verified social media, code repositories)"
+    good: "Secondary sources with clear attribution (news articles, verified reports)"
+    fair: "Indirect sources or older information"
+    poor: "Unverified claims or very limited information"
+
+# Red flags that should trigger immediate attention
+red_flags:
+  team:
+    - "Anonymous team with no verifiable identities"
+    - "Team members with history of failed projects"
+    - "Key team member departures"
+    - "Unrealistic experience claims"
+    
+  technical:
+    - "No working product after significant time"
+    - "Technical claims that seem impossible"
+    - "No evidence of actual development"
+    - "Critical security vulnerabilities"
+    
+  business:
+    - "Unclear or unrealistic revenue model"
+    - "No clear path to profitability"
+    - "Overly dependent on token appreciation"
+    - "Unrealistic market size claims"
+    
+  legal:
+    - "Regulatory issues or warnings"
+    - "IP disputes or infringement claims"
+    - "Compliance problems"
+    - "Legal action against team/project"
+
+# Human review triggers
+human_review_triggers:
+  confidence_based:
+    - "Any answer with confidence level 'low' or 'no_data'"
+    - "More than 30% of answers have medium or lower confidence"
+    
+  content_based:
+    - "Any red flags identified in the analysis"
+    - "Conflicting information between sources"
+    - "Significant changes from previous analysis"
+    
+  source_based:
+    - "Primary sources unavailable or inaccessible"
+    - "Source quality rated as 'poor' for key questions"
+    - "Sources older than 6 months for critical information"
+
+# Output formatting templates
+output_templates:
+  structured_answer: |
+    **Answer:** {answer}
+    
+    **Confidence Level:** {confidence_level}
+    **Evidence Quality:** {evidence_quality}
+    **Sources Used:** {evidence_sources}
+    
+    {additional_notes}
+    
+  summary_template: |
+    ## Research Summary for {subnet_name}
+    
+    **Overall Confidence:** {overall_confidence}
+    **Research Completeness:** {completeness_percentage}%
+    **Human Review Required:** {human_review_required}
+    
+    ### Key Findings
+    {key_findings}
+    
+    ### Red Flags
+    {red_flags}
+    
+    ### Recommended Actions
+    {recommended_actions} 

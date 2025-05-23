@@ -61,6 +61,7 @@ const GalaxyMap: React.FC<GalaxyMapProps> = ({ categories }) => {
 
   useEffect(() => {
     if (mapDimensions.width === 0 || mapDimensions.height === 0) return;
+    
     // Build correct D3 hierarchy: root -> categories -> subnets (with value)
     const d3Data = {
       name: 'root',
@@ -72,13 +73,16 @@ const GalaxyMap: React.FC<GalaxyMapProps> = ({ categories }) => {
         }))
       }))
     };
+    
     const root = d3.hierarchy(d3Data)
       .sum((d: any) => d.value)
       .sort((a, b) => (b.value || 0) - (a.value || 0));
     const pack = d3.pack()
       .size([mapDimensions.width, mapDimensions.height])
       .padding(8);
-    setPackedData(pack(root));
+    const packed = pack(root);
+    
+    setPackedData(packed);
   }, [categories, mapDimensions]);
 
   useEffect(() => {

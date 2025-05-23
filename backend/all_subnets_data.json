@@ -1,0 +1,2444 @@
+[
+  {
+    "netuid": 0,
+    "name": "Root",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 0,
+      "subnet_name": "Root",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  },
+  {
+    "netuid": 1,
+    "name": "Apex",
+    "description": "Apex intelligence",
+    "sources": {
+      "github": "https://github.com/macrocosm-os/apex",
+      "website": "https://www.macrocosmos.ai/sn1",
+      "discord": "macrocrux",
+      "contact": "support@macrocosmos.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 1,
+      "subnet_name": "Apex",
+      "github_repo": "https://github.com/macrocosm-os/apex",
+      "subnet_contact": "support@macrocosmos.ai",
+      "subnet_url": "https://www.macrocosmos.ai/sn1",
+      "discord": "macrocrux",
+      "description": "Apex intelligence",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 2,
+    "name": "omron \ud83e\udd69",
+    "description": "inference and compute verification marketplace and accelerator",
+    "sources": {
+      "github": "https://github.com/inference-labs-inc/omron-subnet",
+      "website": "https://omron.ai/",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 2,
+      "subnet_name": "omron \ud83e\udd69",
+      "github_repo": "https://github.com/inference-labs-inc/omron-subnet",
+      "subnet_contact": "",
+      "subnet_url": "https://omron.ai/",
+      "discord": "",
+      "description": "inference and compute verification marketplace and accelerator",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 3,
+    "name": "\u03c4emplar",
+    "description": "incentivised internet-wide training",
+    "sources": {
+      "github": "https://github.com/tplr-ai/templar",
+      "website": "www.tplr.ai",
+      "discord": "@formalised_tensor",
+      "contact": "info@tplr.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 3,
+      "subnet_name": "\u03c4emplar",
+      "github_repo": "https://github.com/tplr-ai/templar",
+      "subnet_contact": "info@tplr.ai",
+      "subnet_url": "www.tplr.ai",
+      "discord": "@formalised_tensor",
+      "description": "incentivised internet-wide training",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 4,
+    "name": "Targon",
+    "description": "Targon is a decentalized, frontier AI lab",
+    "sources": {
+      "github": "https://github.com/manifold-inc/targon",
+      "website": "https://targon.com",
+      "discord": "",
+      "contact": "devs@manifold.inc"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 4,
+      "subnet_name": "Targon",
+      "github_repo": "https://github.com/manifold-inc/targon",
+      "subnet_contact": "devs@manifold.inc",
+      "subnet_url": "https://targon.com",
+      "discord": "",
+      "description": "Targon is a decentalized, frontier AI lab",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 5,
+    "name": "OpenKaito",
+    "description": "Creating SOTA embedding models through decentralized incentives",
+    "sources": {
+      "github": "https://github.com/OpenKaito/openkaito",
+      "website": "https://sn5.kaito.ai/",
+      "discord": "",
+      "contact": "webroot@kaito.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 5,
+      "subnet_name": "OpenKaito",
+      "github_repo": "https://github.com/OpenKaito/openkaito",
+      "subnet_contact": "webroot@kaito.ai",
+      "subnet_url": "https://sn5.kaito.ai/",
+      "discord": "",
+      "description": "Creating SOTA embedding models through decentralized incentives",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 6,
+    "name": "Infinite Games",
+    "description": "",
+    "sources": {
+      "github": "https://github.com/amedeo-gigaver/infinite_games",
+      "website": "https://www.infinitegam.es/",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 6,
+      "subnet_name": "Infinite Games",
+      "github_repo": "https://github.com/amedeo-gigaver/infinite_games",
+      "subnet_contact": "",
+      "subnet_url": "https://www.infinitegam.es/",
+      "discord": "",
+      "description": "",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 7,
+    "name": "SubVortex",
+    "description": "a FREE alternative to finney, just use --network subvortex",
+    "sources": {
+      "github": "https://github.com/eclipsevortex/SubVortex",
+      "website": "",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 7,
+      "subnet_name": "SubVortex",
+      "github_repo": "https://github.com/eclipsevortex/SubVortex",
+      "subnet_contact": "",
+      "subnet_url": "",
+      "discord": "",
+      "description": "a FREE alternative to finney, just use --network subvortex",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 8,
+    "name": "Proprietary Trading Network",
+    "description": "",
+    "sources": {
+      "github": "https://github.com/taoshidev/proprietary-trading-network",
+      "website": "https://www.taoshi.io/",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 8,
+      "subnet_name": "Proprietary Trading Network",
+      "github_repo": "https://github.com/taoshidev/proprietary-trading-network",
+      "subnet_contact": "",
+      "subnet_url": "https://www.taoshi.io/",
+      "discord": "",
+      "description": "",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 9,
+    "name": "Pretrain",
+    "description": "SOTA models built by Bittensor",
+    "sources": {
+      "github": "https://github.com/macrocosm-os/pretraining",
+      "website": "https://www.macrocosmos.ai/sn9",
+      "discord": "macrocrux",
+      "contact": "support@macrocosmos.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 9,
+      "subnet_name": "Pretrain",
+      "github_repo": "https://github.com/macrocosm-os/pretraining",
+      "subnet_contact": "support@macrocosmos.ai",
+      "subnet_url": "https://www.macrocosmos.ai/sn9",
+      "discord": "macrocrux",
+      "description": "SOTA models built by Bittensor",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 10,
+    "name": "Sturdy",
+    "description": "Decentralized yield optimizers.",
+    "sources": {
+      "github": "https://github.com/Sturdy-Subnet/sturdy-subnet",
+      "website": "sturdysubnet.org",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 10,
+      "subnet_name": "Sturdy",
+      "github_repo": "https://github.com/Sturdy-Subnet/sturdy-subnet",
+      "subnet_contact": "",
+      "subnet_url": "sturdysubnet.org",
+      "discord": "",
+      "description": "Decentralized yield optimizers.",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 11,
+    "name": "Dippy",
+    "description": "Creating The World's Best Open-Source Roleplay LLM",
+    "sources": {
+      "github": "https://github.com/impel-intelligence/dippy-bittensor-subnet",
+      "website": "https://dippy.ai",
+      "discord": "",
+      "contact": "support@dippy.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 11,
+      "subnet_name": "Dippy",
+      "github_repo": "https://github.com/impel-intelligence/dippy-bittensor-subnet",
+      "subnet_contact": "support@dippy.ai",
+      "subnet_url": "https://dippy.ai",
+      "discord": "",
+      "description": "Creating The World's Best Open-Source Roleplay LLM",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 12,
+    "name": "Compute Horde",
+    "description": "trusted compute for bittensor validators",
+    "sources": {
+      "github": "https://github.com/backend-developers-ltd/ComputeHorde/",
+      "website": "https://computehorde.io",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 12,
+      "subnet_name": "Compute Horde",
+      "github_repo": "https://github.com/backend-developers-ltd/ComputeHorde/",
+      "subnet_contact": "",
+      "subnet_url": "https://computehorde.io",
+      "discord": "",
+      "description": "trusted compute for bittensor validators",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 13,
+    "name": "Data Universe",
+    "description": "Web scale data scraping",
+    "sources": {
+      "github": "https://github.com/macrocosm-os/data-universe",
+      "website": "https://www.macrocosmos.ai/sn13",
+      "discord": "macrocrux",
+      "contact": "support@macrocosmos.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 13,
+      "subnet_name": "Data Universe",
+      "github_repo": "https://github.com/macrocosm-os/data-universe",
+      "subnet_contact": "support@macrocosmos.ai",
+      "subnet_url": "https://www.macrocosmos.ai/sn13",
+      "discord": "macrocrux",
+      "description": "Web scale data scraping",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 14,
+    "name": "TAOHash",
+    "description": "TAOHash is a Subnet for decentralizing PoW mining hashrate- rental and exchange. Validators receive hashrate in exchange for weights, and miners speculate on hashrate, hashprice, and Alpha emissions. Effectively, Alpha is swapped for BTC automatically.",
+    "sources": {
+      "github": "https://github.com/latent-to/taohash",
+      "website": "https://taohash.ai/",
+      "discord": "",
+      "contact": "taohash@latent.to"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 14,
+      "subnet_name": "TAOHash",
+      "github_repo": "https://github.com/latent-to/taohash",
+      "subnet_contact": "taohash@latent.to",
+      "subnet_url": "https://taohash.ai/",
+      "discord": "",
+      "description": "TAOHash is a Subnet for decentralizing PoW mining hashrate- rental and exchange. Validators receive hashrate in exchange for weights, and miners speculate on hashrate, hashprice, and Alpha emissions. Effectively, Alpha is swapped for BTC automatically.",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 15,
+    "name": "Unknown",
+    "description": "",
+    "sources": {
+      "github": "",
+      "website": "",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 15,
+      "subnet_name": "Unknown",
+      "github_repo": "",
+      "subnet_contact": "",
+      "subnet_url": "",
+      "discord": "",
+      "description": "",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 16,
+    "name": "BitAds",
+    "description": "Revolutionizing the online marketing landscape through the power of decentralization.",
+    "sources": {
+      "github": "https://github.com/eseckft/BitAds.ai",
+      "website": "https://bitads.ai/",
+      "discord": "eseck",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 16,
+      "subnet_name": "BitAds",
+      "github_repo": "https://github.com/eseckft/BitAds.ai",
+      "subnet_contact": "",
+      "subnet_url": "https://bitads.ai/",
+      "discord": "eseck",
+      "description": "Revolutionizing the online marketing landscape through the power of decentralization.",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 17,
+    "name": "404\u2014GEN",
+    "description": "democratizing 3D content creation with AI generated virtual worlds",
+    "sources": {
+      "github": "https://github.com/404-Repo/three-gen-subnet",
+      "website": "https://404.xyz/",
+      "discord": "404gen",
+      "contact": "404@404.xyz"
+    },
+    "additional_info": "This subnet aims to kickstart the next revolution in gaming around AI native games, ultimately leveraging the broader Bittensor ecosystem to facilitate experiences in which assets, voice and sound are all generated at runtime.",
+    "raw_data": {
+      "netuid": 17,
+      "subnet_name": "404\u2014GEN",
+      "github_repo": "https://github.com/404-Repo/three-gen-subnet",
+      "subnet_contact": "404@404.xyz",
+      "subnet_url": "https://404.xyz/",
+      "discord": "404gen",
+      "description": "democratizing 3D content creation with AI generated virtual worlds",
+      "additional": "This subnet aims to kickstart the next revolution in gaming around AI native games, ultimately leveraging the broader Bittensor ecosystem to facilitate experiences in which assets, voice and sound are all generated at runtime."
+    }
+  },
+  {
+    "netuid": 18,
+    "name": "Zeus",
+    "description": "Environmental Forecasting",
+    "sources": {
+      "github": "https://github.com/Orpheus-AI/Zeus",
+      "website": "https://www.zeussubnet.com/",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 18,
+      "subnet_name": "Zeus",
+      "github_repo": "https://github.com/Orpheus-AI/Zeus",
+      "subnet_contact": "",
+      "subnet_url": "https://www.zeussubnet.com/",
+      "discord": "",
+      "description": "Environmental Forecasting",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 19,
+    "name": "Nineteen.ai",
+    "description": "Decentralised permisonless, serverless, scalable inference",
+    "sources": {
+      "github": "https://github.com/namoray/nineteen/",
+      "website": "https://nineteen.ai",
+      "discord": "",
+      "contact": "contact@rayonlabs.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 19,
+      "subnet_name": "Nineteen.ai",
+      "github_repo": "https://github.com/namoray/nineteen/",
+      "subnet_contact": "contact@rayonlabs.ai",
+      "subnet_url": "https://nineteen.ai",
+      "discord": "",
+      "description": "Decentralised permisonless, serverless, scalable inference",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 20,
+    "name": "BitAgent - Rizzo",
+    "description": "AI Agency's backbone - building the best tool-calling model",
+    "sources": {
+      "github": "https://github.com/RogueTensor/bitagent_subnet",
+      "website": "https://bitagent.rizzo.network",
+      "discord": "roguetensor",
+      "contact": "bitagent@rizzo.network"
+    },
+    "additional_info": "MSP Tech (https://msptech.ai) and GoGoAgent (https://gogoagent.ai)",
+    "raw_data": {
+      "netuid": 20,
+      "subnet_name": "BitAgent - Rizzo",
+      "github_repo": "https://github.com/RogueTensor/bitagent_subnet",
+      "subnet_contact": "bitagent@rizzo.network",
+      "subnet_url": "https://bitagent.rizzo.network",
+      "discord": "roguetensor",
+      "description": "AI Agency's backbone - building the best tool-calling model",
+      "additional": "MSP Tech (https://msptech.ai) and GoGoAgent (https://gogoagent.ai)"
+    }
+  },
+  {
+    "netuid": 21,
+    "name": "OMEGA Any-to-Any",
+    "description": "Making the world's first and smartest opensource any-to-any AGI system",
+    "sources": {
+      "github": "https://github.com/omegalabsinc/omegalabs-anytoany-bittensor",
+      "website": "https://sn21.ai",
+      "discord": "parshantdeep",
+      "contact": "contact@omega-labs.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 21,
+      "subnet_name": "OMEGA Any-to-Any",
+      "github_repo": "https://github.com/omegalabsinc/omegalabs-anytoany-bittensor",
+      "subnet_contact": "contact@omega-labs.ai",
+      "subnet_url": "https://sn21.ai",
+      "discord": "parshantdeep",
+      "description": "Making the world's first and smartest opensource any-to-any AGI system",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 22,
+    "name": "Desearch",
+    "description": "Decentralized Search",
+    "sources": {
+      "github": "https://github.com/datura-ai/desearch",
+      "website": "https://console.datura.ai/",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 22,
+      "subnet_name": "Desearch",
+      "github_repo": "https://github.com/datura-ai/desearch",
+      "subnet_contact": "",
+      "subnet_url": "https://console.datura.ai/",
+      "discord": "",
+      "description": "Decentralized Search",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 23,
+    "name": "Nuance",
+    "description": "",
+    "sources": {
+      "github": "https://github.com/NuanceNetwork/Nuance",
+      "website": "",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 23,
+      "subnet_name": "Nuance",
+      "github_repo": "https://github.com/NuanceNetwork/Nuance",
+      "subnet_contact": "",
+      "subnet_url": "",
+      "discord": "",
+      "description": "",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 24,
+    "name": "OMEGA Labs",
+    "description": "OMEGA Focus is a 1-click miner that anyone can install and start earning TAO for doing productive work, powered by Subnet 24",
+    "sources": {
+      "github": "https://github.com/omegalabsinc/omegalabs-bittensor-subnet",
+      "website": "https://focus.inc",
+      "discord": "sshahid",
+      "contact": "contact@omega-labs.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 24,
+      "subnet_name": "OMEGA Labs",
+      "github_repo": "https://github.com/omegalabsinc/omegalabs-bittensor-subnet",
+      "subnet_contact": "contact@omega-labs.ai",
+      "subnet_url": "https://focus.inc",
+      "discord": "sshahid",
+      "description": "OMEGA Focus is a 1-click miner that anyone can install and start earning TAO for doing productive work, powered by Subnet 24",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 25,
+    "name": "Mainframe",
+    "description": "Generalized scientific compute",
+    "sources": {
+      "github": "https://github.com/macrocosm-os/mainframe",
+      "website": "https://www.macrocosmos.ai/sn25",
+      "discord": "mccrinbc",
+      "contact": "brian@macrocosmos.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 25,
+      "subnet_name": "Mainframe",
+      "github_repo": "https://github.com/macrocosm-os/mainframe",
+      "subnet_contact": "brian@macrocosmos.ai",
+      "subnet_url": "https://www.macrocosmos.ai/sn25",
+      "discord": "mccrinbc",
+      "description": "Generalized scientific compute",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 26,
+    "name": "Storb",
+    "description": "An object storage subnet on the Bittensor network",
+    "sources": {
+      "github": "https://github.com/fr34kcoders/storb-rs",
+      "website": "https://storb.dev",
+      "discord": "shr1ftyy",
+      "contact": "storbdevs@gmail.com"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 26,
+      "subnet_name": "Storb",
+      "github_repo": "https://github.com/fr34kcoders/storb-rs",
+      "subnet_contact": "storbdevs@gmail.com",
+      "subnet_url": "https://storb.dev",
+      "discord": "shr1ftyy",
+      "description": "An object storage subnet on the Bittensor network",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 27,
+    "name": "NI Compute",
+    "description": "Transforming AI compute power into a digital commodity",
+    "sources": {
+      "github": "https://github.com/neuralinternet/compute-subnet",
+      "website": "https://neuralinternet.ai/",
+      "discord": "https://discord.com/invite/neuralinternet",
+      "contact": "neuralinternet@gmail.com"
+    },
+    "additional_info": "$NI",
+    "raw_data": {
+      "netuid": 27,
+      "subnet_name": "NI Compute",
+      "github_repo": "https://github.com/neuralinternet/compute-subnet",
+      "subnet_contact": "neuralinternet@gmail.com",
+      "subnet_url": "https://neuralinternet.ai/",
+      "discord": "https://discord.com/invite/neuralinternet",
+      "description": "Transforming AI compute power into a digital commodity",
+      "additional": "$NI"
+    }
+  },
+  {
+    "netuid": 28,
+    "name": "Unknown",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 28,
+      "subnet_name": "Unknown",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  },
+  {
+    "netuid": 29,
+    "name": "Coldint",
+    "description": "",
+    "sources": {
+      "github": "https://github.com/coldint/coldint_validator",
+      "website": "https://coldint.io",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 29,
+      "subnet_name": "Coldint",
+      "github_repo": "https://github.com/coldint/coldint_validator",
+      "subnet_contact": "",
+      "subnet_url": "https://coldint.io",
+      "discord": "",
+      "description": "",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 30,
+    "name": "Bettensor",
+    "description": "Global sports prediction on Bittensor.",
+    "sources": {
+      "github": "https://github.com/Nickel5-Inc/bettensor",
+      "website": "https://www.bettensor.com",
+      "discord": "prediction_addiction",
+      "contact": "bettensor30@gmail.com"
+    },
+    "additional_info": "More sports added frequently.",
+    "raw_data": {
+      "netuid": 30,
+      "subnet_name": "Bettensor",
+      "github_repo": "https://github.com/Nickel5-Inc/bettensor",
+      "subnet_contact": "bettensor30@gmail.com",
+      "subnet_url": "https://www.bettensor.com",
+      "discord": "prediction_addiction",
+      "description": "Global sports prediction on Bittensor.",
+      "additional": "More sports added frequently."
+    }
+  },
+  {
+    "netuid": 31,
+    "name": "CANDLES",
+    "description": "Market sentiment prediction via mining and gamified pools.",
+    "sources": {
+      "github": "https://github.com/NeuralNexusII/NullUntilBoot",
+      "website": "https://candlestao.com/",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 31,
+      "subnet_name": "CANDLES",
+      "github_repo": "https://github.com/NeuralNexusII/NullUntilBoot",
+      "subnet_contact": "",
+      "subnet_url": "https://candlestao.com/",
+      "discord": "",
+      "description": "Market sentiment prediction via mining and gamified pools.",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 32,
+    "name": "ItsAI",
+    "description": "The most accurate AI detector in the world",
+    "sources": {
+      "github": "https://github.com/It-s-AI/llm-detection",
+      "website": "its-ai.org",
+      "discord": "sergak0",
+      "contact": "support@its-ai.org"
+    },
+    "additional_info": "We detect AI by leveraging Bittensor solution",
+    "raw_data": {
+      "netuid": 32,
+      "subnet_name": "ItsAI",
+      "github_repo": "https://github.com/It-s-AI/llm-detection",
+      "subnet_contact": "support@its-ai.org",
+      "subnet_url": "its-ai.org",
+      "discord": "sergak0",
+      "description": "The most accurate AI detector in the world",
+      "additional": "We detect AI by leveraging Bittensor solution"
+    }
+  },
+  {
+    "netuid": 33,
+    "name": "ReadyAI",
+    "description": "Structured Data Processing at Scale for AI Models",
+    "sources": {
+      "github": "https://github.com/afterpartyai/bittensor-conversation-genome-project",
+      "website": "https://readyai.ai",
+      "discord": "PkTXNJbwNP",
+      "contact": "david@readyai.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 33,
+      "subnet_name": "ReadyAI",
+      "github_repo": "https://github.com/afterpartyai/bittensor-conversation-genome-project",
+      "subnet_contact": "david@readyai.ai",
+      "subnet_url": "https://readyai.ai",
+      "discord": "PkTXNJbwNP",
+      "description": "Structured Data Processing at Scale for AI Models",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 34,
+    "name": "BitMind",
+    "description": "",
+    "sources": {
+      "github": "https://github.com/BitMind-AI/bitmind-subnet",
+      "website": "https://bitmind.ai",
+      "discord": "kenobijon",
+      "contact": "intern@bitmind.ai"
+    },
+    "additional_info": "Generalized   deep fake detection",
+    "raw_data": {
+      "netuid": 34,
+      "subnet_name": "BitMind",
+      "github_repo": "https://github.com/BitMind-AI/bitmind-subnet",
+      "subnet_contact": "intern@bitmind.ai",
+      "subnet_url": "https://bitmind.ai",
+      "discord": "kenobijon",
+      "description": "",
+      "additional": "Generalized   deep fake detection"
+    }
+  },
+  {
+    "netuid": 35,
+    "name": "LogicNet",
+    "description": "Think BIGGER, with smaller models",
+    "sources": {
+      "github": "https://github.com/LogicNet-Subnet/LogicNet",
+      "website": "https://logicnet.ai/",
+      "discord": "_tonyle",
+      "contact": "hung.le@aitprotocol.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 35,
+      "subnet_name": "LogicNet",
+      "github_repo": "https://github.com/LogicNet-Subnet/LogicNet",
+      "subnet_contact": "hung.le@aitprotocol.ai",
+      "subnet_url": "https://logicnet.ai/",
+      "discord": "_tonyle",
+      "description": "Think BIGGER, with smaller models",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 36,
+    "name": "web-agents",
+    "description": "",
+    "sources": {
+      "github": "https://github.com/autoppia/autoppia_web_agents_subnet",
+      "website": "autoppia.com",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 36,
+      "subnet_name": "web-agents",
+      "github_repo": "https://github.com/autoppia/autoppia_web_agents_subnet",
+      "subnet_contact": "",
+      "subnet_url": "autoppia.com",
+      "discord": "",
+      "description": "",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 37,
+    "name": "Finetuning",
+    "description": "SOTA models built by Bittensor",
+    "sources": {
+      "github": "https://github.com/macrocosm-os/finetuning",
+      "website": "https://www.macrocosmos.ai/sn37",
+      "discord": "macrocrux",
+      "contact": "support@macrocosmos.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 37,
+      "subnet_name": "Finetuning",
+      "github_repo": "https://github.com/macrocosm-os/finetuning",
+      "subnet_contact": "support@macrocosmos.ai",
+      "subnet_url": "https://www.macrocosmos.ai/sn37",
+      "discord": "macrocrux",
+      "description": "SOTA models built by Bittensor",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 38,
+    "name": "Distributed Training",
+    "description": "Trustless Decentralised Distributed Training",
+    "sources": {
+      "github": "https://github.com/KMFODA/DistributedTraining",
+      "website": "",
+      "discord": "kmfoda",
+      "contact": ""
+    },
+    "additional_info": "Incentivizing model loss reduction and honest fast state sharing",
+    "raw_data": {
+      "netuid": 38,
+      "subnet_name": "Distributed Training",
+      "github_repo": "https://github.com/KMFODA/DistributedTraining",
+      "subnet_contact": "",
+      "subnet_url": "",
+      "discord": "kmfoda",
+      "description": "Trustless Decentralised Distributed Training",
+      "additional": "Incentivizing model loss reduction and honest fast state sharing"
+    }
+  },
+  {
+    "netuid": 39,
+    "name": "w.ai (Parked)",
+    "description": "Optimizing AI Models for Consumer Devices",
+    "sources": {
+      "github": "https://github.com/womboai/edge-maxxing",
+      "website": "https://huggingface.co/spaces/wombo/edge-maxxing-dashboard",
+      "discord": "zion",
+      "contact": "b@w.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 39,
+      "subnet_name": "w.ai (Parked)",
+      "github_repo": "https://github.com/womboai/edge-maxxing",
+      "subnet_contact": "b@w.ai",
+      "subnet_url": "https://huggingface.co/spaces/wombo/edge-maxxing-dashboard",
+      "discord": "zion",
+      "description": "Optimizing AI Models for Consumer Devices",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 40,
+    "name": "Chunking",
+    "description": "Incentivizing the best text segmentation models",
+    "sources": {
+      "github": "https://github.com/VectorChat/chunking_subnet",
+      "website": "https://subnet.chunking.com",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 40,
+      "subnet_name": "Chunking",
+      "github_repo": "https://github.com/VectorChat/chunking_subnet",
+      "subnet_contact": "",
+      "subnet_url": "https://subnet.chunking.com",
+      "discord": "",
+      "description": "Incentivizing the best text segmentation models",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 41,
+    "name": "SPORTSTENSOR",
+    "description": "Incentivized sports predictions beating the market.",
+    "sources": {
+      "github": "https://github.com/sportstensor/sportstensor",
+      "website": "https://www.sportstensor.com/",
+      "discord": "",
+      "contact": "sportstensor@gmail.com"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 41,
+      "subnet_name": "SPORTSTENSOR",
+      "github_repo": "https://github.com/sportstensor/sportstensor",
+      "subnet_contact": "sportstensor@gmail.com",
+      "subnet_url": "https://www.sportstensor.com/",
+      "discord": "",
+      "description": "Incentivized sports predictions beating the market.",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 42,
+    "name": "Real-Time Data by Masa",
+    "description": "\"Real-time, structured, and high-quality data for AI Applications.\"",
+    "sources": {
+      "github": "https://github.com/masa-finance/subnet-42",
+      "website": "https://masa.ai",
+      "discord": "https://discord.com/invite/HyHGaKhaKs",
+      "contact": "info@masa.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 42,
+      "subnet_name": "Real-Time Data by Masa",
+      "github_repo": "https://github.com/masa-finance/subnet-42",
+      "subnet_contact": "info@masa.ai",
+      "subnet_url": "https://masa.ai",
+      "discord": "https://discord.com/invite/HyHGaKhaKs",
+      "description": "\"Real-time, structured, and high-quality data for AI Applications.\"",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 43,
+    "name": "Graphite",
+    "description": "Delivering state-of-the-art graph solutions",
+    "sources": {
+      "github": "https://github.com/GraphiteAI/Graphite-Subnet",
+      "website": "https://graphite-ai.net/",
+      "discord": "sherwin.graphite",
+      "contact": "team@graphite-ai.net"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 43,
+      "subnet_name": "Graphite",
+      "github_repo": "https://github.com/GraphiteAI/Graphite-Subnet",
+      "subnet_contact": "team@graphite-ai.net",
+      "subnet_url": "https://graphite-ai.net/",
+      "discord": "sherwin.graphite",
+      "description": "Delivering state-of-the-art graph solutions",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 44,
+    "name": "Score",
+    "description": "Computer vision for sports insights and predictions.",
+    "sources": {
+      "github": "https://github.com/score-technologies/score-vision",
+      "website": "https://www.scorevision.io/",
+      "discord": "",
+      "contact": "hello@wearescore.com"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 44,
+      "subnet_name": "Score",
+      "github_repo": "https://github.com/score-technologies/score-vision",
+      "subnet_contact": "hello@wearescore.com",
+      "subnet_url": "https://www.scorevision.io/",
+      "discord": "",
+      "description": "Computer vision for sports insights and predictions.",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 45,
+    "name": "SWE - Rizzo",
+    "description": "The Everyman's Coding Platform - building the best AI SWE",
+    "sources": {
+      "github": "https://github.com/brokespace/code",
+      "website": "https://swe.rizzo.network",
+      "discord": "brokespace",
+      "contact": "swe@rizzo.network"
+    },
+    "additional_info": "Free Code Completion for your editor - Gen42 (https://gen42.ai)",
+    "raw_data": {
+      "netuid": 45,
+      "subnet_name": "SWE - Rizzo",
+      "github_repo": "https://github.com/brokespace/code",
+      "subnet_contact": "swe@rizzo.network",
+      "subnet_url": "https://swe.rizzo.network",
+      "discord": "brokespace",
+      "description": "The Everyman's Coding Platform - building the best AI SWE",
+      "additional": "Free Code Completion for your editor - Gen42 (https://gen42.ai)"
+    }
+  },
+  {
+    "netuid": 46,
+    "name": "Neural3D",
+    "description": "Neural3D is generating 3D assets for gaming and virtual exp.",
+    "sources": {
+      "github": "https://github.com/goneuralai/neural-subnet",
+      "website": "https://goneural.ai/",
+      "discord": "@neutanent",
+      "contact": "support@goneural.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 46,
+      "subnet_name": "Neural3D",
+      "github_repo": "https://github.com/goneuralai/neural-subnet",
+      "subnet_contact": "support@goneural.ai",
+      "subnet_url": "https://goneural.ai/",
+      "discord": "@neutanent",
+      "description": "Neural3D is generating 3D assets for gaming and virtual exp.",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 47,
+    "name": "Condenses.ai",
+    "description": "Accelerating LLM inference by text-to-text compression",
+    "sources": {
+      "github": "https://github.com/condenses/neural-condense-subnet",
+      "website": "https://www.condenses.ai/",
+      "discord": "",
+      "contact": "info@condenses.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 47,
+      "subnet_name": "Condenses.ai",
+      "github_repo": "https://github.com/condenses/neural-condense-subnet",
+      "subnet_contact": "info@condenses.ai",
+      "subnet_url": "https://www.condenses.ai/",
+      "discord": "",
+      "description": "Accelerating LLM inference by text-to-text compression",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 48,
+    "name": "NextPlace",
+    "description": "The real estate valuation prediction subnet on B Bittensor.",
+    "sources": {
+      "github": "https://github.com/Nickel5-Inc/Nextplace",
+      "website": "https://nextplace.ai",
+      "discord": "estatecat",
+      "contact": "operations@nickel5.com"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 48,
+      "subnet_name": "NextPlace",
+      "github_repo": "https://github.com/Nickel5-Inc/Nextplace",
+      "subnet_contact": "operations@nickel5.com",
+      "subnet_url": "https://nextplace.ai",
+      "discord": "estatecat",
+      "description": "The real estate valuation prediction subnet on B Bittensor.",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 49,
+    "name": "polariscloud.ai",
+    "description": "Access global CPU, GPU, and AI via our compute network.",
+    "sources": {
+      "github": "https://github.com/bigideaafrica/polaris",
+      "website": "polariscloud.ai",
+      "discord": "wallscalr",
+      "contact": "hajarah@polariscloud.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 49,
+      "subnet_name": "polariscloud.ai",
+      "github_repo": "https://github.com/bigideaafrica/polaris",
+      "subnet_contact": "hajarah@polariscloud.ai",
+      "subnet_url": "polariscloud.ai",
+      "discord": "wallscalr",
+      "description": "Access global CPU, GPU, and AI via our compute network.",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 50,
+    "name": "Synth",
+    "description": "",
+    "sources": {
+      "github": "https://github.com/mode-network/synth-subnet",
+      "website": "",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 50,
+      "subnet_name": "Synth",
+      "github_repo": "https://github.com/mode-network/synth-subnet",
+      "subnet_contact": "",
+      "subnet_url": "",
+      "discord": "",
+      "description": "",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 51,
+    "name": "Celium",
+    "description": "Decentralized, Efficient Compute Marketplace",
+    "sources": {
+      "github": "https://github.com/Datura-ai/compute-subnet",
+      "website": "https://celiumcompute.ai/",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 51,
+      "subnet_name": "Celium",
+      "github_repo": "https://github.com/Datura-ai/compute-subnet",
+      "subnet_contact": "",
+      "subnet_url": "https://celiumcompute.ai/",
+      "discord": "",
+      "description": "Decentralized, Efficient Compute Marketplace",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 52,
+    "name": "Dojo",
+    "description": "Premier Infrastructure Layer for Human Intelligence",
+    "sources": {
+      "github": "https://github.com/tensorplex-labs/dojo",
+      "website": "https://dojo.tensorplex.ai",
+      "discord": "https://discord.com/channels/799672011265015819/1213131262483628102",
+      "contact": "jarvis@tensorplex.ai"
+    },
+    "additional_info": "~",
+    "raw_data": {
+      "netuid": 52,
+      "subnet_name": "Dojo",
+      "github_repo": "https://github.com/tensorplex-labs/dojo",
+      "subnet_contact": "jarvis@tensorplex.ai",
+      "subnet_url": "https://dojo.tensorplex.ai",
+      "discord": "https://discord.com/channels/799672011265015819/1213131262483628102",
+      "description": "Premier Infrastructure Layer for Human Intelligence",
+      "additional": "~"
+    }
+  },
+  {
+    "netuid": 53,
+    "name": "EfficientFrontier",
+    "description": "Revolutionizing Crypto Trading with Decentralized AI",
+    "sources": {
+      "github": "https://github.com/EfficientFrontier-SignalPlus/EfficientFrontier",
+      "website": "https://t.signalplus.com/mining",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 53,
+      "subnet_name": "EfficientFrontier",
+      "github_repo": "https://github.com/EfficientFrontier-SignalPlus/EfficientFrontier",
+      "subnet_contact": "",
+      "subnet_url": "https://t.signalplus.com/mining",
+      "discord": "",
+      "description": "Revolutionizing Crypto Trading with Decentralized AI",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 54,
+    "name": "WebGenieAI",
+    "description": "Transform text prompts/sketches/images into websites using AI",
+    "sources": {
+      "github": "https://github.com/web-genie-ai/web-genie-ai",
+      "website": "https://webgenieai.co",
+      "discord": "sangar1028_72796",
+      "contact": "sangar@webgenieai.co"
+    },
+    "additional_info": "https://x.com/WebGenieAiX",
+    "raw_data": {
+      "netuid": 54,
+      "subnet_name": "WebGenieAI",
+      "github_repo": "https://github.com/web-genie-ai/web-genie-ai",
+      "subnet_contact": "sangar@webgenieai.co",
+      "subnet_url": "https://webgenieai.co",
+      "discord": "sangar1028_72796",
+      "description": "Transform text prompts/sketches/images into websites using AI",
+      "additional": "https://x.com/WebGenieAiX"
+    }
+  },
+  {
+    "netuid": 55,
+    "name": "Precog",
+    "description": "0x507265636f6720697320616e2041492d706f776572656420686967682d6672657175656e6379202442544320707269636520666f726563617374696e67207375626e657420756e64657270696e6e656420627920436f696e204d657472696373e2809920636f6d70726568656e73697665207472757374656420646174612e204d696e6572732070726f647563652066696e616e6369616c20696e74656c6c6967656e6365207574696c697a696e672074686520646174617365747320776869636820706f77657220746865206d6f73742070726573746967696f757320696e737469747574696f6e7320746f756368696e672063727970746f",
+    "sources": {
+      "github": "http://github.com/coinmetrics/precog",
+      "website": "https://precog.coinmetrics.io/",
+      "discord": "uriel_coinmetrics",
+      "contact": "precog@coinmetrics.io"
+    },
+    "additional_info": "X: @CM_Precog",
+    "raw_data": {
+      "netuid": 55,
+      "subnet_name": "Precog",
+      "github_repo": "http://github.com/coinmetrics/precog",
+      "subnet_contact": "precog@coinmetrics.io",
+      "subnet_url": "https://precog.coinmetrics.io/",
+      "discord": "uriel_coinmetrics",
+      "description": "0x507265636f6720697320616e2041492d706f776572656420686967682d6672657175656e6379202442544320707269636520666f726563617374696e67207375626e657420756e64657270696e6e656420627920436f696e204d657472696373e2809920636f6d70726568656e73697665207472757374656420646174612e204d696e6572732070726f647563652066696e616e6369616c20696e74656c6c6967656e6365207574696c697a696e672074686520646174617365747320776869636820706f77657220746865206d6f73742070726573746967696f757320696e737469747574696f6e7320746f756368696e672063727970746f",
+      "additional": "X: @CM_Precog"
+    }
+  },
+  {
+    "netuid": 56,
+    "name": "Gradients",
+    "description": "The best 0 click training platform in the world",
+    "sources": {
+      "github": "https://github.com/rayonlabs/G.O.D",
+      "website": "gradients.io",
+      "discord": "",
+      "contact": "namoray@rayonlabs.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 56,
+      "subnet_name": "Gradients",
+      "github_repo": "https://github.com/rayonlabs/G.O.D",
+      "subnet_contact": "namoray@rayonlabs.ai",
+      "subnet_url": "gradients.io",
+      "discord": "",
+      "description": "The best 0 click training platform in the world",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 57,
+    "name": "Gaia",
+    "description": "A mixture-of-experts platform for geospatial data analysis on Bittensor.",
+    "sources": {
+      "github": "https://github.com/Nickel5-Inc/Gaia",
+      "website": "https://gaiaresearch.ai",
+      "discord": "gaia_nickel5",
+      "contact": "gaiaresearchnickel5@gmail.com"
+    },
+    "additional_info": "iCurrent tasks include weather, soil moisture and geomagnetic storms.",
+    "raw_data": {
+      "netuid": 57,
+      "subnet_name": "Gaia",
+      "github_repo": "https://github.com/Nickel5-Inc/Gaia",
+      "subnet_contact": "gaiaresearchnickel5@gmail.com",
+      "subnet_url": "https://gaiaresearch.ai",
+      "discord": "gaia_nickel5",
+      "description": "A mixture-of-experts platform for geospatial data analysis on Bittensor.",
+      "additional": "iCurrent tasks include weather, soil moisture and geomagnetic storms."
+    }
+  },
+  {
+    "netuid": 58,
+    "name": "Dippy Speech",
+    "description": "Best Open-Source Speech Model",
+    "sources": {
+      "github": "https://github.com/impel-intelligence/dippy-speech-subnet/tree/main",
+      "website": "https://www.dippyspeech.com",
+      "discord": "",
+      "contact": "support@dippy.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 58,
+      "subnet_name": "Dippy Speech",
+      "github_repo": "https://github.com/impel-intelligence/dippy-speech-subnet/tree/main",
+      "subnet_contact": "support@dippy.ai",
+      "subnet_url": "https://www.dippyspeech.com",
+      "discord": "",
+      "description": "Best Open-Source Speech Model",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 59,
+    "name": "Agent Arena by Masa",
+    "description": "The first competitive agent ecosystem on Bittensor.",
+    "sources": {
+      "github": "",
+      "website": "",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 59,
+      "subnet_name": "Agent Arena by Masa",
+      "github_repo": "",
+      "subnet_contact": "",
+      "subnet_url": "",
+      "discord": "",
+      "description": "The first competitive agent ecosystem on Bittensor.",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 60,
+    "name": "Bitsec.ai",
+    "description": "AI-powered tools to find and fix software exploits",
+    "sources": {
+      "github": "https://github.com/Bitsec-AI/subnet",
+      "website": "https://bitsec.ai",
+      "discord": "~",
+      "contact": "john@bitsec.ai"
+    },
+    "additional_info": "~",
+    "raw_data": {
+      "netuid": 60,
+      "subnet_name": "Bitsec.ai",
+      "github_repo": "https://github.com/Bitsec-AI/subnet",
+      "subnet_contact": "john@bitsec.ai",
+      "subnet_url": "https://bitsec.ai",
+      "discord": "~",
+      "description": "AI-powered tools to find and fix software exploits",
+      "additional": "~"
+    }
+  },
+  {
+    "netuid": 61,
+    "name": "RedTeam",
+    "description": "The RedTeam subnet by Innerworks is a decentralized platform designed to drive innovation in cybersecurity through competitive programming challenges. The subnet incentivizes miners to develop and submit code solutions to various technical challenges, with a focus on enhancing security. These solutions can be integrated into real-world products to improve their security features.",
+    "sources": {
+      "github": "https://github.com/RedTeamSubnet/RedTeam",
+      "website": "https://www.theredteam.io/",
+      "discord": "https://discord.com/channels/799672011265015819/1319313447435108413",
+      "contact": "oscar@theredteam.io"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 61,
+      "subnet_name": "RedTeam",
+      "github_repo": "https://github.com/RedTeamSubnet/RedTeam",
+      "subnet_contact": "oscar@theredteam.io",
+      "subnet_url": "https://www.theredteam.io/",
+      "discord": "https://discord.com/channels/799672011265015819/1319313447435108413",
+      "description": "The RedTeam subnet by Innerworks is a decentralized platform designed to drive innovation in cybersecurity through competitive programming challenges. The subnet incentivizes miners to develop and submit code solutions to various technical challenges, with a focus on enhancing security. These solutions can be integrated into real-world products to improve their security features.",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 62,
+    "name": "Ridges AI",
+    "description": "Fully Autonomous AI Software Agents",
+    "sources": {
+      "github": "https://github.com/ridgesai/ridges",
+      "website": "https://www.ridges.ai/",
+      "discord": "https://discord.com/channels/799672011265015819/1320812830735339580",
+      "contact": "hobbleabbas@gmail.com"
+    },
+    "additional_info": "Powered By Bittensor",
+    "raw_data": {
+      "netuid": 62,
+      "subnet_name": "Ridges AI",
+      "github_repo": "https://github.com/ridgesai/ridges",
+      "subnet_contact": "hobbleabbas@gmail.com",
+      "subnet_url": "https://www.ridges.ai/",
+      "discord": "https://discord.com/channels/799672011265015819/1320812830735339580",
+      "description": "Fully Autonomous AI Software Agents",
+      "additional": "Powered By Bittensor"
+    }
+  },
+  {
+    "netuid": 63,
+    "name": "Alpha Trader Exchange (ATX)",
+    "description": "Incentivized trading on Bittensor",
+    "sources": {
+      "github": "https://github.com/Nickel5-Inc/alpha-trader-exchange/blob/main/README.md",
+      "website": "www.alphatraderexchange.com",
+      "discord": "@alphatraderexchange",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 63,
+      "subnet_name": "Alpha Trader Exchange (ATX)",
+      "github_repo": "https://github.com/Nickel5-Inc/alpha-trader-exchange/blob/main/README.md",
+      "subnet_contact": "",
+      "subnet_url": "www.alphatraderexchange.com",
+      "discord": "@alphatraderexchange",
+      "description": "Incentivized trading on Bittensor",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 64,
+    "name": "Chutes",
+    "description": "Serverless AI compute",
+    "sources": {
+      "github": "https://github.com/rayonlabs/chutes",
+      "website": "chutes.ai",
+      "discord": "",
+      "contact": "jon@chutes.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 64,
+      "subnet_name": "Chutes",
+      "github_repo": "https://github.com/rayonlabs/chutes",
+      "subnet_contact": "jon@chutes.ai",
+      "subnet_url": "chutes.ai",
+      "discord": "",
+      "description": "Serverless AI compute",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 65,
+    "name": "TAO Private Network",
+    "description": "Developer-friendly Decentralised VPN infrastructure.",
+    "sources": {
+      "github": "https://github.com/beyond-stake/tpn-subnet",
+      "website": "https://tpn.taofu.xyz/",
+      "discord": "https://discord.gg/GRVZyPYd6G",
+      "contact": ""
+    },
+    "additional_info": "https://x.com/SN65_TPN",
+    "raw_data": {
+      "netuid": 65,
+      "subnet_name": "TAO Private Network",
+      "github_repo": "https://github.com/beyond-stake/tpn-subnet",
+      "subnet_contact": "",
+      "subnet_url": "https://tpn.taofu.xyz/",
+      "discord": "https://discord.gg/GRVZyPYd6G",
+      "description": "Developer-friendly Decentralised VPN infrastructure.",
+      "additional": "https://x.com/SN65_TPN"
+    }
+  },
+  {
+    "netuid": 66,
+    "name": "FakeNews",
+    "description": "",
+    "sources": {
+      "github": "https://github.com/gutenberg-team/fakenews-subnet",
+      "website": "https://taostats.io/subnets/66/chart",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 66,
+      "subnet_name": "FakeNews",
+      "github_repo": "https://github.com/gutenberg-team/fakenews-subnet",
+      "subnet_contact": "",
+      "subnet_url": "https://taostats.io/subnets/66/chart",
+      "discord": "",
+      "description": "",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 67,
+    "name": "Unknown",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 67,
+      "subnet_name": "Unknown",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  },
+  {
+    "netuid": 68,
+    "name": "NOVA",
+    "description": "Accelerating drug discovery",
+    "sources": {
+      "github": "https://github.com/metanova-labs/nova/",
+      "website": "https://www.metanova-labs.ai/",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 68,
+      "subnet_name": "NOVA",
+      "github_repo": "https://github.com/metanova-labs/nova/",
+      "subnet_contact": "",
+      "subnet_url": "https://www.metanova-labs.ai/",
+      "discord": "",
+      "description": "Accelerating drug discovery",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 69,
+    "name": "Unknown",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 69,
+      "subnet_name": "Unknown",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  },
+  {
+    "netuid": 70,
+    "name": "Vericore",
+    "description": "Semantic intelligence for fact-checking at scale",
+    "sources": {
+      "github": "https://github.com/dfusionai/Vericore",
+      "website": "https://www.vericore.dfusion.ai/",
+      "discord": "https://discord.com/channels/799672011265015819/1349119225868058644",
+      "contact": "tao@dfusion.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 70,
+      "subnet_name": "Vericore",
+      "github_repo": "https://github.com/dfusionai/Vericore",
+      "subnet_contact": "tao@dfusion.ai",
+      "subnet_url": "https://www.vericore.dfusion.ai/",
+      "discord": "https://discord.com/channels/799672011265015819/1349119225868058644",
+      "description": "Semantic intelligence for fact-checking at scale",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 71,
+    "name": "Unknown",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 71,
+      "subnet_name": "Unknown",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  },
+  {
+    "netuid": 72,
+    "name": "Unknown",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 72,
+      "subnet_name": "Unknown",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  },
+  {
+    "netuid": 73,
+    "name": "merit",
+    "description": "Miner Appreciation Subnet",
+    "sources": {
+      "github": "https://github.com/fx-integral/merit",
+      "website": "",
+      "discord": "m9J8QTf5JT",
+      "contact": ""
+    },
+    "additional_info": "Believe",
+    "raw_data": {
+      "netuid": 73,
+      "subnet_name": "merit",
+      "github_repo": "https://github.com/fx-integral/merit",
+      "subnet_contact": "",
+      "subnet_url": "",
+      "discord": "m9J8QTf5JT",
+      "description": "Miner Appreciation Subnet",
+      "additional": "Believe"
+    }
+  },
+  {
+    "netuid": 74,
+    "name": "Unknown",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 74,
+      "subnet_name": "Unknown",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  },
+  {
+    "netuid": 75,
+    "name": "Hippius",
+    "description": "Transparent, Decentralized, Anonymous Cloud Storage",
+    "sources": {
+      "github": "https://github.com/thenervelab/thebrain",
+      "website": "https://hippius.com",
+      "discord": "qcfUrfxuNg",
+      "contact": ""
+    },
+    "additional_info": "backed by a blockchain for unmatched transparency and trust.",
+    "raw_data": {
+      "netuid": 75,
+      "subnet_name": "Hippius",
+      "github_repo": "https://github.com/thenervelab/thebrain",
+      "subnet_contact": "",
+      "subnet_url": "https://hippius.com",
+      "discord": "qcfUrfxuNg",
+      "description": "Transparent, Decentralized, Anonymous Cloud Storage",
+      "additional": "backed by a blockchain for unmatched transparency and trust."
+    }
+  },
+  {
+    "netuid": 76,
+    "name": "Safe Scan",
+    "description": "Empowering Early Cancer Detection with Decentralized AI ",
+    "sources": {
+      "github": "https://github.com/safe-scan-ai/cancer-ai",
+      "website": "https://safe-scan.ai/",
+      "discord": "https://discord.gg/PZevpMJrfW",
+      "contact": "@ wojtasy @mr_qnd @konrad_06239"
+    },
+    "additional_info": "-",
+    "raw_data": {
+      "netuid": 76,
+      "subnet_name": "Safe Scan",
+      "github_repo": "https://github.com/safe-scan-ai/cancer-ai",
+      "subnet_contact": "@ wojtasy @mr_qnd @konrad_06239",
+      "subnet_url": "https://safe-scan.ai/",
+      "discord": "https://discord.gg/PZevpMJrfW",
+      "description": "Empowering Early Cancer Detection with Decentralized AI ",
+      "additional": "-"
+    }
+  },
+  {
+    "netuid": 77,
+    "name": "Liquidity",
+    "description": "Rewards miners based off of the amount of liquidity they deploy. Types of liquidity & rewards are determined by token owners.",
+    "sources": {
+      "github": "https://github.com/creativebuilds/sn77",
+      "website": "",
+      "discord": "CreativeBuilds",
+      "contact": ""
+    },
+    "additional_info": "-",
+    "raw_data": {
+      "netuid": 77,
+      "subnet_name": "Liquidity",
+      "github_repo": "https://github.com/creativebuilds/sn77",
+      "subnet_contact": "",
+      "subnet_url": "",
+      "discord": "CreativeBuilds",
+      "description": "Rewards miners based off of the amount of liquidity they deploy. Types of liquidity & rewards are determined by token owners.",
+      "additional": "-"
+    }
+  },
+  {
+    "netuid": 78,
+    "name": "Unknown",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 78,
+      "subnet_name": "Unknown",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  },
+  {
+    "netuid": 79,
+    "name": "\u03c4aos",
+    "description": "Simulation of Automated Trading in Intelligent Markets",
+    "sources": {
+      "github": "https://github.com/taos-im/sn-79",
+      "website": "https://taos.im",
+      "discord": "https://discord.com/channels/799672011265015819/1353733356470276096",
+      "contact": "to@taos.im"
+    },
+    "additional_info": "Risk-Averse AI Agent Optimization",
+    "raw_data": {
+      "netuid": 79,
+      "subnet_name": "\u03c4aos",
+      "github_repo": "https://github.com/taos-im/sn-79",
+      "subnet_contact": "to@taos.im",
+      "subnet_url": "https://taos.im",
+      "discord": "https://discord.com/channels/799672011265015819/1353733356470276096",
+      "description": "Simulation of Automated Trading in Intelligent Markets",
+      "additional": "Risk-Averse AI Agent Optimization"
+    }
+  },
+  {
+    "netuid": 80,
+    "name": "AI Factory",
+    "description": "Specialized AI Development Subnet",
+    "sources": {
+      "github": "https://github.com/star145s/ai_factory",
+      "website": "https://www.aifact.io/",
+      "discord": "https://discord.gg/AMeC2t8F8W",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 80,
+      "subnet_name": "AI Factory",
+      "github_repo": "https://github.com/star145s/ai_factory",
+      "subnet_contact": "",
+      "subnet_url": "https://www.aifact.io/",
+      "discord": "https://discord.gg/AMeC2t8F8W",
+      "description": "Specialized AI Development Subnet",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 81,
+    "name": "Patrol (TAO.com)",
+    "description": "Building a decentralized Palantir for TAO.com",
+    "sources": {
+      "github": "https://github.com/tao-dot-com/patrol_subnet",
+      "website": "",
+      "discord": "the_carrot_",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 81,
+      "subnet_name": "Patrol (TAO.com)",
+      "github_repo": "https://github.com/tao-dot-com/patrol_subnet",
+      "subnet_contact": "",
+      "subnet_url": "",
+      "discord": "the_carrot_",
+      "description": "Building a decentralized Palantir for TAO.com",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 82,
+    "name": "Unknown",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 82,
+      "subnet_name": "Unknown",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  },
+  {
+    "netuid": 83,
+    "name": "Unknown",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 83,
+      "subnet_name": "Unknown",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  },
+  {
+    "netuid": 84,
+    "name": "Docs-Insights (Ta\u03c4su)",
+    "description": "Dencentralized Document Understanding",
+    "sources": {
+      "github": "https://github.com/TatsuProject/Document_Understanding_Subnet",
+      "website": "https://docs-insights.ai/",
+      "discord": "https://discord.com/channels/799672011265015819/1300456223371427912",
+      "contact": "contact@tatsuecosystem.io"
+    },
+    "additional_info": "https://tatsu.gitbook.io/document-understanding-whitepaper",
+    "raw_data": {
+      "netuid": 84,
+      "subnet_name": "Docs-Insights (Ta\u03c4su)",
+      "github_repo": "https://github.com/TatsuProject/Document_Understanding_Subnet",
+      "subnet_contact": "contact@tatsuecosystem.io",
+      "subnet_url": "https://docs-insights.ai/",
+      "discord": "https://discord.com/channels/799672011265015819/1300456223371427912",
+      "description": "Dencentralized Document Understanding",
+      "additional": "https://tatsu.gitbook.io/document-understanding-whitepaper"
+    }
+  },
+  {
+    "netuid": 85,
+    "name": "Vidaio",
+    "description": "Video Compression & Upscaling with AI",
+    "sources": {
+      "github": "https://github.com/vidaio-subnet/vidaio-subnet",
+      "website": "https://vidaio.io/",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 85,
+      "subnet_name": "Vidaio",
+      "github_repo": "https://github.com/vidaio-subnet/vidaio-subnet",
+      "subnet_contact": "",
+      "subnet_url": "https://vidaio.io/",
+      "discord": "",
+      "description": "Video Compression & Upscaling with AI",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 86,
+    "name": "MIAO",
+    "description": "MIAOAI is a Sound Recognition AI subnet dedicated to creating and interacting with audio content, fostering a playful and entertaining decentralized community.",
+    "sources": {
+      "github": "https://github.com/MIAOAI-Subnet/MIAOAI_SUBNET",
+      "website": "",
+      "discord": "https://discord.gg/wJxpfSxz",
+      "contact": "miao@miao99.com"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 86,
+      "subnet_name": "MIAO",
+      "github_repo": "https://github.com/MIAOAI-Subnet/MIAOAI_SUBNET",
+      "subnet_contact": "miao@miao99.com",
+      "subnet_url": "",
+      "discord": "https://discord.gg/wJxpfSxz",
+      "description": "MIAOAI is a Sound Recognition AI subnet dedicated to creating and interacting with audio content, fostering a playful and entertaining decentralized community.",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 87,
+    "name": "CheckerChain",
+    "description": "Next-Gen AI-powered Trustless Crypto Review Platform",
+    "sources": {
+      "github": "https://github.com/CheckerChain/checkerchain-subnet",
+      "website": "https://checkerchain.com",
+      "discord": "https://discord.gg/WyNpgMujnX",
+      "contact": "admin@checkerchain.com"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 87,
+      "subnet_name": "CheckerChain",
+      "github_repo": "https://github.com/CheckerChain/checkerchain-subnet",
+      "subnet_contact": "admin@checkerchain.com",
+      "subnet_url": "https://checkerchain.com",
+      "discord": "https://discord.gg/WyNpgMujnX",
+      "description": "Next-Gen AI-powered Trustless Crypto Review Platform",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 88,
+    "name": "S\u03c4\u03b1king",
+    "description": "Optimizing staking strategies",
+    "sources": {
+      "github": "https://github.com/mobiusfund/staking",
+      "website": "https://stakingalpha.com",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 88,
+      "subnet_name": "S\u03c4\u03b1king",
+      "github_repo": "https://github.com/mobiusfund/staking",
+      "subnet_contact": "",
+      "subnet_url": "https://stakingalpha.com",
+      "discord": "",
+      "description": "Optimizing staking strategies",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 89,
+    "name": "Unknown",
+    "description": "",
+    "sources": {
+      "github": "https://github.com/Delta-Compute/QuantSubnet",
+      "website": "",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 89,
+      "subnet_name": "Unknown",
+      "github_repo": "https://github.com/Delta-Compute/QuantSubnet",
+      "subnet_contact": "",
+      "subnet_url": "",
+      "discord": "",
+      "description": "",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 90,
+    "name": "brain",
+    "description": "",
+    "sources": {
+      "github": "https://github.com/frkrueger/bittensor-brain-subnet",
+      "website": "",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 90,
+      "subnet_name": "brain",
+      "github_repo": "https://github.com/frkrueger/bittensor-brain-subnet",
+      "subnet_contact": "",
+      "subnet_url": "",
+      "discord": "",
+      "description": "",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 91,
+    "name": "tensorprox",
+    "description": "We combine Infrastructure, ML, CyberSecurity Engineering and Bittensor to provide a constantly audited, decentralised platform that protects any connected workflows. First, we specialise in DDoS before expanding to new Attack Vectors.  ",
+    "sources": {
+      "github": "https://github.com/shugo-labs/tensorprox",
+      "website": "https://www.shugo.io/",
+      "discord": "https://discord.com/channels/799672011265015819/1361439346154016900",
+      "contact": "borgg, Performator"
+    },
+    "additional_info": " ",
+    "raw_data": {
+      "netuid": 91,
+      "subnet_name": "tensorprox",
+      "github_repo": "https://github.com/shugo-labs/tensorprox",
+      "subnet_contact": "borgg, Performator",
+      "subnet_url": "https://www.shugo.io/",
+      "discord": "https://discord.com/channels/799672011265015819/1361439346154016900",
+      "description": "We combine Infrastructure, ML, CyberSecurity Engineering and Bittensor to provide a constantly audited, decentralised platform that protects any connected workflows. First, we specialise in DDoS before expanding to new Attack Vectors.  ",
+      "additional": " "
+    }
+  },
+  {
+    "netuid": 92,
+    "name": "ReinforcedAI",
+    "description": "ReinforcedAI is a BitTensor subnet providing fast, scalable, and continuously improving AI-powered Solidity audits. Developers can detect vulnerabilities in seconds using our decentralized audit network.",
+    "sources": {
+      "github": "https://github.com/ReinforcedAIAudits/solidity-audit",
+      "website": "https://reinforced.app/",
+      "discord": "https://discord.com/channels/799672011265015819/1361761424153645217",
+      "contact": "https://x.com/Reinforced_AI"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 92,
+      "subnet_name": "ReinforcedAI",
+      "github_repo": "https://github.com/ReinforcedAIAudits/solidity-audit",
+      "subnet_contact": "https://x.com/Reinforced_AI",
+      "subnet_url": "https://reinforced.app/",
+      "discord": "https://discord.com/channels/799672011265015819/1361761424153645217",
+      "description": "ReinforcedAI is a BitTensor subnet providing fast, scalable, and continuously improving AI-powered Solidity audits. Developers can detect vulnerabilities in seconds using our decentralized audit network.",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 93,
+    "name": "Bitcast",
+    "description": "The Decentralized Creators Economy",
+    "sources": {
+      "github": "https://github.com/bitcast-network/bitcast",
+      "website": "https://www.bitcast.network/",
+      "discord": "mizutx",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 93,
+      "subnet_name": "Bitcast",
+      "github_repo": "https://github.com/bitcast-network/bitcast",
+      "subnet_contact": "",
+      "subnet_url": "https://www.bitcast.network/",
+      "discord": "mizutx",
+      "description": "The Decentralized Creators Economy",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 94,
+    "name": "Eastworld",
+    "description": "Next-Generation Gyms for Next-Generation AI Agents",
+    "sources": {
+      "github": "https://github.com/Eastworld-AI/eastworld-subnet",
+      "website": "https://eastworld.ai/bittensor",
+      "discord": "",
+      "contact": "bittensor@eastworld.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 94,
+      "subnet_name": "Eastworld",
+      "github_repo": "https://github.com/Eastworld-AI/eastworld-subnet",
+      "subnet_contact": "bittensor@eastworld.ai",
+      "subnet_url": "https://eastworld.ai/bittensor",
+      "discord": "",
+      "description": "Next-Generation Gyms for Next-Generation AI Agents",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 95,
+    "name": "Unknown",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 95,
+      "subnet_name": "Unknown",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  },
+  {
+    "netuid": 96,
+    "name": "FLock OFF",
+    "description": "Federated Learning network for small language models on edge devices",
+    "sources": {
+      "github": "https://github.com/FLock-io/FLock-subnet",
+      "website": "off.flock.io",
+      "discord": "https://discord.com/channels/799672011265015819/1364655778149171250",
+      "contact": "off@flock.io"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 96,
+      "subnet_name": "FLock OFF",
+      "github_repo": "https://github.com/FLock-io/FLock-subnet",
+      "subnet_contact": "off@flock.io",
+      "subnet_url": "off.flock.io",
+      "discord": "https://discord.com/channels/799672011265015819/1364655778149171250",
+      "description": "Federated Learning network for small language models on edge devices",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 97,
+    "name": "FlameWire \ud83d\udd25",
+    "description": "FlameWire is a decentralized multi-chain infrastructure that provides global RPC/API access while preserving core crypto principles such as decentralization, availability and censorship resistance.",
+    "sources": {
+      "github": "",
+      "website": "https://flamewire.io",
+      "discord": "https://discord.com/invite/SxCfXeSs8j",
+      "contact": ""
+    },
+    "additional_info": "https://x.com/FlameWire_SN",
+    "raw_data": {
+      "netuid": 97,
+      "subnet_name": "FlameWire \ud83d\udd25",
+      "github_repo": "",
+      "subnet_contact": "",
+      "subnet_url": "https://flamewire.io",
+      "discord": "https://discord.com/invite/SxCfXeSs8j",
+      "description": "FlameWire is a decentralized multi-chain infrastructure that provides global RPC/API access while preserving core crypto principles such as decentralization, availability and censorship resistance.",
+      "additional": "https://x.com/FlameWire_SN"
+    }
+  },
+  {
+    "netuid": 98,
+    "name": "Creator",
+    "description": "",
+    "sources": {
+      "github": "",
+      "website": "",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 98,
+      "subnet_name": "Creator",
+      "github_repo": "",
+      "subnet_contact": "",
+      "subnet_url": "",
+      "discord": "",
+      "description": "",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 99,
+    "name": "Algo",
+    "description": "",
+    "sources": {
+      "github": "",
+      "website": "",
+      "discord": "",
+      "contact": "cloudyli@algo-tech.ai"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 99,
+      "subnet_name": "Algo",
+      "github_repo": "",
+      "subnet_contact": "cloudyli@algo-tech.ai",
+      "subnet_url": "",
+      "discord": "",
+      "description": "",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 100,
+    "name": "Signal",
+    "description": "",
+    "sources": {
+      "github": "",
+      "website": "",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 100,
+      "subnet_name": "Signal",
+      "github_repo": "",
+      "subnet_contact": "",
+      "subnet_url": "",
+      "discord": "",
+      "description": "",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 101,
+    "name": "Unknown",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 101,
+      "subnet_name": "Unknown",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  },
+  {
+    "netuid": 102,
+    "name": "zen",
+    "description": "Designed to fight the illusion of choice.",
+    "sources": {
+      "github": "",
+      "website": "",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "stealth",
+    "raw_data": {
+      "netuid": 102,
+      "subnet_name": "zen",
+      "github_repo": "",
+      "subnet_contact": "",
+      "subnet_url": "",
+      "discord": "",
+      "description": "Designed to fight the illusion of choice.",
+      "additional": "stealth"
+    }
+  },
+  {
+    "netuid": 103,
+    "name": "Unknown",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 103,
+      "subnet_name": "Unknown",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  },
+  {
+    "netuid": 104,
+    "name": "Unknown",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 104,
+      "subnet_name": "Unknown",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  },
+  {
+    "netuid": 105,
+    "name": "SoundsRight",
+    "description": "SOTA speech enhancement model R&D",
+    "sources": {
+      "github": "https://github.com/synapsec-ai/soundsright-subnet",
+      "website": "https://soundsright.ai",
+      "discord": "m4k1_m4k1_m4k1",
+      "contact": "hello@soundsright.ai"
+    },
+    "additional_info": "Daily fine-tuning competition on fresh datasets!",
+    "raw_data": {
+      "netuid": 105,
+      "subnet_name": "SoundsRight",
+      "github_repo": "https://github.com/synapsec-ai/soundsright-subnet",
+      "subnet_contact": "hello@soundsright.ai",
+      "subnet_url": "https://soundsright.ai",
+      "discord": "m4k1_m4k1_m4k1",
+      "description": "SOTA speech enhancement model R&D",
+      "additional": "Daily fine-tuning competition on fresh datasets!"
+    }
+  },
+  {
+    "netuid": 106,
+    "name": "Liquidity Provisioning",
+    "description": "Incentivized Liquidity Provisioning at Scale",
+    "sources": {
+      "github": "",
+      "website": "voidai.com",
+      "discord": "",
+      "contact": "voidai7777@gmail.com"
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 106,
+      "subnet_name": "Liquidity Provisioning",
+      "github_repo": "",
+      "subnet_contact": "voidai7777@gmail.com",
+      "subnet_url": "voidai.com",
+      "discord": "",
+      "description": "Incentivized Liquidity Provisioning at Scale",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 107,
+    "name": "Tiger Alpha",
+    "description": "",
+    "sources": {
+      "github": "",
+      "website": "https://www.tigerinvests.com/",
+      "discord": "",
+      "contact": ""
+    },
+    "additional_info": "",
+    "raw_data": {
+      "netuid": 107,
+      "subnet_name": "Tiger Alpha",
+      "github_repo": "",
+      "subnet_contact": "",
+      "subnet_url": "https://www.tigerinvests.com/",
+      "discord": "",
+      "description": "",
+      "additional": ""
+    }
+  },
+  {
+    "netuid": 108,
+    "name": "Unknown",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 108,
+      "subnet_name": "Unknown",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  },
+  {
+    "netuid": 109,
+    "name": "Unknown",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 109,
+      "subnet_name": "Unknown",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  },
+  {
+    "netuid": 110,
+    "name": "Unknown",
+    "description": null,
+    "sources": {
+      "github": null,
+      "website": null,
+      "discord": null,
+      "contact": null
+    },
+    "additional_info": null,
+    "raw_data": {
+      "netuid": 110,
+      "subnet_name": "Unknown",
+      "github_repo": null,
+      "subnet_contact": null,
+      "subnet_url": null,
+      "discord": null,
+      "description": null,
+      "additional": null
+    }
+  }
+]

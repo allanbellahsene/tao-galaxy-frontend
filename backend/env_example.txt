@@ -1,0 +1,23 @@
+# OpenAI API Configuration
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Pipeline Configuration
+MAX_CONCURRENT_RESEARCH=3
+MAX_CONCURRENT_SCORING=2
+RATE_LIMIT_DELAY=1.0
+
+# Output Configuration
+OUTPUT_DIR=pipeline_output
+LOG_LEVEL=INFO
+
+# Optional: Custom API endpoints
+TAOSTATS_API_BASE=https://api.taostats.io/api
+TAOSTATS_API_KEY=your_taostats_api_key_here
+
+# Scraping Configuration
+SCRAPING_TIMEOUT=10
+USER_AGENT=Mozilla/5.0 (compatible; SubnetAnalyzer/1.0)
+
+# Scoring Configuration
+CONFIDENCE_THRESHOLD=0.7
+MIN_SOURCES_FOR_HIGH_CONFIDENCE=3 

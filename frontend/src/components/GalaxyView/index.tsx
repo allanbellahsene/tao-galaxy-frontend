@@ -27,7 +27,10 @@ const GalaxyView: React.FC = () => {
         setCategories(data);
         setIsLoading(false);
       })
-      .catch(() => setIsLoading(false));
+      .catch(err => {
+        console.error('GalaxyView: Error loading data:', err);
+        setIsLoading(false);
+      });
   }, []);
 
   if (isLoading) {
