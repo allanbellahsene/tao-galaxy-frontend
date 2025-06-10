@@ -11,6 +11,8 @@ interface AppContextType {
   setSelectedSubnet: (subnet: string | null) => void;
   showWelcome: boolean;
   setShowWelcome: (show: boolean) => void;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -33,6 +35,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedSubnet, setSelectedSubnet] = useState<string | null>(null);
   const [showWelcome, setShowWelcome] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -49,6 +52,8 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     setSelectedSubnet,
     showWelcome,
     setShowWelcome,
+    searchQuery,
+    setSearchQuery,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

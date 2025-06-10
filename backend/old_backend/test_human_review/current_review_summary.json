@@ -1,0 +1,55 @@
+{
+  "total_subnets": 1,
+  "subnets_requiring_review": 1,
+  "total_items_for_review": 1,
+  "high_priority_items": 1,
+  "review_categories": {
+    "low_confidence_answers": 0,
+    "red_flags_detected": 1,
+    "no_data_answers": 0,
+    "conflicting_information": 0
+  },
+  "review_queue": [
+    {
+      "subnet_netuid": 999,
+      "subnet_name": "Test Subnet",
+      "review_items": [
+        {
+          "category": "team",
+          "question_key": "team_transparency",
+          "question": "How transparent is the team about their identities?",
+          "ai_answer": "Team members are anonymous with no verifiable backgrounds",
+          "confidence_level": "LOW",
+          "evidence_quality": "POOR",
+          "evidence_sources": [
+            "website_content"
+          ],
+          "red_flags": [
+            "Anonymous team with no verifiable identities"
+          ],
+          "additional_notes": "",
+          "review_category": "red_flags_detected",
+          "priority": "high",
+          "review_status": "pending",
+          "human_input": {
+            "revised_answer": "",
+            "confidence_adjustment": "",
+            "additional_evidence": [],
+            "reviewer_notes": "",
+            "action_required": false,
+            "escalate": false
+          },
+          "review_metadata": {
+            "created_at": "2025-06-03T10:12:32.109881",
+            "reviewer_id": "",
+            "review_started_at": "",
+            "review_completed_at": "",
+            "time_spent_minutes": 0
+          }
+        }
+      ],
+      "priority": "high",
+      "estimated_review_time": 15
+    }
+  ]
+}

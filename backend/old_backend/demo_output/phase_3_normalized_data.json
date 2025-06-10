@@ -1,0 +1,596 @@
+[
+  {
+    "netuid": 1,
+    "name": "Apex",
+    "description": "Apex intelligence",
+    "sources": {
+      "linkedin": {
+        "url": "https://www.linkedin.com/company/macrocosmosai",
+        "status": "website_only",
+        "taostats_url": null,
+        "website_urls": [
+          "https://www.linkedin.com/company/macrocosmosai",
+          "https://www.linkedin.com/company/MacrocosmosAI"
+        ]
+      },
+      "github": {
+        "url": "https://github.com/macrocosm-os/apex",
+        "status": "both",
+        "taostats_url": "https://github.com/macrocosm-os/apex",
+        "website_urls": [
+          "https://github.com/macrocosm-os/finetuning",
+          "https://github.com/macrocosm-os/prompting",
+          "https://github.com/macrocosm-os/pretraining",
+          "https://github.com/macrocosm-os/data-universe",
+          "https://github.com/macrocosm-os",
+          "https://github.com/macrocosm-os/folding"
+        ],
+        "match_confidence": 1.0
+      },
+      "website": {
+        "url": "https://www.macrocosmos.ai/sn1",
+        "status": "both",
+        "taostats_url": "https://www.macrocosmos.ai/sn1",
+        "website_urls": [
+          "https://www.macrocosmos.ai/",
+          "https://macrocosmosai.substack.com/t/language-models",
+          "https://www.macrocosmos.ai/team#open-roles",
+          "https://app.macrocosmos.ai",
+          "https://www.macrocosmos.ai/our-purpose",
+          "https://www.macrocosmos.ai/delegation-guide",
+          "https://macrocosmosai.substack.com/",
+          "https://www.macrocosmos.ai/sn1/dashboard",
+          "https://sn1.api.macrocosmos.ai/redoc",
+          "https://www.macrocosmos.ai/team",
+          "https://redditinc.com/policies/data-api-terms"
+        ],
+        "match_confidence": 1.0
+      },
+      "twitter": {
+        "url": "https://twitter.com/macrocosmosai",
+        "status": "website_only",
+        "taostats_url": null,
+        "website_urls": [
+          "https://twitter.com/macrocosmosai",
+          "https://developer.x.com/en/developer-terms/agreement-and-policy"
+        ]
+      },
+      "contact": {
+        "url": "support@macrocosmos.ai",
+        "status": "taostats_only",
+        "taostats_url": "support@macrocosmos.ai",
+        "website_urls": []
+      },
+      "documentation": {
+        "url": "https://docs.macrocosmos.ai",
+        "status": "website_only",
+        "taostats_url": null,
+        "website_urls": [
+          "https://docs.macrocosmos.ai"
+        ]
+      },
+      "discord": {
+        "url": "macrocrux",
+        "status": "both",
+        "taostats_url": "macrocrux",
+        "website_urls": [
+          "https://discord.gg/mayxtbzxat",
+          "https://discord.gg/maYxtBzxAt"
+        ],
+        "match_confidence": 0.9
+      }
+    },
+    "taostats_raw": {
+      "netuid": 1,
+      "subnet_name": "Apex",
+      "github_repo": "https://github.com/macrocosm-os/apex",
+      "subnet_contact": "support@macrocosmos.ai",
+      "subnet_url": "https://www.macrocosmos.ai/sn1",
+      "discord": "macrocrux",
+      "description": "Apex intelligence",
+      "additional": ""
+    },
+    "website_raw": {
+      "url": "https://www.macrocosmos.ai/sn1",
+      "subnet_name": "Apex",
+      "scraped_at": "2025-06-03 10:13:08",
+      "status": "success",
+      "title": "Macrocosmos.ai",
+      "description": "Intelligence Incentivised: The open-source alternative for AI",
+      "mission": "",
+      "team_info": {
+        "has_team_section": false,
+        "team_members_found": 0,
+        "team_description": ""
+      },
+      "team_members": [],
+      "problem_statement": "",
+      "solution": "",
+      "products": [],
+      "revenue_model": "",
+      "social_links": {
+        "linkedin": "https://www.linkedin.com/company/macrocosmosai",
+        "twitter": "https://developer.x.com/en/developer-terms/agreement-and-policy",
+        "discord": "https://discord.gg/mayxtbzxat"
+      },
+      "contact_info": {},
+      "github_links": [
+        "https://github.com/macrocosm-os/finetuning",
+        "https://github.com/macrocosm-os/prompting",
+        "https://github.com/macrocosm-os/pretraining",
+        "https://github.com/macrocosm-os/data-universe",
+        "https://github.com/macrocosm-os",
+        "https://github.com/macrocosm-os/folding"
+      ],
+      "documentation_links": [
+        "https://redditinc.com/policies/data-api-terms",
+        "https://sn1.api.macrocosmos.ai/redoc",
+        "https://docs.macrocosmos.ai",
+        "/delegation-guide"
+      ],
+      "clean_text": "Macrocosmos.aiOpen menuSubnetsProductsCompanyResearchDocsLoginSubnet 1Apex: Natural languageand inferenceGo to dashboardAchieving state-of-the-art open-source intelligenceApex is Bittensor's key arena for innovating competitive agentsBittensor requires consistent research and innovation to compete with leading proprietary models for it to continue to be a truly viable solution to closed alternatives, and other open-source protocols. SN1 is the crucible of technical work catalyzing competitive intelligence in a decentralized system.Improving the network's inaugural competitionAs Bittensor's first subnet, SN1 has championed research in LLM-based incentive design. Rebuilt in early 2024, SN1 in order to integrate both enhanced inference techniques such as response ensembling and agentic workflows into the fast-paced LLM research community.Surpassing centralized models on task-specific functionalitySN1 is producing agentic workflows in conjunction with LLMs that surpass the capabilities of proprietary models at specific tasks, demonstrating that decentralized systems are a viable path towards creating truly open SOTA AI models.How SN1 incentivizes innovation and product[1]Producing highly specialized, targeted intelligence[2]Expanding the incentive landscape to deliver human-like interactions[3]Unlocking the potential of subnets across BittensorSN1 turns raw intelligence into a digital commodity for users to access. Through chat interfaces, APIs, and other mechanisms, SN1 enables users and businesses to interact with the intelligent hivemind. At present, SN1 already powers four different user-facing products.Building on its legacy as the flagship subnet of the protocol, SN1 continues to push the boundaries of mechanism design. We're now integrating a secondary layer of organic queries into the validation process, to further incentivize miners to avoid over-fitting to the rigidity of synthetic prompts and deliver human responses to human queries.SN1 is at the heart of the Macrocosmos ecosystem, building upon SN9's pre-training and SN37's Fine-tuning through synthetic data generation. Through data annotation and sentiment analysis, it allows Subnet 13's data universe to serve user needs, forming the core of an intelligence pipeline.[1]Producing highly specialized, targeted intelligenceSN1 turns raw intelligence into a digital commodity for users to access. Through chat interfaces, APIs, and other mechanisms, SN1 enables users and businesses to interact with the intelligent hivemind. At present, SN1 already powers four different user-facing products.[2]Expanding the incentive landscape to deliver human-like interactionsBuilding on its legacy as the flagship subnet of the protocol, SN1 continues to push the boundaries of mechanism design. We're now integrating a secondary layer of organic queries into the validation process, to further incentivize miners to avoid over-fitting to the rigidity of synthetic prompts and deliver human responses to human queries.[3]Unlocking the potential of subnets across BittensorSN1 is at the heart of the Macrocosmos ecosystem, building upon SN9's pre-training and SN37's Fine-tuning through synthetic data generation. Through data annotation and sentiment analysis, it allows Subnet 13's data universe to serve user needs, forming the core of an intelligence pipeline.Read our documentationMore on SN1Read SN1 articles on our SubstackSee the SN1 codebase on GitHubVisit the SN1 API docsGet the latest updatesCompanyDelegation GuideHomeOur purposeTeamCareersDocumentationSubnet 1Subnet 9Subnet 13Subnet 25Subnet 37GithubResearchSubstackContactEmail\u00a9 2025 Macrocosmos, ALL RIGHTS RESERVEDGravity operates under the Macrocosmos Data Compliance Charter and conforms to Regulation (EU) 2016/679 (GDPR), the UK Data Protection Act 2018, California CCPA, and any equivalent regional laws. Use of Gravity also requires adherence to the X Developer Agreement and Reddit Data API Terms.",
+      "all_links": [
+        "https://macrocosmosai.substack.com/",
+        "https://discord.gg/maYxtBzxAt",
+        "https://developer.x.com/en/developer-terms/agreement-and-policy",
+        "https://twitter.com/macrocosmosai",
+        "https://github.com/macrocosm-os/finetuning",
+        "https://www.macrocosmos.ai/our-purpose",
+        "https://github.com/macrocosm-os/prompting",
+        "https://sn1.api.macrocosmos.ai/redoc",
+        "https://docs.macrocosmos.ai",
+        "https://macrocosmosai.substack.com/t/language-models",
+        "https://www.macrocosmos.ai/team#open-roles",
+        "https://www.macrocosmos.ai/delegation-guide",
+        "https://github.com/macrocosm-os/pretraining",
+        "https://github.com/macrocosm-os/data-universe",
+        "https://github.com/macrocosm-os",
+        "https://www.macrocosmos.ai/team",
+        "https://redditinc.com/policies/data-api-terms",
+        "https://www.linkedin.com/company/MacrocosmosAI",
+        "https://www.macrocosmos.ai/",
+        "https://app.macrocosmos.ai",
+        "https://www.macrocosmos.ai/sn1/dashboard",
+        "mailto:hello@macrocosmos.ai",
+        "https://github.com/macrocosm-os/folding"
+      ],
+      "has_about_section": false,
+      "has_team_section": true,
+      "has_product_section": true
+    },
+    "source_verification": {
+      "total_sources": 7,
+      "both_sources": 3,
+      "taostats_only": 1,
+      "website_only": 3,
+      "discrepancies": 0,
+      "source_types": [
+        "linkedin",
+        "github",
+        "website",
+        "twitter",
+        "contact",
+        "documentation",
+        "discord"
+      ],
+      "health_score": 42.9
+    },
+    "research_ready": true,
+    "processed_at": "2025-06-03T10:13:16.156815",
+    "pipeline_version": "1.0"
+  },
+  {
+    "netuid": 5,
+    "name": "OpenKaito",
+    "description": "Creating SOTA embedding models through decentralized incentives",
+    "sources": {
+      "github": {
+        "url": "https://github.com/OpenKaito/openkaito",
+        "status": "taostats_only",
+        "taostats_url": "https://github.com/OpenKaito/openkaito",
+        "website_urls": []
+      },
+      "website": {
+        "url": "https://sn5.kaito.ai/",
+        "status": "taostats_only",
+        "taostats_url": "https://sn5.kaito.ai/",
+        "website_urls": []
+      },
+      "contact": {
+        "url": "webroot@kaito.ai",
+        "status": "taostats_only",
+        "taostats_url": "webroot@kaito.ai",
+        "website_urls": []
+      }
+    },
+    "taostats_raw": {
+      "netuid": 5,
+      "subnet_name": "OpenKaito",
+      "github_repo": "https://github.com/OpenKaito/openkaito",
+      "subnet_contact": "webroot@kaito.ai",
+      "subnet_url": "https://sn5.kaito.ai/",
+      "discord": "",
+      "description": "Creating SOTA embedding models through decentralized incentives",
+      "additional": ""
+    },
+    "website_raw": {
+      "url": "https://sn5.kaito.ai/",
+      "subnet_name": "OpenKaito",
+      "scraped_at": "2025-06-03 10:13:09",
+      "status": "success",
+      "title": "Weights & Biases",
+      "description": "Weights & Biases, developer tools for machine learning",
+      "mission": "",
+      "team_info": {
+        "has_team_section": false,
+        "team_members_found": 0,
+        "team_description": ""
+      },
+      "team_members": [],
+      "problem_statement": "",
+      "solution": "",
+      "products": [],
+      "revenue_model": "",
+      "social_links": {},
+      "contact_info": {},
+      "github_links": [],
+      "documentation_links": [],
+      "clean_text": "Weights & Biases",
+      "all_links": [],
+      "has_about_section": false,
+      "has_team_section": false,
+      "has_product_section": false
+    },
+    "source_verification": {
+      "total_sources": 3,
+      "both_sources": 0,
+      "taostats_only": 3,
+      "website_only": 0,
+      "discrepancies": 0,
+      "source_types": [
+        "github",
+        "website",
+        "contact"
+      ],
+      "health_score": 0.0
+    },
+    "research_ready": true,
+    "processed_at": "2025-06-03T10:13:16.156848",
+    "pipeline_version": "1.0"
+  },
+  {
+    "netuid": 11,
+    "name": "Dippy",
+    "description": "Creating The World's Best Open-Source Roleplay LLM",
+    "sources": {
+      "github": {
+        "url": "https://github.com/impel-intelligence/dippy-bittensor-subnet",
+        "status": "taostats_only",
+        "taostats_url": "https://github.com/impel-intelligence/dippy-bittensor-subnet",
+        "website_urls": []
+      },
+      "website": {
+        "url": "https://dippy.ai",
+        "status": "taostats_only",
+        "taostats_url": "https://dippy.ai",
+        "website_urls": []
+      },
+      "contact": {
+        "url": "support@dippy.ai",
+        "status": "taostats_only",
+        "taostats_url": "support@dippy.ai",
+        "website_urls": []
+      }
+    },
+    "taostats_raw": {
+      "netuid": 11,
+      "subnet_name": "Dippy",
+      "github_repo": "https://github.com/impel-intelligence/dippy-bittensor-subnet",
+      "subnet_contact": "support@dippy.ai",
+      "subnet_url": "https://dippy.ai",
+      "discord": "",
+      "description": "Creating The World's Best Open-Source Roleplay LLM",
+      "additional": ""
+    },
+    "website_raw": {
+      "url": "https://dippy.ai",
+      "subnet_name": "Dippy",
+      "scraped_at": "2025-06-03 10:13:11",
+      "status": "success",
+      "title": "Dippy",
+      "description": "Chat with millions of proactive AI characters! Enjoy unlimited messaging, advanced roleplay, seamless character creation\u2014all for FREE! perfect memory, limitless fun.",
+      "mission": "",
+      "team_info": {
+        "has_team_section": false,
+        "team_members_found": 0,
+        "team_description": ""
+      },
+      "team_members": [],
+      "problem_statement": "",
+      "solution": "",
+      "products": [],
+      "revenue_model": "",
+      "social_links": {},
+      "contact_info": {},
+      "github_links": [],
+      "documentation_links": [],
+      "clean_text": "Dippy",
+      "all_links": [],
+      "has_about_section": false,
+      "has_team_section": false,
+      "has_product_section": false
+    },
+    "source_verification": {
+      "total_sources": 3,
+      "both_sources": 0,
+      "taostats_only": 3,
+      "website_only": 0,
+      "discrepancies": 0,
+      "source_types": [
+        "github",
+        "website",
+        "contact"
+      ],
+      "health_score": 0.0
+    },
+    "research_ready": true,
+    "processed_at": "2025-06-03T10:13:16.156859",
+    "pipeline_version": "1.0"
+  },
+  {
+    "netuid": 19,
+    "name": "Nineteen.ai",
+    "description": "Decentralised permisonless, serverless, scalable inference",
+    "sources": {
+      "github": {
+        "url": "https://github.com/namoray/nineteen/",
+        "status": "taostats_only",
+        "taostats_url": "https://github.com/namoray/nineteen/",
+        "website_urls": []
+      },
+      "website": {
+        "url": "https://nineteen.ai",
+        "status": "taostats_only",
+        "taostats_url": "https://nineteen.ai",
+        "website_urls": []
+      },
+      "contact": {
+        "url": "contact@rayonlabs.ai",
+        "status": "taostats_only",
+        "taostats_url": "contact@rayonlabs.ai",
+        "website_urls": []
+      }
+    },
+    "taostats_raw": {
+      "netuid": 19,
+      "subnet_name": "Nineteen.ai",
+      "github_repo": "https://github.com/namoray/nineteen/",
+      "subnet_contact": "contact@rayonlabs.ai",
+      "subnet_url": "https://nineteen.ai",
+      "discord": "",
+      "description": "Decentralised permisonless, serverless, scalable inference",
+      "additional": ""
+    },
+    "website_raw": {
+      "url": "https://nineteen.ai",
+      "subnet_name": "Nineteen.ai",
+      "scraped_at": "2025-06-03 10:13:12",
+      "status": "error",
+      "error": "429 Client Error: Too Many Requests for url: https://nineteen.ai/"
+    },
+    "source_verification": {
+      "total_sources": 3,
+      "both_sources": 0,
+      "taostats_only": 3,
+      "website_only": 0,
+      "discrepancies": 0,
+      "source_types": [
+        "github",
+        "website",
+        "contact"
+      ],
+      "health_score": 0.0
+    },
+    "research_ready": false,
+    "processed_at": "2025-06-03T10:13:16.156867",
+    "pipeline_version": "1.0"
+  },
+  {
+    "netuid": 27,
+    "name": "NI Compute",
+    "description": "Decentralized Cloud Platform",
+    "sources": {
+      "github": {
+        "url": "https://github.com/neuralinternet/compute-subnet",
+        "status": "both",
+        "taostats_url": "https://github.com/neuralinternet/compute-subnet",
+        "website_urls": [
+          "https://github.com/neuralinternet/compute-subnet"
+        ],
+        "match_confidence": 1.0
+      },
+      "website": {
+        "url": "https://neuralinternet.ai/",
+        "status": "both",
+        "taostats_url": "https://neuralinternet.ai/",
+        "website_urls": [
+          "https://opencompute.streamlit.app/"
+        ],
+        "discrepancy": true,
+        "match_confidence": 0.0
+      },
+      "twitter": {
+        "url": "https://x.com/neural_internet",
+        "status": "website_only",
+        "taostats_url": null,
+        "website_urls": [
+          "https://x.com/neural_internet"
+        ]
+      },
+      "contact": {
+        "url": "neuralinternet@gmail.com",
+        "status": "taostats_only",
+        "taostats_url": "neuralinternet@gmail.com",
+        "website_urls": []
+      },
+      "telegram": {
+        "url": "https://t.me/neuralinternet",
+        "status": "website_only",
+        "taostats_url": null,
+        "website_urls": [
+          "https://t.me/neuralinternet"
+        ]
+      },
+      "documentation": {
+        "url": "https://docs.neuralinternet.ai/",
+        "status": "website_only",
+        "taostats_url": null,
+        "website_urls": [
+          "https://docs.neuralinternet.ai/"
+        ]
+      },
+      "discord": {
+        "url": "https://discord.com/invite/neuralinternet",
+        "status": "both",
+        "taostats_url": "https://discord.com/invite/neuralinternet",
+        "website_urls": [
+          "https://discord.com/invite/neuralinternet"
+        ],
+        "match_confidence": 1.0
+      }
+    },
+    "taostats_raw": {
+      "netuid": 27,
+      "subnet_name": "NI Compute",
+      "github_repo": "https://github.com/neuralinternet/compute-subnet",
+      "subnet_contact": "neuralinternet@gmail.com",
+      "subnet_url": "https://neuralinternet.ai/",
+      "discord": "https://discord.com/invite/neuralinternet",
+      "description": "Decentralized Cloud Platform",
+      "additional": "$NI"
+    },
+    "website_raw": {
+      "url": "https://neuralinternet.ai/",
+      "subnet_name": "NI Compute",
+      "scraped_at": "2025-06-03 10:13:14",
+      "status": "success",
+      "title": "Neural Internet",
+      "description": "Decentralized Autonomous Organization Governed by Techno-Optimists | Building on Bittensor",
+      "mission": "",
+      "team_info": {
+        "has_team_section": false,
+        "team_members_found": 0,
+        "team_description": ""
+      },
+      "team_members": [],
+      "problem_statement": "",
+      "solution": "",
+      "products": [],
+      "revenue_model": "",
+      "social_links": {
+        "twitter": "https://x.com/neural_internet",
+        "discord": "https://discord.com/invite/neuralinternet",
+        "telegram": "https://t.me/neuralinternet"
+      },
+      "contact_info": {},
+      "github_links": [
+        "https://github.com/neuralinternet/compute-subnet"
+      ],
+      "documentation_links": [
+        "https://docs.neuralinternet.ai/"
+      ],
+      "clean_text": "Neural Internet AI Acceleration through Decentralized ComputeAI Acceleration through Decentralized ComputeAI Acceleration throughDecentralized ComputeDecentralized Autonomous Organization Governed by Techno Optimists\u2014tokenizing compute power with Bittensor.Decentralized Autonomous Organization Governed by Techno Optimists\u2014tokenizing compute power with Bittensor.GithubGithubGithubX / TwitterX / TwitterXDiscordDiscordDiscordTelegramTelegramTGNI Compute (SN27)DocumentationsBlogNI Compute (SN27)DocumentationsBlog",
+      "all_links": [
+        "https://github.com/neuralinternet/compute-subnet",
+        "https://discord.com/invite/neuralinternet",
+        "./",
+        "https://x.com/neural_internet",
+        "https://docs.neuralinternet.ai/",
+        "https://opencompute.streamlit.app/",
+        "./blog",
+        "https://t.me/neuralinternet"
+      ],
+      "has_about_section": false,
+      "has_team_section": false,
+      "has_product_section": false
+    },
+    "source_verification": {
+      "total_sources": 7,
+      "both_sources": 3,
+      "taostats_only": 1,
+      "website_only": 3,
+      "discrepancies": 1,
+      "source_types": [
+        "github",
+        "website",
+        "twitter",
+        "contact",
+        "telegram",
+        "documentation",
+        "discord"
+      ],
+      "health_score": 42.9
+    },
+    "research_ready": true,
+    "processed_at": "2025-06-03T10:13:16.156874",
+    "pipeline_version": "1.0"
+  },
+  {
+    "netuid": 64,
+    "name": "Chutes",
+    "description": "Serverless AI compute",
+    "sources": {
+      "github": {
+        "url": "https://github.com/rayonlabs/chutes",
+        "status": "taostats_only",
+        "taostats_url": "https://github.com/rayonlabs/chutes",
+        "website_urls": []
+      },
+      "website": {
+        "url": "chutes.ai",
+        "status": "taostats_only",
+        "taostats_url": "chutes.ai",
+        "website_urls": []
+      },
+      "contact": {
+        "url": "jon@chutes.ai",
+        "status": "taostats_only",
+        "taostats_url": "jon@chutes.ai",
+        "website_urls": []
+      }
+    },
+    "taostats_raw": {
+      "netuid": 64,
+      "subnet_name": "Chutes",
+      "github_repo": "https://github.com/rayonlabs/chutes",
+      "subnet_contact": "jon@chutes.ai",
+      "subnet_url": "chutes.ai",
+      "discord": "",
+      "description": "Serverless AI compute",
+      "additional": ""
+    },
+    "website_raw": {
+      "url": "chutes.ai",
+      "subnet_name": "Chutes",
+      "scraped_at": "2025-06-03 10:13:15",
+      "status": "error",
+      "error": "Invalid URL 'chutes.ai': No scheme supplied. Perhaps you meant https://chutes.ai?"
+    },
+    "source_verification": {
+      "total_sources": 3,
+      "both_sources": 0,
+      "taostats_only": 3,
+      "website_only": 0,
+      "discrepancies": 0,
+      "source_types": [
+        "github",
+        "website",
+        "contact"
+      ],
+      "health_score": 0.0
+    },
+    "research_ready": false,
+    "processed_at": "2025-06-03T10:13:16.156881",
+    "pipeline_version": "1.0"
+  }
+]

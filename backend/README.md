@@ -1,397 +1,228 @@
-# Automated Bittensor Subnet Analysis Pipeline
+# TAO Galaxy Backend - Enhanced Subnet Data Retrieval System
 
-A comprehensive automated system for collecting, verifying, and analyzing fundamental data across all Bittensor subnets. This pipeline provides objective metrics and AI-powered insights for investors and subnet owners.
+This comprehensive backend system automatically retrieves, enriches, and merges subnet data from multiple TaoStats API endpoints to provide detailed information for the TAO Galaxy frontend.
 
-## 🎯 Overview
+## 🆕 Latest Features
 
-This pipeline automates the complete research process for Bittensor subnets:
+- **📊 Market Data Integration**: Real-time market cap, price, and trading volume data
+- **📈 Percentage-based Emissions**: Emissions shown as percentage of total network emission
+- **📅 Daily Historical Data**: Automatic daily snapshots with date-based filenames
+- **🔗 Multi-source Data Merging**: Combines identity, statistics, and market data seamlessly
+- **📋 Comprehensive Data Schema**: 16 columns of enriched subnet information
 
-1. **Ingest Taostats Data** - Fetches metadata and source URLs from the Taostats API
-2. **Verify & Complete Sources** - Crawls subnet websites to discover and verify all relevant links
-3. **Normalize & Store** - Creates unified source objects with verification status flags
-4. **Deep Research & Scoring** - Uses AI agents to extract structured answers and generate 1-5 scores
-5. **Dashboard & Insights** - Surfaces objective and subjective data in a clean, interactive format
+## Features
 
-## 🏗️ Architecture
+- **Subnet Identity Data**: Names, descriptions, URLs, GitHub repos, Discord channels
+- **Subnet Statistics**: Latest emission data (as percentages) and active status
+- **Market Data**: Market cap, price, price changes, trading volume, and rankings
+- **Data Merging**: Combines all datasets into a comprehensive view
+- **Multiple Output Formats**: Saves data as both CSV and JSON
+- **Daily Historical Backups**: Date-based files for data continuity
+- **Error Handling**: Robust error handling and logging
+- **Data Validation**: Ensures data quality and handles missing fields
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    AUTOMATED PIPELINE                          │
-├─────────────────────────────────────────────────────────────────┤
-│  Phase 1: TaoStats Ingestion                                   │
-│  ├── TaoStatsAPI: Fetch all subnet metadata                    │
-│  └── Output: phase_1_taostats_data.json                        │
-├─────────────────────────────────────────────────────────────────┤
-│  Phase 2: Source Verification                                  │
-│  ├── SubnetWebsiteScraper: Crawl subnet websites               │
-│  ├── SourceVerifier: Compare & flag sources                    │
-│  └── Output: phase_2_verified_sources.json                     │
-├─────────────────────────────────────────────────────────────────┤
-│  Phase 3: Data Normalization                                   │
-│  ├── Create unified source objects                             │
-│  ├── Add verification metadata                                 │
-│  └── Output: phase_3_normalized_data.json                      │
-├─────────────────────────────────────────────────────────────────┤
-│  Phase 4: AI Research & Scoring                                │
-│  ├── ResearchAgent: Extract structured answers                 │
-│  ├── ScoringAgent: Generate 1-5 scores per category            │
-│  └── Output: phase_4_research_scores.json                      │
-├─────────────────────────────────────────────────────────────────┤
-│  Phase 5: Final Dataset Generation                             │
-│  ├── Create dashboard-ready format                             │
-│  ├── Calculate health metrics                                  │
-│  └── Output: final_subnet_analysis.json                        │
-└─────────────────────────────────────────────────────────────────┘
-```
+## Data Schema
 
-## 🚀 Quick Start
+The enhanced merged dataset includes the following columns:
 
-### Prerequisites
+| Column | Description | Source |
+|--------|-------------|---------|
+| Timestamp | When the data was retrieved | System |
+| Subnet ID | Unique subnet identifier (netuid) | Identity API |
+| Subnet Name | Human-readable subnet name | Identity API |
+| Description | Subnet description | Identity API |
+| Emission | Current emission as % of total | Statistics API |
+| Active | Whether the subnet is active | Statistics API |
+| Website | Subnet website URL | Identity API |
+| Github | GitHub repository URL | Identity API |
+| Discord | Discord contact information | Identity API |
+| Rank | Market ranking | Market API |
+| Market Cap | Market capitalization in USD | Market API |
+| Price | Current price per token | Market API |
+| Price Change 1 Day | 24-hour price change % | Market API |
+| Price Change 1 Week | 7-day price change % | Market API |
+| Price Change 1 Month | 30-day price change % | Market API |
+| TAO Volume 24hr | 24-hour trading volume in TAO | Market API |
 
-- Python 3.8+
-- OpenAI API key (recommended for AI research & scoring)
+## Setup
 
-### Installation
-
-1. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. **Set up OpenAI API key (optional but recommended):**
-   ```bash
-   export OPENAI_API_KEY='your-api-key-here'
-   ```
-
-3. **Run the test demo:**
-   ```bash
-   python test_pipeline.py
-   ```
-
-### Basic Usage
-
-**Run the full pipeline for all subnets:**
-```bash
-python automated_pipeline.py
-```
-
-**Run for specific subnets:**
-```bash
-python automated_pipeline.py --subnets 1 5 11 19 27 64
-```
-
-**Specify custom output directory:**
-```bash
-python automated_pipeline.py --output-dir custom_results
-```
-
-## 📊 Source Verification System
-
-The pipeline automatically compares sources from Taostats with those discovered on subnet websites, flagging each source as:
-
-- **`both`** - Present in both Taostats and website (verified)
-- **`taostats_only`** - Only in Taostats (potentially outdated)
-- **`website_only`** - Only on website (missing from Taostats)
-
-### Source Health Score
-
-Each subnet gets a **Source Health Score** calculated as:
-```
-Health Score = (Verified Sources / Total Sources) × 100
-```
-
-## 🤖 AI Research System
-
-### Research Categories
-
-The AI Research Agent analyzes each subnet across 6 categories with 24 total questions:
-
-1. **Basic Information** (4 questions)
-   - Mission statement and goals
-   - Problem being solved
-   - Target audience
-   - Unique value proposition
-
-2. **Team & Leadership** (4 questions)
-   - Team size and experience
-   - Leadership credentials
-   - Team transparency
-   - Track record
-
-3. **Product & Technology** (4 questions)
-   - Product development status
-   - Technical approach
-   - Product differentiation
-   - Scalability
-
-4. **Business Model** (4 questions)
-   - Revenue model
-   - Market size
-   - Competitive landscape
-   - Partnerships
-
-5. **Development & Progress** (4 questions)
-   - Development activity
-   - Roadmap clarity
-   - Milestone achievement
-   - Community engagement
-
-6. **Risk Assessment** (4 questions)
-   - Technical risks
-   - Market risks
-   - Regulatory risks
-   - Team risks
-
-### Research Quality Indicators
-
-- **Data Completeness**: Percentage of questions answered
-- **Confidence Level**: High/Medium/Low based on source quality
-- **Source Quality**: Excellent/Good/Fair/Poor based on verified sources
-
-## 📈 Scoring System
-
-### Scoring Categories & Weights
-
-The AI Scoring Agent evaluates subnets across 5 weighted categories:
-
-1. **Team Strength** (25% weight)
-   - Team quality, experience, transparency
-   
-2. **Product Viability** (25% weight)
-   - Development status, technical feasibility
-   
-3. **Market Opportunity** (20% weight)
-   - Market size, demand, competitive positioning
-   
-4. **Execution Progress** (15% weight)
-   - Development activity, milestone achievement
-   
-5. **Risk Management** (15% weight)
-   - Risk identification and mitigation
-
-### Score Interpretation
-
-- **5** - Excellent: Top tier subnet with strong fundamentals
-- **4** - Good: Solid subnet with minor areas for improvement
-- **3** - Average: Decent subnet with some concerns
-- **2** - Below Average: Significant concerns but some potential
-- **1** - Poor: Major red flags or insufficient information
-
-### Investment Recommendations
-
-Based on overall scores:
-- **≥4.0**: Strong Buy - Excellent fundamentals
-- **≥3.5**: Buy - Good investment potential
-- **≥2.5**: Hold - Average performance, proceed with caution
-- **≥2.0**: Weak Hold - Below average, significant concerns
-- **<2.0**: Avoid - Major red flags
-
-## 📁 Output Files
-
-The pipeline generates structured output files for each phase:
-
-### Phase 1: Taostats Data
-```json
-{
-  "netuid": 64,
-  "name": "Chutes",
-  "description": "AI-powered content curation",
-  "sources": {
-    "github": "https://github.com/chutes-ai",
-    "website": "https://chutes.ai",
-    "discord": "https://discord.gg/chutes"
-  }
-}
-```
-
-### Phase 2: Verified Sources
-```json
-{
-  "sources": {
-    "github": {
-      "url": "https://github.com/chutes-ai",
-      "status": "both",
-      "taostats_url": "https://github.com/chutes-ai",
-      "website_urls": ["https://github.com/chutes-ai"],
-      "match_confidence": 1.0
-    }
-  },
-  "source_verification_summary": {
-    "total_sources": 3,
-    "both_sources": 2,
-    "taostats_only": 1,
-    "website_only": 0,
-    "health_score": 66.7
-  }
-}
-```
-
-### Phase 4: Research & Scores
-```json
-{
-  "research_results": {
-    "answers": {
-      "basic_info": {
-        "mission_statement": {
-          "question": "What is the subnet's mission statement?",
-          "answer": "Chutes aims to revolutionize content curation...",
-          "confidence": "High",
-          "research_status": "completed"
-        }
-      }
-    }
-  },
-  "scores": {
-    "overall_score": 4.2,
-    "category_scores": {
-      "team_strength": {"score": 4, "weight": 25},
-      "product_viability": {"score": 4, "weight": 25}
-    },
-    "investment_recommendation": "Buy - Good investment potential"
-  }
-}
-```
-
-### Final Dataset (Dashboard-Ready)
-```json
-{
-  "netuid": 64,
-  "name": "Chutes",
-  "overall_score": 4.2,
-  "investment_recommendation": "Buy",
-  "source_health": {"health_score": 85.0},
-  "primary_links": {
-    "website": "https://chutes.ai",
-    "github": "https://github.com/chutes-ai"
-  },
-  "risk_flags": [],
-  "last_updated": "2024-01-15T10:30:00Z"
-}
-```
-
-## ⚙️ Configuration
-
-Copy `env_example.txt` to `.env` and customize:
+### 1. Install Dependencies
 
 ```bash
-# Required for AI features
-OPENAI_API_KEY=your_openai_api_key_here
-
-# Pipeline performance tuning
-MAX_CONCURRENT_RESEARCH=3
-MAX_CONCURRENT_SCORING=2
-RATE_LIMIT_DELAY=1.0
-
-# Output configuration
-OUTPUT_DIR=pipeline_output
-LOG_LEVEL=INFO
+cd backend
+pip install -r requirements.txt
 ```
 
-## 🔧 API Components
+### 2. Environment Configuration
 
-### TaoStatsAPI
+Create a `.env` file in the backend directory:
+
+```env
+TAOSTATS_API_KEY=your_taostats_api_key_here
+```
+
+### 3. API Key Setup
+
+Get your TaoStats API key from [TaoStats.io](https://taostats.io) and add it to your `.env` file.
+
+## Usage
+
+### Quick Start - Enhanced Data Pipeline
+
+Run the complete enhanced data update process:
+
+```bash
+python update_subnet_data.py
+```
+
+This will:
+1. Fetch subnet identity data from TaoStats API (121+ subnets)
+2. Fetch latest subnet statistics with percentage-based emissions
+3. Fetch market data including prices, volumes, and rankings
+4. Merge all datasets into comprehensive view
+5. Save current results as CSV and JSON files
+6. Create daily historical backup files
+
+### Individual Scripts
+
+You can also run individual components:
+
+```bash
+# Get subnet identities only
+python get_subnets.py
+
+# Get subnet statistics only  
+python get_subnet_stats.py
+
+# Get market data only
+python get_market_data.py
+
+# Merge existing data
+python merge_subnet_data.py
+```
+
+### Daily Automated Updates
+
+For production environments, use the daily scheduler:
+
+```bash
+python daily_update.py
+```
+
+## Output Files
+
+### Current Data Files
+All current files are saved in the `results/` directory:
+
+- `merged_subnet_data.csv` - Complete merged dataset in CSV format
+- `merged_subnet_data.json` - Complete merged dataset in JSON format
+- `subnet_identities.csv` - Raw subnet identity data
+- `subnet_stats.csv` - Raw subnet statistics data
+- `market_data.csv` - Raw market data
+
+### Daily Historical Files
+Historical files are saved in `results/daily/` with date-based names:
+
+- `subnet_data_YYYY-MM-DD.csv` - Daily snapshot in CSV format
+- `subnet_data_YYYY-MM-DD.json` - Daily snapshot in JSON format
+
+Example:
+```
+results/daily/
+├── subnet_data_2025-06-10.csv
+├── subnet_data_2025-06-10.json
+├── subnet_data_2025-06-11.csv
+└── subnet_data_2025-06-11.json
+```
+
+## API Endpoints Used
+
+1. **Subnet Identity**: `https://api.taostats.io/api/subnet/identity/v1`
+   - Returns subnet names, descriptions, URLs, GitHub repos, Discord channels
+
+2. **Subnet Statistics**: `https://api.taostats.io/api/subnet/latest/v1`
+   - Returns emission data, active status, timestamps
+
+3. **Market Data**: `https://api.taostats.io/api/dtao/pool/latest/v1`
+   - Returns market cap, prices, price changes, trading volumes, rankings
+
+## Data Processing
+
+### Emission Percentage Calculation
+Emissions are automatically converted from absolute values to percentages:
 ```python
-from subnets_basic_info import TaoStatsAPI
-
-api = TaoStatsAPI()
-subnets = api.get_all_subnets()
-specific_subnet = api.get_subnet_by_id(64)
+emission_percentage = (subnet_emission / total_network_emission) * 100
 ```
 
-### SubnetWebsiteScraper
-```python
-from subnet_website_scraper import SubnetWebsiteScraper
+### Data Merging Process
+1. **Base Dataset**: Start with subnet identity data
+2. **Statistics Merge**: Join with statistics data on `netuid`
+3. **Market Data Merge**: Join with market data on `netuid`
+4. **Data Cleaning**: Handle missing values and normalize data types
 
-scraper = SubnetWebsiteScraper()
-website_data = scraper.scrape_subnet_website("https://chutes.ai", "Chutes")
+## Scheduling
+
+### Cron (Linux/Mac)
+```bash
+# Run daily at 2 AM
+0 2 * * * cd /path/to/backend && python daily_update.py
+
+# Run every 6 hours
+0 */6 * * * cd /path/to/backend && python daily_update.py
 ```
 
-### SourceVerifier
-```python
-from source_verifier import SourceVerifier
+### Windows Task Scheduler
+Create a task to run `daily_update.py` at your desired interval.
 
-verifier = SourceVerifier()
-verified_sources = verifier.verify_and_merge_sources(
-    taostats_sources=taostats_data,
-    website_data=scraped_data
-)
-```
+## Data Quality & Validation
 
-### ResearchAgent
-```python
-from research_agent import ResearchAgent
+The system ensures data quality by:
+- Converting data types appropriately (netuid to int, emission to float, etc.)
+- Calculating percentage-based emissions for better comparison
+- Handling null/missing values with sensible defaults
+- Validating API response structure across multiple endpoints
+- Providing detailed logging for debugging
+- Creating daily backups to prevent data loss
 
-agent = ResearchAgent()
-research_results = await agent.conduct_research(subnet_data)
-```
+## Logging
 
-### ScoringAgent
-```python
-from scoring_agent import ScoringAgent
+All operations are logged with different levels:
+- **INFO**: Normal operations, progress updates, data summaries
+- **WARNING**: Missing data fields, API inconsistencies
+- **ERROR**: Failed operations, API errors, critical issues
 
-scorer = ScoringAgent()
-scores = await scorer.generate_scores(subnet_data, research_results)
-```
+Daily logs are saved in the `logs/` directory with date-based filenames.
 
-## 🚦 Error Handling
+## Monitoring & Health Checks
 
-The pipeline includes comprehensive error handling:
+The system provides comprehensive monitoring:
+- Data completeness reports
+- Emission percentage validation
+- Market data availability checks
+- Historical data consistency
+- API response time monitoring
 
-- **Graceful degradation**: Components can fail without stopping the entire pipeline
-- **Rate limiting**: Built-in delays to respect API limits
-- **Retry logic**: Automatic retries for transient failures
-- **Detailed logging**: Comprehensive logs for debugging
-- **Status tracking**: Each subnet's processing status is tracked
+## Troubleshooting
 
-## 📈 Performance
+### Common Issues
 
-### Benchmarks
-- **Full pipeline** (all subnets): ~2-4 hours depending on API rate limits
-- **Website scraping**: ~1-2 seconds per subnet
-- **AI research**: ~30-60 seconds per subnet (with GPT-4o-mini)
-- **AI scoring**: ~15-30 seconds per subnet
+1. **API Key Error**: Ensure `TAOSTATS_API_KEY` is set in your `.env` file
+2. **Network Errors**: Check internet connection and API endpoint availability
+3. **Permission Errors**: Ensure write permissions for `results/` and `logs/` directories
+4. **Missing Dependencies**: Run `pip install -r requirements.txt`
+5. **Data Inconsistency**: Check API response format changes
 
-### Optimization
-- Concurrent processing with configurable limits
-- Efficient caching and data persistence
-- Minimal API calls through smart batching
-- Progressive data saving (no data loss on interruption)
+### Debug Mode
 
-## 🔍 Monitoring
+For debugging, examine logs in the `logs/` directory or run individual scripts to isolate issues.
 
-Monitor pipeline execution through:
+## Performance
 
-1. **Console output**: Real-time progress updates
-2. **Log files**: Detailed execution logs (`pipeline.log`)
-3. **State tracking**: Pipeline state saved in results
-4. **Output files**: Progressive data saving at each phase
+- **Typical Runtime**: 30-60 seconds for complete data refresh
+- **Data Volume**: ~121 subnets with 16 columns each
+- **API Calls**: 3 concurrent API calls for optimal performance
+- **Storage**: ~30KB CSV, ~67KB JSON per daily snapshot
 
-## 🤝 Contributing
+## License
 
-1. Fork the repository
-2. Create a feature branch
-3. Add tests for new functionality
-4. Ensure all tests pass
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🆘 Support
-
-For issues and questions:
-1. Check the output logs for error details
-2. Verify your OpenAI API key is set correctly
-3. Ensure all dependencies are installed
-4. Run the test suite: `python test_pipeline.py`
-
-## 🗺️ Roadmap
-
-- [ ] **Enhanced scraping**: Support for more complex websites
-- [ ] **Additional AI models**: Support for Anthropic Claude, local models
-- [ ] **Real-time monitoring**: Web dashboard for pipeline status
-- [ ] **Advanced scoring**: Machine learning-based scoring models
-- [ ] **API endpoints**: REST API for on-demand analysis
-- [ ] **Scheduled runs**: Automatic daily/weekly pipeline execution
-- [ ] **Alert system**: Notifications for significant score changes 
+This project is part of the TAO Galaxy ecosystem. 

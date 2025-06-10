@@ -12,6 +12,10 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Any
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Add the backend directory to Python path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))

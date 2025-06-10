@@ -31,6 +31,13 @@ backend/.env
 backend/venv/
 backend/.venv/
 
+# Backend output and data files
+backend/results/
+backend/logs/
+backend/*.csv
+backend/*.json
+backend/daily_*.log
+
 # Prevent root-level frontend config files (keep them in frontend/ only)
 /package.json
 /package-lock.json
