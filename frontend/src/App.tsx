@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useParams, useNavigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import GalaxyView from './components/GalaxyView';
 import NewsView from './components/NewsView';
@@ -7,6 +7,21 @@ import ReportsView from './components/ReportsView';
 import LandingPage from './components/LandingPage';
 import SubnetReport from './components/SubnetReport';
 import { AppProvider } from './context/AppContext';
+
+// Wrapper component to extract URL params and pass to SubnetReport
+const SubnetReportWrapper: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  
+  // Extract subnet number from URL (e.g., "SN1" -> "1", "SN64" -> "64")
+  const subnetId = id?.replace('SN', '') || '64';
+  
+  const handleBack = () => {
+    navigate('/app');
+  };
+  
+  return <SubnetReport subnetId={subnetId} onBack={handleBack} />;
+};
 
 function App() {
   // Check if we're in development mode (localhost indicates development)
@@ -25,7 +40,7 @@ function App() {
               <Route path="/app" element={<Layout><GalaxyView /></Layout>} />
               <Route path="/app/news" element={<Layout><NewsView /></Layout>} />
               <Route path="/app/reports" element={<Layout><ReportsView /></Layout>} />
-              <Route path="/app/subnet/:id" element={<Layout><SubnetReport /></Layout>} />
+              <Route path="/app/subnet/:id" element={<Layout><SubnetReportWrapper /></Layout>} />
             </>
           )}
           

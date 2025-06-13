@@ -1,0 +1,314 @@
+/* Base styles */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --success-color: #2ecc71;
+    --warning-color: #f1c40f;
+    --danger-color: #e74c3c;
+    --light-gray: #ecf0f1;
+    --dark-gray: #7f8c8d;
+    --border-color: #ddd;
+    --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --hover-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--primary-color);
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--light-gray);
+}
+
+h1 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 2.5rem;
+}
+
+/* Rating badge styles */
+.rating-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.rating-1 { background-color: var(--danger-color); }
+.rating-2 { background-color: #e67e22; }
+.rating-3 { background-color: var(--warning-color); }
+.rating-4 { background-color: #27ae60; }
+.rating-5 { background-color: var(--success-color); }
+
+/* Executive Summary */
+.executive-summary {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.summary-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+.summary-card h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+/* Team Section */
+.team-section {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.team-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.status-badge.doxxed { background-color: var(--success-color); }
+.status-badge.anonymous { background-color: var(--warning-color); }
+
+/* Market Analysis */
+.market-analysis {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+}
+
+.market-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.market-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+/* Product & Development */
+.product-development {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+/* Financial Analysis */
+.financial-analysis {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+}
+
+.financial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.financial-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+/* Metrics Section */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.metric-card {
+    background: var(--light-gray);
+    padding: 1.5rem;
+    border-radius: 6px;
+}
+
+.percentile-bar {
+    background: #ddd;
+    height: 8px;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+}
+
+.percentile-fill {
+    background: var(--secondary-color);
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.percentile-value {
+    font-size: 0.9rem;
+    color: var(--dark-gray);
+}
+
+/* Risk Section */
+.risk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.risk-card {
+    padding: 1.5rem;
+    border-radius: 6px;
+    color: white;
+}
+
+.risk-green { background-color: var(--success-color); }
+.risk-orange { background-color: var(--warning-color); }
+.risk-red { background-color: var(--danger-color); }
+.risk-darkred { background-color: #c0392b; }
+.risk-gray { background-color: var(--dark-gray); }
+
+/* Marketing Section */
+.marketing {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+}
+
+.marketing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.marketing-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+/* Lists */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+/* Links */
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--light-gray);
+    text-align: center;
+    color: var(--dark-gray);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .summary-grid,
+    .team-grid,
+    .market-grid,
+    .product-grid,
+    .financial-grid,
+    .metrics-grid,
+    .risk-grid,
+    .marketing-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+} 

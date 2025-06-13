@@ -1,0 +1,54 @@
+<section class="financial-analysis">
+    <h2>Financial Analysis</h2>
+    
+    <div class="financial-grid">
+        <div class="financial-card">
+            <h3>Revenue Potential</h3>
+            <div class="financial-metrics">
+                <div class="metric">
+                    <h4>Assessment</h4>
+                    <p>{{financialInfo.revenuePotential}}</p>
+                </div>
+                <div class="metric">
+                    <h4>Monetization Clarity</h4>
+                    <p>{{financialInfo.monetizationClarity}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="financial-card">
+            <h3>Business Model</h3>
+            <div class="business-metrics">
+                <div class="metric">
+                    <h4>Sustainability</h4>
+                    <p>{{financialInfo.sustainability}}</p>
+                </div>
+                <div class="metric">
+                    <h4>Market Fit</h4>
+                    <p>{{financialInfo.marketFit}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="financial-card">
+            <h3>Investment Timeline</h3>
+            <div class="timeline-info">
+                <p class="timeline">{{recommendation.timeline}}</p>
+                
+                <h4>Key Milestones</h4>
+                <ul class="milestone-list">
+                    {{#each recommendation.milestones}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+
+                <h4>Exit Triggers</h4>
+                <ul class="exit-list">
+                    {{#each recommendation.exitTriggers}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section> 

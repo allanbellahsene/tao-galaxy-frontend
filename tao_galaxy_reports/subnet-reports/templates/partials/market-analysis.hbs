@@ -1,0 +1,59 @@
+<section class="market-analysis">
+    <h2>Market Analysis</h2>
+    
+    <div class="market-grid">
+        <div class="market-card problem">
+            <h3>Problem & Solution</h3>
+            <div class="problem-content">
+                <h4>Real World Problem</h4>
+                <p>{{problemAnalysis.realWorldProblem}}</p>
+                
+                <h4>Problem Description</h4>
+                <p>{{problemAnalysis.problemDescription}}</p>
+                
+                <h4>Estimated TAM</h4>
+                <p>{{problemAnalysis.tam}}</p>
+            </div>
+        </div>
+
+        <div class="market-card opportunity">
+            <h3>Market Opportunity</h3>
+            <div class="opportunity-metrics">
+                <div class="metric">
+                    <h4>Market Size</h4>
+                    <p>{{marketAnalysis.sizeAssessment}}</p>
+                </div>
+                <div class="metric">
+                    <h4>Market Timing</h4>
+                    <p>{{marketAnalysis.timingAssessment}}</p>
+                </div>
+                <div class="metric">
+                    <h4>Competitive Position</h4>
+                    <p>{{marketAnalysis.competitivePosition}}</p>
+                </div>
+                <div class="metric">
+                    <h4>Moat Assessment</h4>
+                    <p>{{marketAnalysis.moatAssessment}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="market-card competition">
+            <h3>Competitive Landscape</h3>
+            <div class="competition-content">
+                <h4>Main Competitors</h4>
+                <ul>
+                    {{#each problemAnalysis.competitors}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+
+                <h4>Competitive Advantage</h4>
+                <p>{{problemAnalysis.competitiveAdvantage}}</p>
+
+                <h4>Path to Mass Adoption</h4>
+                <p>{{problemAnalysis.pathToAdoption}}</p>
+            </div>
+        </div>
+    </div>
+</section> 

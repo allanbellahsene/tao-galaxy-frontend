@@ -1,50 +1,67 @@
-import React from 'react';
-import { FileText, Filter, Download, ArrowUpRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { FileText, Filter, Download, ArrowUpRight, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getAvailableReports } from '../../api/subnetReport';
+
+interface Report {
+  id: string;
+  title: string;
+  description: string;
+  type: string;
+  date: string;
+  category: string;
+  pages: number;
+  premium: boolean;
+}
 
 const ReportsView: React.FC = () => {
-  const reports = [
-    {
-      id: 'genai-q1-2025',
-      title: 'GenAI Subnet Analysis Q1 2025',
-      description: 'Comprehensive analysis of GenAI subnet performance, market trends, and future outlook.',
-      type: 'Quarterly Report',
-      date: 'March 15, 2025',
-      category: 'GenAI',
-      pages: 42,
-      premium: true
-    },
-    {
-      id: 'defi-market-report',
-      title: 'DeFi Market Report: PTN & Sturdy Analysis',
-      description: 'Deep dive into DeFi subnet metrics, trading volumes, and ecosystem growth.',
-      type: 'Market Analysis',
-      date: 'March 10, 2025',
-      category: 'DeFi',
-      pages: 35,
-      premium: true
-    },
-    {
-      id: 'infra-performance',
-      title: 'Infrastructure Subnet Performance Review',
-      description: 'Technical analysis of infrastructure subnet metrics and optimization opportunities.',
-      type: 'Technical Report',
-      date: 'March 5, 2025',
-      category: 'Infrastructure',
-      pages: 28,
-      premium: false
-    },
-    {
-      id: 'training-landscape',
-      title: 'Training Subnet Landscape 2025',
-      description: 'Overview of training subnet capabilities, market share, and competitive analysis.',
-      type: 'Industry Report',
-      date: 'February 28, 2025',
-      category: 'Training',
-      pages: 31,
-      premium: true
-    }
-  ];
+  const [reports, setReports] = useState<Report[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadReports = async () => {
+      try {
+        setLoading(true);
+        const data = await getAvailableReports();
+        setReports(data);
+      } catch (err) {
+        setError('Failed to load reports');
+        console.error('Error loading reports:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadReports();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-[calc(100vh-64px)] p-6 flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-indigo-500" />
+          <p className="text-slate-400">Loading reports...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-[calc(100vh-64px)] p-6 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-red-400 mb-4">{error}</p>
+          <button 
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-[calc(100vh-64px)] p-6">
@@ -53,7 +70,7 @@ const ReportsView: React.FC = () => {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-2xl font-semibold mb-2">Subnet Reports</h2>
-            <p className="text-slate-400">In-depth analysis and insights for Bittensor subnets</p>
+            <p className="text-slate-400">Institutional grade analysis and insights for Bittensor subnets</p>
           </div>
           <div className="flex items-center gap-3">
             <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors duration-200">

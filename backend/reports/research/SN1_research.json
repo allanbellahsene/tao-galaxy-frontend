@@ -1,0 +1,51 @@
+{
+    "I_BASIC_SUBNET_INFORMATION": {
+      "Subnet_Name": "Apex",
+      "Subnet_ID": "1",
+      "Subnet_Mission_One_Sentence": "Produce state-of-the-art open-source conversational intelligence through decentralized research and competition."
+    },
+    "II_TEAM": {
+      "Team_Doxxed": "Yes",
+      "Founding_Team": "Dr. Steffen Cruz (Macrocrux), Will Squires, Felix Quinque, Dmytro Bobrenko, Rich Wardle, Kalei Brady",
+      "Founding_Team_Background": "Dr. Steffen Cruz – former Bittensor CTO; Will Squires – commercial/startup background; Felix Quinque – reasoning systems; Dmytro Bobrenko – scoring/validation; Rich Wardle – R&D; Kalei Brady – GAN-based model development & community lead",
+      "Affiliated_Organizations": "Macrocosmos"
+    },
+    "III_PROBLEM_SOLVING": {
+      "Mission": "To lead decentralized progress in large language models and conversational AI via an open, incentive-driven subnet on Bittensor.",
+      "Real_World_Problem": "Lack of open, decentralized, and high-performing alternatives to proprietary LLMs from centralized entities like OpenAI or Anthropic.",
+      "Problem_Description": "Most advanced LLMs are closed-source, centralized, and controlled by large corporations, limiting access, customization, and innovation. SN1 aims to provide an open, decentralized ecosystem for building competitive LLM agents.",
+      "Estimated_TAM": "TAM for AI-powered conversational agents and LLMs is projected to exceed $100B by 2030 (based on market estimates for generative AI and AI SaaS platforms).",
+      "Path_to_Mass_Adoption": "Yes, through developer APIs, third-party integration (e.g. via MCP, Squad.ai), and UX interfaces like Apex Chat.",
+      "Key_Challenges": "Competing with well-funded proprietary models; ensuring inference quality; onboarding users and developers; sustaining infrastructure costs.",
+      "Main_Competitors_Non_Web3": "OpenAI (ChatGPT), Anthropic (Claude), Google DeepMind (Gemini), Meta AI (LLaMA-based tools)",
+      "Competitive_Advantage": "Decentralized, permissionless R&D with incentive-aligned mining and validation; community-driven improvements; open infrastructure.",
+      "Subnet_Necessity": "Yes – incentivized validator-miner architecture is uniquely suited to decentralized model improvement and ensures quality via peer competition.",
+      "Vision_Difference": "Focus on long-term open-source decentralization and collaborative alignment, unlike centralized LLM companies prioritizing profit and data control."
+    },
+    "IV_REVENUE_PRODUCT": {
+      "Products_Revenue_Streams": "No direct revenue yet; several user-facing tools like Apex Chat, Mission Commander, and MCP could be monetized.",
+      "Path_to_Monetization": "Yes – through developer API usage, enterprise integrations, or SaaS-like recurring services.",
+      "Product_Development_Phase": "Early to mid – tools exist and are used by ecosystem actors but not widely monetized yet.",
+      "Product_Generating_Revenue": "No",
+      "Product_Lifecycle_Phase": "Growth / Expansion"
+    },
+    "V_MARKETING": {
+      "Main_Communication_Channels": "Twitter (X), Substack, Discord",
+      "Communication_Frequency": "High – active weekly posts and detailed newsletter updates",
+      "Communication_Effort": "Strong – in-depth posts, developer insights, and announcements",
+      "Community_Responsiveness": "High – Discord managed by team members and ongoing interaction"
+    },
+    "VI_DEVELOPMENT": {
+      "Codebase_Open_Source": "Yes",
+      "Main_Repository_Link": "https://github.com/macrocosm-os/apex",
+      "Recent_Update_Activity": "Frequent – over 1,300 commits in past year; active as of June 2025",
+      "Active_Contributors_Last_3_Months": "~18",
+      "Professional_Development_Practices": "Yes – version control, regular updates, architecture rewrites",
+      "Technical_Roadmap_Published": "Yes – documented across releases and Substack",
+      "Technical_Documents_Status": "Available and regularly updated",
+      "Recent_Feature_Releases": "Yes – e.g., DeepResearcher, Chain-of-Thought inference, MCP integration",
+      "Third_Party_Developer_Activity": "Yes – integrations with Squad.ai (Rayon Labs) and others"
+    }
+  }
+  
+  

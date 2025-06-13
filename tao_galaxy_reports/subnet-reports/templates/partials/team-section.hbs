@@ -1,0 +1,32 @@
+<section class="team-section">
+    <h2>Team & Governance</h2>
+    <div class="team-grid">
+        <div class="team-card">
+            <h3>Team Status</h3>
+            <div class="status-badge {{#if teamInfo.isDoxxed}}doxxed{{else}}anonymous{{/if}}">
+                {{#if teamInfo.isDoxxed}}Doxxed Team{{else}}Anonymous Team{{/if}}
+            </div>
+        </div>
+
+        <div class="team-card">
+            <h3>Founding Team</h3>
+            <ul class="team-list">
+                {{#each teamInfo.foundingTeam}}
+                <li>{{this}}</li>
+                {{/each}}
+            </ul>
+        </div>
+
+        <div class="team-card">
+            <h3>Team Background</h3>
+            <p>{{teamInfo.teamBackground}}</p>
+        </div>
+
+        {{#if teamInfo.affiliatedOrgs}}
+        <div class="team-card">
+            <h3>Affiliated Organizations</h3>
+            <p>{{teamInfo.affiliatedOrgs}}</p>
+        </div>
+        {{/if}}
+    </div>
+</section> 

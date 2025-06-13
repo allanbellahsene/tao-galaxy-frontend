@@ -1,0 +1,68 @@
+{
+    "I_INVESTMENT_THESIS": {
+      "Overall_Investment_Rating": "Buy (4/5) – Strong revenue traction and technical differentiation offset by competitive and anonymity risks",
+      "Investment_Thesis_Summary": "Chutes offers a cost-efficient, decentralized serverless AI compute platform with proven revenue streams and enterprise‐grade deployment, positioning it to capture significant share of a $22B+ TAM. Its developer-friendly APIs, 85% cost advantage, and active scaling demonstrate strong execution, though incumbent competition and partial team anonymity warrant caution.",
+      "Key_Investment_Strengths": [
+        "Established revenue streams from compute usage, API fees, and $40/mo Squad subscriptions (Growth/Scaling phase)",
+        "85% cost reduction vs. AWS Lambda and fully decentralized infrastructure with auto-staking incentives",
+        "Open-source, professionally managed codebase with hundreds of GPUs processing 5bn+ tokens/day"
+      ],
+      "Key_Investment_Risks": [
+        "Strong competition from AWS, Google, and Azure functions dominating PaaS market share",
+        "Partially anonymous team increases execution and governance uncertainty",
+        "Developer adoption friction due to blockchain wallet requirements and education needs"
+      ]
+    },
+    
+    "II_MARKET_OPPORTUNITY": {
+      "Market_Size_Assessment": "Excellent – Serverless compute TAM of $21.9B growing to $44.7–90.9B by 2029–33 implies substantial upside",
+      "Market_Timing_Assessment": "Good – Decentralized AI compute is gaining traction but still early relative to established cloud providers",
+      "Competitive_Position_Strength": "Strong – 85% cost advantage and decentralized token incentives provide a clear edge versus centralized incumbents",
+      "Moat_Assessment": "Moderate – Economic incentives, open-source community and tokenomics create stickiness, but non-blockchain solutions can replicate core features"
+    },
+    
+    "III_EXECUTION_CAPABILITY": {
+      "Team_Quality_Rating": "Good – Recognized ecosystem figures (Namoray, BonOliver, Jon Durbin) but partial anonymity limits full due diligence",
+      "Development_Momentum_Rating": "High – Regular multi-repo updates, professional CI/testing practices, recent GPU validation and Kubernetes improvements",
+      "Community_Engagement_Rating": "Average – Strong GitHub activity but limited broader channel presence (no dedicated Discord/Telegram)",
+      "Technical_Innovation_Rating": "Innovative – AI-optimized, serverless on decentralized infrastructure with auto-staking and revenue-sharing differentiators"
+    },
+    
+    "IV_FINANCIAL_VIABILITY": {
+      "Revenue_Potential_Assessment": "High – Diverse streams from compute micropayments, subscriptions, API fees, and platform integrations",
+      "Monetization_Clarity_Rating": "Clear – TAO micropayments and subscription pricing already in place with growing user base",
+      "Business_Model_Sustainability": "Sustainable – Recurring subscription and usage fees backed by developer ecosystem and tokenomics",
+      "Product_Market_Fit_Stage": "Achieved – Production-scale deployment with hundreds of GPUs and billions of tokens processed daily"
+    },
+    
+    "V_RISK_ASSESSMENT": {
+      "Technical_Risk_Level": "Medium – Robust dev practices but decentralized reliability and wallet integration pose challenges",
+      "Market_Risk_Level": "Medium – Large TAM but intense competition from well-capitalized incumbents",
+      "Team_Risk_Level": "Medium – Experienced core founders but partial anonymity elevates governance/execution uncertainty",
+      "Regulatory_Risk_Level": "Low – Serverless compute regulation is minimal; blockchain tokenomics may incur future compliance scrutiny",
+      "Competition_Risk_Level": "High – AWS/GCP/Azure dominance and rapid innovation in centralized PaaS threaten share"
+    },
+    
+    "VI_COMPARATIVE_METRICS": {
+      "Development_Activity_Percentile": "Top 25% – Regular multi-repo contributions and professional tooling exceed average subnet activity",
+      "Team_Quality_Percentile": "Top 50% – Known ecosystem leaders but anonymity prevents elite-tier confidence",
+      "Market_Opportunity_Percentile": "Top 25% – Addresses a large and growing serverless computing market",
+      "Innovation_Level_Percentile": "Top 25% – Unique decentralized, token-incentivized serverless AI offering"
+    },
+    
+    "VII_INVESTMENT_RECOMMENDATION": {
+      "Recommended_Allocation_Percentage": "5-10% – Core portfolio holding to capture growth while balancing competitive risks",
+      "Investment_Timeline": "Medium-term 6-18mo – Time needed to drive adoption, expand partnerships, and demonstrate on-chain reliability",
+      "Key_Milestones_to_Watch": [
+        "Release of a detailed public technical roadmap and governance model",
+        "Partnerships or integrations with major AI frameworks beyond DeepSeek/Mistral",
+        "Sustained growth in daily compute volume and Squad subscription metrics"
+      ],
+      "Exit_Triggers": [
+        "Failure to maintain ≥85% cost advantage vs. AWS leading to pricing erosion",
+        "Major security or reliability incident undermining decentralized performance",
+        "Key founders departing or shift to anonymity increasing governance risk"
+      ]
+    }
+  }
+  

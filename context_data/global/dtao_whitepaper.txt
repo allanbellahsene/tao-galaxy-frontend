@@ -1,0 +1,466 @@
+.
+Dynamic TAO
+BIT001
+Yuma Rao Dr. Nick 0xcacti
+In this document, we present Dynamic TAO (DTAO): a market-driven mechanism designed to replace Bittensor’s current emission allocation model. In particular, Dynamic TAO derives emission values from the market prices of subnet-specific tokens that trade against TAO on Constant Product AMMs. This fundamentally transforms the existing validator-weighting system. More specifically, by introducing AMM-based emission allocation, we extend the subnet valuation system beyond Bittensor’s validator set to the rest of the Bittensor ecosystem, including miners and speculators. By replacing the current subnet valuation model with an open market, we make the subnet valuation process more efficient, increase coordination costs for malicious participants aiming to manipulate emissions, and eliminate the apathetic oligarchic voting system.
+This document will be presented in five sections: • Section 1: Motivation
+• Section 2: What is DTAO
+• Section 3: Technical Overview
+• Section 4: A Mathematical Model • Section 5: Appendix
+1
+
+————— Section 1: Motivation —————
+————— Section 2: What is DTAO ————–
+At its core, Dynamic TAO (DTAO) is an upgrade to the Bittensor chain that replaces the previous emission logic with an intelligent, market-driven mechanism that can be used to determine token emissions. Operationally, we introduce subnet tokens (which we will informally refer to as Alpha1, Alpha2, Alpha3, etc.) through which miners, validators, and subnet owners will earn rewards. In so far as Bittensor enables the decentralized production and distribution of digital commodities, subnet tokens serve as the medium through which the network intelligently values these commodities. To facilitate this valuation, we also introduce subnet pools, which are Constant Product AMMs (described in details in section 3.1) through which users can stake TAO to receive subnet tokens and vice versa. The price discovery that occurs in these subnet pools functions as a view into how the Bittensor network values each subnet. Critically, this is exactly what we want, i.e. a scalable mechanism for valuing subnets that does not rely on a priviledged, corruptible set of validators. Specifically, we will use the subnet token prices to guide the emission process.
+  Bittensor incentivizes the production and distribution of digital commodities by emitting newly minted TAO in each block to a set of subnets. This TAO is distributed to the subnets according to what is collectively referred to as the emission vector E → [E1, E2, ..., En]. Within each subnet, this emission is divided across three participant groups in the corresponding proportion:
+• Validators (41%)
+• Miners (41%)
+• Subnet Owners (18%)
+The details of the calculation are not important here, but roughly speaking, the emission vector is determined by the following calculation (where i stands for the ith subnet):
+􏰎th 􏰏􏰎th 􏰏 E = 􏰁 j validator’s j validator’s favorability
+i
+staked TAO weight of ith subnet
+j
+The driving term in the above equation is the validator’s favorability towards each subnet. Thus, these favorabilities essentially constitute a form of voting. Perhaps ideally, the weight vector resulting from this voting process would reward the subnets that are the most deserving, or those with the highest capital requirements. Problematically, the current system relies entirely on validators to manually assess and determine subnet value through their voting power. This creates a fundamental scaling problem: as the number of subnets grows, validators become increasingly unable to thoroughly evaluate each subnet’s contribution to the network. The sheer volume of subnets requiring assessment often leads to validator apathy, where thorough evaluation becomes practically impossible.
+This apathy can be further exacerbated by the lack of any meaningful consequences for validators who fail to maintain active and accurate weighting patterns. Indeed, the system provides no direct incentive for validators to regularly update their weight assignments or carefully consider their voting decisions. Even worse, the system incentivizes behavior that need not align with any ideal hypothetical weight distribution across subnets. As an example of a trivial way of manipulating the mechanism, validators may put more weight on subnets they actively validate upon in order boost their rewards (even if these are suboptimal subnets). Indeed, it would be merely altruistic for validators to provide weight to subnets on which they do not actively validate.
+Another form of manipulation involves subnets owners offering revenue sharing agreements or other inducements to validators in exchange for larger weights on their subnet. Insidiously, this is a win-win scenario for the validators and subnet owners.
+Fundamentally, the current incentive mechanism, with all of its flaws, can lead to less deserving subnets being rewarded in place of the more deserving subnets that would in fact accrue greater value to the Bittensor ecosystem. This is the motivation for introducing DTAO.
+Figure 1: The Bittensor Subnets.
+DTAO represents a fundamental shift towards true market democracy in the valuation of subnets. Where the previous system concentrated power in the hands of a few validators, DTAO opens participation to anyone willing to stake TAO in subnet pools. This broader participation not only makes the system more resistant to manipulation (try bribing a vast number of market participants for an extended period of time) but also ensures that subnet valuations reflect the collective wisdom of the market rather than the potentially biased views of a small group. Moreover, this market-driven approach scales naturally with network growth - as more subnets are added, the market simply expands to accommodate them, without degrading the quality of price discovery. Of course, this upgrade leads to a number of downstream changes, the core of which are discussed in detail in section (3.1) - (3.5), and the rest discussed in the appendix.
+ 2
+
+.
+———— Section 3: Technical Overview ————
+Section 3.0: A Look at the Components
+In this section, we will look at some of the technical aspects of the DTAO system in a little more detail. There are many components to go over, so we will divide this section into five subsections, according to the following:
+(3.1) the AMM governing the subnet pools
+(3.2) the way in which new liquidity is injected
+(3.3) how TAO may be staked/unstaked from a subnet (3.4) the way that emissions are issued to users
+(3.5) the halving schedule
+Additionally, there are several (less immediately relevant) technical sections reserved for the appendix.
+Section 3.1: Subnet AMMs
+Each subnet has its own liquidity pool allowing for swaps (and hence for price discovery) between the subnet-specific tokens and TAO. These pools will conduct swaps using the standard constant product AMM, and for this reason, we include a quick reminder of the relevant mechanics.
+In a constant product AMM, we consider a liquidity pool containing two types of tokens, and we denote the total reserves of each by x and y. Swaps are conducted in a way so as to maintain the product of the token reserves. So, for a swap that changes the reserves by amounts (∆x, ∆y), we must satisfy (x+∆x)(y+∆y) = xy. This results in the set of viable states existing on a hyperbola given by the equation xy=L2, for some liquidity constant L. Moreover, it is easily shown that the spot price p (i.e. the exchange rate ∆y/∆x, for small values) is given by the ratio of the reserve amounts p=y/x. These relationships, in turn, allow us to write the reserves as x = L/√p and y = L√p.
+New liquidity can be added to a constant product pool in any number of ways. However, if we wish to maintain the current spot price, then the added amounts (∆x,∆y) must, themselves, be at the ratio of the current spot price. In other words, if we have y/x = p and ∆y/∆x = p, then we will also have (y+∆y)/(x+∆x) = p.
+For the remainder of this document, the subscript ‘i’ will be reserved for the ith subnet, and we will denote the subnet pool reserves by the following:
+αi = amount of subnet token in the pool (1)
+Section 3.2: Injections
+At each block, an amount of Alpha and TAO tokens are to be added to the pool reserves. We call this an injection, and we denote these injection quantities by (∆αi,∆τi). These injection amounts are meant to reflect the relative performance of the subnets. There is no correct way to do this, but it is natural to imagine the subnet tokens as being speculative instruments, such that their prices correlate with subnet performances. We make the choice to define the subnet emissions along this line of reasoning.
+To be precise, we fix a certain amount of total TAO to be emitted at each block, denoted ∆τ, and we begin with the idea that this quantity ∆τ should be divided up among the subnets in proportion to their Alpha prices. In other words, the TAO injection for the ith subnet (∆τi) would be given by the following:
+pi
+∆τi = 􏰀 p × ∆τ (4)
+jj
+When doing the injection, we don’t want to artificially alter the subnet pool price. In other words, we should choose the corresponding Alpha injection (∆αi) so that it maintains the ratio given in expression (3). Specifically, this means that we must have the relation ∆αi = ∆τi /pi , which then results in the following:
+     1
+∆αi = 􏰀 p × ∆τ
+jj
+(5)
+ τi = amount of TAO token in the pool
+(2)
+We note two immediate consequences from these formulas: 􏰀i∆τi = ∆τ (8)
+∆αi ≤ ∆αi (9)
+Thus, we have firm upper bounds on the emission amounts. The value of ∆τ is initialized to be 1, to maintain the current emission schedule of 1 TAO per block. Similarly for subnet tokens, we will take ∆αi = 1 when each subnet is initialized, though all of these values are subject to halve
+according to the halving schedule (again, see section 3.5). It should be noted that the ‘min’ statement in (7) has the following effect: when the sum of all prices drops below a subnet-specific threshold (i.e if 􏰀j pj < ∆τ/∆αi), then less Alpha is emitted than would be needed to maintain pool price, and this drives the price of the pool up. This will be critical feature in the early days of low liquidity
+when pool prices are more sensitive to movement.
+Indeed, we will sometimes informally refer to the subnet token simply as ‘Alpha’. Moreover, we let pi denote the subnet token price denominated in TAO (i.e. the conversion from Alpha to TAO value). Then, from our discussion of the constant product AMM, we may write
+pi = τi/αi, (3)
+i.e the subnet token price pi (price of Alpha in terms of TAO) is the ratio of subnet pool reserve quantities.
+3
+However, we will want to modify this formula based on the following observation; if the sum of prices 􏰀pj becomes small, the alpha injection ∆αi can grow without bound. In order to prevent runaway inflation of the subnet tokens, we modify formula (5) by putting a cap on the amount of Alpha emitted, which we will denote by ∆αi (note that this cap depends on the particular subnet i, depending on where the subnet is in its halving schedule, see section 3.5). Our injection formulas can then be summarized as follows:
+pi
+∆τi = 􏰀 p ∆τ (6)
+ jj
+􏰒∆τ 􏰓
+∆αi =min 􏰀 p ,∆αi (7) jj
+ 
+. Our injection formulas from (6)-(7) are presented in a way that is meant to be both readable and mathematically motivated. However, the way in which these quantities are computed in code is actually slightly different (while
+of course producing the same values). For the interested reader, we present the pseudo-code below. The variables tao_in and alpha_in represent the amount of tokens being injected into the subnet pool reserves, while the variable alpha_out represents the alpha to be emitted to the subnets, specifically as miner incentives and validator dividends. (One may note, the ‘inject’ function not only injects liquidity into subnet pools, but it also delivers the
+Section 3.4: Subnet Emissions
+Whereas validators, miners, and subnet owners were previously rewarded for their participation in the network through TAO, they will now be rewarded in Alpha. To accomplish this, we will have an additional quantity of Alpha, denoted ∆αi′ that is emitted at each block, and this quantity is to be divided up and distributed to users. For simplicity, we take ∆αi′ to be equal to the value ∆αi (i.e. the maximum amount of Alpha injected into the pool per block, as previously defined):
+∆αi′ = ∆αi (10)
+ alpha_out to the relevant parties.)
+Then the precise way in which we divide this quantity up can be described as follows:
+ 1 2 3 4 5 6 7 8 9
+10 11 12
+sum_of_prices = sum(subnet_prices)
+•
+•
+The Alpha emitted ∆αi′ is divided up into three pieces, according to the ratio 41:41:18.
+– 18% go to subnet owners – 41% go to miners
+– 41% go to validators
+Next, we consider the the following quantities:
+– αio = the alpha outstanding is the total supply of Alpha held by users (not pool reserves)
+– τ0 = the total TAO staked in the root subnet
+– γ = a freely chosen parameter that we call the
+tao weight, to be discussed momentarily
+With these quantities, we define something called the
+root proportion, denoted by r, and defined as
+ri = γτ0 (11)
+We use this ratio ri to split the validator dividends into two separate portions:
+– the fraction ri is distributed to root stakers
+– the fraction (1-ri) is given to subnet validators
+for
+subnet in subnets:
+tao_in = subnet.price/sum_of_prices alpha_in = tao_in/subnet.price
+if alpha_in > max_alpha_emission:
+alpha_in = max_alpha_emission alpha_out = max_alpha_emission subnet.inject(
+tao_in , alpha_in , alpha_out
+)
+Figure 1: Injection pseudo-code
+Lastly, it should be noted that when using the injection formulas in practice, we will actually use the exponentially weighted moving average (EMA) in place of the actual subnet pool price pi. This is done for several reasons:
+• to discourage potential malicious attacks that can operate through price manipulation
+• to smoothen out otherwise volatile price movements that may occur for low liquidity pools.
+Section 3.3: Staking/Unstaking
+If a user swaps some TAO on a subnet pool to obtain some subnet token (Alpha), then we say that the user stakes the TAO to the subnet. Similarly, if a user redeems their subnet token by swapping it for TAO, we say that the user unstakes TAO. Thus, the mechanics of staking and unstaking are relatively straightforward, as the rules for a constant product AMM are well established.
+It should be noted, however, that different subnet tokens cannot be exchanged directly with each other. For example, if a user wishes to exchange some subnet token ∆αi for other subnet token ∆αj, they must first unstake some TAO from subnet i (thereby relinquishing their ∆αi) and then they must stake that TAO on subnet j to obtain the desired amount ∆αj.
+Lastly, it is worth noting that, unlike in typical AMMs, there will be no fees taken on the swaps, as there will be no liquidity providers to claim such fees. In other words, all liquidity of Alpha and TAO tokens is provided by the emission process.
+γ τ 0 + α io
+  4
+•
+This process can be summarized in the following figure:
+  Figure 2: Flow chart of emission quantities
+
+.
+Now, one may wonder how we actually choose the value
+of this tao weight parameter. Generally speaking, the tao weight is meant to help smoothen the transition to the current DTAO design. In particular, there are a few guiding principles and motivations behind this parameter:
+• We want to eventually transition from the current economic consensus to one fully governed by Alpha, but there are dangers in transitioning too quickly. In particular, the shifting supply and relatively low liquidity of the subnet tokens will drastically change in the first few months, and this can severely upset the existing consensus. However, with the tao weight parameter, we can slow this transition by diverting emissions to the root network initially, and we can keep the economic weight from shifting too fast. In the following figure, we plot the percent ownership of Alpha held by the root validators over time. This quantity naturally decreases over time, but the steepness of the curve varies depending on the specific chosen value of the tao weight:
+Figure 4: APY for early Alpha holders v.s. tao weight
+Section 3.5: Halving Schedule
+The TAO halving schedule will remain unchanged from the previously established halving schedule. Specifically, the amount of TAO emitted per block is always equal to the quantity ∆τ, and this quantity is subject to halve every time the accumulated TAO supply reaches certain supply thresholds. This cause the emission rate to halve roughly every four years (the details are provided in section 5.2).
+New Alpha tokens will also follow the same halving schedule, with the emission amount ∆αi being halved when reaching the same supply thresholds as TAO does (see appendix). Of course, the growth rate of Alpha supply can be up to double the value of ∆αi, due to the fact that we inject some Alpha for the pool reserves (which is less than or equal to ∆αi) as well as the emission amount (equal to ∆αi) for the rewards. Thus, while the growth rate of Alpha supply will be faster in time than that of the TAO supply, all halving events never the less occur at the same set of supply thresholds, and therefore every token supply approaches the same asymptotic value: 21,000,000. The following figure demonstrates this:
+   Figure 3: Root percent ownership of Alpha over time
+• Though we do not discuss the consensus mechanism here, we note that the root proportion r is also used to blend the stake weight (used in Yuma consensus) between TAO and Alpha. By tuning the value of the tao weight, we effectively have some control over the period where consensus transitions from being TAO dominated to being Alpha dominated. For example, if we instantly transition to a state of relying entirely on the Alpha stake for consensus, then as pools launch with low initial liquidity, it would be trivial for validators to try to quickly acquire Alpha and manipulate consensus on a given subnet. Thus, the tao weight allows us to prevent situations like this.
+• The tao weight can prevent early Alpha holders from receiving absurdly high APYs. For example, note that if the tao weight is equal to zero (γ=0), then expression (12) tells us that the root proportion will also be zero (r=0). Thus, from the flow chart above, it is clear that root stakers who do not own Alpha will receive no dividends at all in this case. One can easily work out that this results in a situation where the initial Alpha holders receive runaway dividends with shockingly high APYs (see figure 4).
+Figure 5: TAO and Alpha supply growth over time
+Lastly, we note that as a consequence of the tapering rate of token supply growth, subnets that launch sooner in time will benefit from periods of faster liquidity growth in their subnet pools. Conversely, subnets that launch later in time must be content with slower liquidity growth.
+ 5
+
+——— Section 4: Mathematical Toy Model ——–
+Section 4.2: Three assumptions/approximations
+For our first simplifying assumption, we will assume that the prices {pi(t)} each evolve according to Geometric Brownian Motion (GBM). Specifically, this means that for each subnet, we specify
+• an initial price pi(0)
+• a drift parameter μi
+• a volatility parameter σi
+and then the price pi(t) at time t will be distributed with the following log-normal probability density:
+1 1 􏰔−􏰆 log[p/pi(0)]-μit􏰇2 􏰕
+pi(t) ∼ 􏰛2πσ2t p exp 2σ2t (24)
+  In this section, we construct a simple mathematical toy model of the DTAO system, from which we may extract useful formulas for long term predictions. We will begin by establishing the governing rules for the model. We then make a few simplifying assumptions/approximations, and arrive at some useful formulas. Finally, we compare these formulas to some numerical simulations.
+Section 4.1: Establishing a Mathematical Model
+To set the stage, we will assume that we have N-many subnets (indexed by ‘i’) with constant product AMMs to swap between alpha and tao tokens. The token reserve quantities are denoted by {αi,τi}, as functions of time:
+τi(t) = TAO reserves at time t (ith subnet) (12)
+i
+i
+    αi(t) = Alpha reserves at time t (ith subnet)
+As constant product pools, they obey the following:
+(13)
+(for 0 < p < ∞)
+Now, for a given set of parameters {pi (0), μi , σi }Ni , our first
+goal will be to compute the expected values of (αi∗,τi∗), i.e the cumulative injected tokens, up to some time T :
+pi (t) = τi (t)/αi (t), 􏰛i
+(14)
+E[τ∗(T)] = expected cumulative TAO injected (25) E[αi∗(T )] = expected cumulative Alpha injected (26)
+To compute these, we accept the following approximation:
+we suppose the sums in (19)-(20) can be approximated
+as integrals. For example, with the expected cumulative
+Alpha in (27), we develop as follows:
+􏰄T􏰅 E􏰈α∗(T)􏰉=E 􏰀 ∆α(t)
+ Li(t) = αi(t)τi(t), (15)
+where pi is the price of Alpha in term of TAO, and Li is the liquidity scale factor for the pool. At regular intervals (blocks), the reserves update according to section 3.2:
+pi (t)
+∆τi(t) = 􏰀 p (t)∆τ (16)
+ j j 􏰖􏰗iti
+∆τ 􏰀T
+∆αi(t) = min 􏰀 p (t), ∆αi (17) = t E [∆αi(t)]
+jjT􏰄􏰅
+The pool reserves are altered anytime a swap is executed, and these swaps then determine the pool price. However, for our mathematical model, we will suppose that the price tra jectories pi (t) are given (at least, probabilistically), and thus the pool reserves are determined implicitly. In particular, we note that while the liquidity factor Li is given by (16), it will also be determined simply by the cumulative amount of tokens injected. This is because swaps do not alter the liquidity constant (indeed, that is the whole point of the constant product), and so only the injection can determine L. Thus, we define the cumulative token injections (αi∗, τi∗) by the following:
+τi∗ (t) := 􏰀ts ∆τi (s) (cumulative injected tao) (18) αi∗ (t) := 􏰀ts ∆αi (s) (cumulative injected alpha) (19)
+With these defined, we can then restate L: 􏰜
+Li (t) = 􏰈αi (0) + αi∗ (t)􏰉􏰈τi (0) + τi∗ (t)􏰉 (20) Finally, we define one more bit of notation for convenience.
+Specifically, we denote the sum of prices by S(t):
+S(t) := 􏰁 pi(t) (21)
+i
+ = 􏰀t E min{∆τ/S(t),∆αi}
+􏰀T 􏰂 􏰒(∆τ/∆t) 􏰓􏰃
+= t E min S(t) ,(∆αi/∆t) ∆t
+  Then our deltas in (17)-(18) can be rewritten as ∆τ
+􏰘T􏰄 􏰅
+≈ E min{∆τ/S(t),∆αi} dt (27)
+0
+This approximation should be reasonable since the sums happen over frequently occurring blocks, and are hence nearly continuous, while the rates (∆τ /∆t) and (∆αi /∆t) are constant and can simply be replaced with ∆τi and ∆αi. Next, we approximate the expected cumulative TAO:
+􏰘T􏰄 􏰅
+E[τi∗(T)]≈ E pi(t)/S(t)∆τ dt (28)
+0
+Unfortunately, the appearance S(t) in the integrand of (28) and (29) makes them exceedingly difficult to calculate. In particular, S(t) depends on the entire set of prices {pi(t)}, and so the expectation E[·] must be taken over the joint probability distribution of all of the N-many price paths. Instead, we make our next approximation; we will replace S(t) with its expectation E[S(t)], denoted by S(t):
+􏰄􏰀 􏰅 􏰀 􏰈 􏰉
+S(t) := E[S(t)] = E ipi(t) = iE pi(t) (29) The substitution S(t) ≈ S(t) is not completely unjustified;
+S(t) is a sum of approximately normal random variables, and by the generalized Central Limit Theorem, it will also be approximately normally distributed around its mean, and with a relatively small variance over reasonably small time scales. Indeed, we will ultimately check it numerically.
+∆τi(t) = pi(t)S(t) (22) 􏰒∆τ 􏰓
+∆αi(t) = min S(t), ∆αi (23) which will be slightly more convenient later on.
+6
+
+Now, to compute the expectation of each price E􏰈pi(t)􏰉, we use the probability density given in (25).
+Our final approximation will be made in an effort to compute the expected market cap for each subnet pool. When denominated in tao, the market cap of the ith subnet pool, denoted Mi(t) is given by
+􏰂􏰃
+Mi (t) = total Alpha supply ×􏰈price􏰉 (42)
+at time t
+The price at time t is of course given by pi(t). To calculate
+the total supply, we note that all the Alpha that can ever exist must come from the emissions. Thus, we simply need to add the cumulative emissions αi∗(t) to any initial Alpha αi(0), and this will give us our total supply. However, for good measure we will also include the emissions that go to users as rewards. These rewards were not included in our toy model so far, but it is a trivial thing to include. We know from section 3.5 that an amount ∆αi is emitted every block, and so the total amount up to time t is ∆αit (assuming t is measured in blocks). Thus, our total expression for market cap will be given by
+Mi(t) = 􏰌αi(0) + αi∗(t) + ∆αit􏰍pi(t) (43) Our interest will be in the expected market cap at time
+t = T , and so we write the following:
+E􏰈Mi(T )􏰉 = E􏰄􏰌αi(0) + αi∗(T ) + ∆αiT 􏰍pi(T )􏰅
+= 􏰆αi(0)+∆αiT􏰇E􏰈pi(T)􏰉 + E􏰈αi∗(T)pi(T)􏰉 (44)
+Now, the expression E􏰈αi∗(T )pi(T )􏰉 would, in principle, be
+difficult to compute, as the expectation would be taken
+over the joint probability distribution of α∗ (T ) and p (T ). ii
+However, because of our approximation (30), the quantity
+􏰈 􏰉 􏰘 ∞ p 1 􏰔-􏰆log[p/pi(0)]-μit􏰇2􏰕 E pi(t) = 􏰛 2 p exp 2σ2t
+dp (30) With the change of variables x:=log[p/pi(0)], the integral
+   0 2πσt i i
+in (31) can then be written as
+􏰘 ∞ 1 􏰎-(x-μ t)2 􏰏
+􏰈􏰉xi E pi(t) =pi(0) e 􏰛 2 exp 2σ2t
+dx (31) We can evaluate (32) by use of the standard formula
+   -∞ 2πσ t i i
+􏰘∞ 1 􏰎-(x-d)2􏰏 􏰎 1 􏰏
+ecx √
+which can easily be derived by completing the square inside
+exp dx = exp cd + ac2 2a 2
+(32)
+  2πa
+the exponential. Applying (33) to (32), we then find
+E􏰈p (t)􏰉 = p (0)e(μi+σ2/2)t iii
+-∞
+Thus, expression (30) for S(t) then becomes
+S(t) = 􏰀 p (0)e(μi+σ2/2)t (34)
+∗􏰘T􏰄􏰅 E[τi(T)]≈ Epi(t)/S(t)∆τdt
+0
+􏰘T
+≈ E􏰈p (t)􏰉∆τ/S(t)dt
+0
+(35)
+E[αi∗(T)]≈
+􏰘 T
+0
+i
+iii
+We note that, unlike the quantity S(t), the quantity S(t) is not a random variable distributed with GBM, but is instead a deterministic function of t. Thus, using our third approximation, we replace S(t) with S(t) in (28)-(29) and we find that it can now slip outside the expectation value:
+(33)
+α∗ (T ) is not actually a random variable. Thus we may 􏰘i
+T􏰄􏰅∗
+E min{∆τ/S(t),∆αi} dt distributetheexpectationoverE[αi(T)pi],obtaining
+E􏰈M (T)􏰉 ≈ 􏰆α (0)+∆α T􏰇E􏰈p (T)􏰉 + E􏰈α∗(T)􏰉E􏰈p (T)􏰉 􏰈􏰉 iiiiii
+≈ E 1 min{∆τ/S(t),∆αi}dt (36) 0
+We know that E[1] = 1, and we know E[pi(t)] from (34). Thus, (36)-(37) become
+􏰈 􏰉􏰌 􏰈∗ 􏰉􏰍 =Epi(T) αi(0)+∆αiT+Eαi(T) (45)
+Importantly, we see that expression (46) is written in terms of quantities that we have already worked out, namely (34) and (42). This will be our expression for the final market cap.
+Summary So Far
+Given prices pi(t) with GBM parameters {pi(0), μi, σi}, and injection per unit time b, the expected accumulated alpha and tao tokens {αi(T),τi(T)}, as well as the subnet market caps Mi (T ), at some time T , are approximated by:
+􏰘T2 E[τ∗(T)]≈p(0) ∆τ/S(t)e(μi+σ /2)tdt (37)
+iii 0
+∗􏰘T
+E[αi(T)]≈ min{∆τ/S(t),∆αi}dt
+0
+Finally, we note that using min{∆τ/S(t),∆αi} =
+(38)
+∆τ
+max S(t),∆τ/∆αi
+􏰋 (39) we can rewrite (38)-(39) in a more explicit way:
+ 􏰘 T ∆τ p (0)e(μ +σ2/2)t
+T
+0 max jpj(0)e j ,∆τ/∆αi
+E[τ(T)]≈ 􏰙 i􏰀2
+(40)
+(41)
+∆τ
+􏰀 (μj+σ2/2)t
+􏰚dt E [αi (T)]≈ 􏰙􏰀 (μj+σ2/2)t
+∗
+􏰊
+􏰘 T ∆τ p (0)e(μ +σ2/2)t ∗iii
+E [τi (t)]≈ ∗iii􏰘
+􏰙􏰀 p (0)e(μj +σ2/2)t􏰚 dt 0jjj
+(46)
+􏰚dt (47)
+  (μj+σ /2)t 0 pj(0)e j
+E[α (t)]≈ i
+􏰙
+ j
+∗􏰘T ∆τ
+􏰚 dt
+E􏰈Mi(T)􏰉 ≈ E􏰈pi(T)􏰉􏰌αi(0)+∆αiT + E􏰈α∗(T)􏰉􏰍 (48) i
+ 0 max jpj(0)e j ,∆τ/∆αi
+7
+
+Section 4.3: Numerical Verification
+To test our formulas, we run some numerical simulations. In particular, the purpose of the simulations in this section is simply to test the validity of our approximate expectation values given in (47)-(49). One should note, these will not be thorough agent-based simulations of the DTAO system in its full generality, but rather they are simulations of our idealized mathematical model articulated by the update rules (17)-(18), driven by simulated Geometric Brownian Motion price movements.
+In order to completely visualize the results, we start with an unrealistically low number of subnets at
+N = 4 subnets
+We use select the following drift and volatility parameters
+to generate a variety of price trajectories: μ = [-4, 0, 10, 2]×10-8
+σ = [5,6,5,6]×10-5,
+over a period of T =4 years, and ∆τ =∆αi =1 for all i. We also note that this simulation does not include any halving events (indeed, the halving schedule was not factored in to our mathematical model from the previous section at all).
+We now run 1,000 trials. For each trial, we generate four separate independent GBM price paths (one for each subnet) according to the values of μ and σ just given. First, we simply confirm the correct nature of our GBM by collecting the final prices for each subnet during each trial, and plot the distribution of final prices. For good measure, we also plot the log-normal distribution that we would mathematically expect for the probability density given in formula (25). The results are plotted in figure 6.
+Figure 6: The distribution of final prices under GBM
+We next plot the distributions for our three quantities of interest; the cumulative injected Alpha and TAO tokens, and the final market cap, shown in figure 7 below. Indeed, we have markers to indicate the mean values from our raw simulation data, along with the values that our formulas (47)-(49) would predict. We make three observations:
+• The data means agree excellently with our formulas.
+• The Alpha injections are identical for all subnets (this should be clear from the injection formula (7) - it does not depend on i, outside of ∆αi).
+• The distributions of final prices, cumulative TAO, and market cap are all qualitatively similar.
+  ——————————————————————————————————————————————————
+ Figure 7: The distributions of final quantities
+8
+
+Section 4.4: Some Case Studies
+Now that we feel confident in our expectation formulas (47)-(49), let us use them in specific case studies. We begin with a simple scenario wherein one subnet has a noticeable upwards drift in price, while the other subnet prices remain relatively stable. Specifically, we will use N=64 subnets, over a period T =1 year, with block emission of ∆τ , ∆αi =1. We assign a normal spread of negligible drift parameters to the first 63 subnets, and we give the 64th a noticeably higher drift. Moreover, we assign similarly mild random volatility parameters to all subnets. We can visualize these parameter assignments below:
+The drift parameter μ is hard to appreciate intuitively, but we convert it to the more relatable quantity λ:=p(T )/p(0) (the price growth factor) by the equation λ=eμT . Using this, we plot the equivalent spread of λ values:
+Thus, for example, our scenario corresponds with a subnet whose price doubles over the course of the year, while all other subnets move by about ±5%. Moreover, now that we have established the GBM setting, we use our formulas to compute expected values after one year. We plot the cumulative Alpha and TAO, and the final market cap:
+We can make a few observations from the previous figure. For our scenario with one subnet experiencing a doubling in price over the year, we can say the following:
+• It will receive about 45% more TAO tokens than the other subnets (note the E[τ] values of ≈ 40,000 for the general subnets, compared to ≈ 58, 000 for our special subnet; this is a ≈45% increase)
+• All subnets have the same expected cumulative alpha tokens - again, not a surprise, as we previously noted.
+• Our subnet can expect about 70% greater market cap at the end of the year
+What if we give our subnet some competition? Let’s take our previous scenario but suppose that there is a group of, say, ten other subnets who have similarly desirable drift parameters. We find the following:
+Not surprisingly, our subnet now earns slightly less TAO and overall market cap than in the previous example.
+Finally, let us suppose that the subnets have a wide distribution of drift parameters, and that our subnet, while still experiencing a doubling of price, is situated somewhere in the middle of the pack. We find the following:
+Armed with the formulas (47)-(49), the interested reader may investigate many more kinds of market trajectories and case studies beyond these simple scenarios.
+      9
+
+—————— Section 5: Appendix ——————
+Section 5.1: An APY Heuristic for Tao Weight
+In this section we explore an interesting heuristic to help guide us towards a good choice for the tao weight γ. In particular, this heuristic will be based on comparing the APY earned by root stakers versus the subnet validators. As we saw in section 3.4, the amount of Alpha emission dedicated to the validators is given by (0.41)∆αi. This is then split by the value of the root proportion r into the following two pieces:
+(root dividends from ith subnet) = r(0.41)∆αi (49)
+Similarly, we could compute the average subnet APY by summing (57) over all subnets and dividing by the number of subnets (let’s call it N):
+  (dividends for ith subnet validators) = (1-r)(0.41)∆αi From our definition (12), we can write the following:
+γ τ 0 α io ri=γτ+αo, (1-ri)=γτ+αo 0i 0i
+where we recall that
+γ = the tao weight
+(50)
+(51)
+We next suggest the following goal; let us choose the tao weight such that the root APY is less than or equal to the average subnet APY:
+APYroot ≤ APYavg (63) Explicitly, this becomes
+􏰁􏰁γ(0.41)∆αi ≤ 1 􏰁􏰁􏰎1+t∆αi􏰏(0.41)∆αi i t Di(t) Ni t αio(0) Di(t)
+(64)
+(65)
+We note that nearly ever quantity in (65) is positive, except for the quantity 1 − γN. One way to guarantee that inequality (65) holds is to demand that 0 ≤ 1 − γN. But this just simplifies to the following condition:
+γ ≤ 1/N (66) Thus, while this is surely a conservative choice, we can at
+least say the following:
+If we take the tao weight to be the reciprocal of the number of subnets, then the root APY will be less than or equal to the average subnet APY.
+This could be a useful heuristic for choosing the tao weight, or at least gauge the appropriate order of magnitude.
+Interestingly, we can use expressions (60) and (61) to get an approximate closed form expression for the APY values. Specifically, if we replace the discrete sums with integrals (which is reasonable given how quickly the blocks happen), then we find the following:
+1 􏰁􏰁􏰎 t∆αi􏰏(0.41)∆αi APYavg =N 1+αio(0) Di(t)
+it
+(62)
+     This can be rearranged into the following:
+1 􏰁􏰁􏰎 t∆αi􏰏(0.41)∆αi
+    (52) τ0 = TAO staked on root (53) αio = Alpha outstanding (not reserves) (54)
+0 ≤ N 1 − γN + αio(0) Di(t) it
+Now, for the Alpha outstanding term, we will make the following assumption; while Alpha may be coming in and out of the subnet pool, one could argue that if the subnet price remains relatively stable, then the Alpha outstanding should just be equal to the total cumulative Alpha emissions given out as dividends. Thus, starting at a value of αio(0), over a period of t emissions, we employ the following simple model:
+αio = αio(0) + t∆αi (55)
+To get the total rewards over some specified period, we would need to sum over the full range of t appearing in (55). Moreover, to obtain the APY, we would divide the total rewards by the initial token held, i.e either τ0 or αio(0). We do this next, while substituting (51) and (55) back into the reward expressions in (49) and (50). Altogether, we get the following expressions for the APYs:
+= τ0 1
+(56)
+(αi(0) + t∆αi)(0.41)∆αi ≈
+γτ0 +αi(0)+t∆αi
+γ(0.41)∆αi
+􏰆 o 􏰇dt
+1 γτ0(0.41)∆αi
+root 􏰁 􏰁 γ(0.41)∆αi APY=􏰆o 􏰇
+􏰁
+ root APYi
+APYi =αo(0) Ifwedefine
+Di(t) := 􏰆γτ0 + αio(0) + t∆αi􏰇 then (56)-(57) can be written more simply as
+i 􏰁o􏰁
+ t
+􏰘
+􏰆γτ0 + αo(0) + t∆αi􏰇 i
+t
+ 􏰆γτ +αo(0)+t∆α􏰇 (57)
+γτ0+αi(0)+t∆αi
+= iγ(0.41)ln γτ0+αi(0)+t∆αi
+i
+it0ii 􏰁􏰆o􏰇
+    APYroot = 􏰁 γ(0.41)∆αi (59)
+APYi = 􏰁 t
+1 + αio(0) t∆αi 􏰏
+Di(t) ≈
+t∆αi 􏰏 (0.41)∆αi 1+αio(0) Di(t)
+Now, to get the entire root APY, we would need to sum these rewards over all subnets, as the root stakers get dividends from each subnet:
+APYroot =􏰁􏰁γ(0.41)∆αi (61) i t Di(t)
+1+ αio(0)
+􏰎 ∆αi γτ0 􏰆 o
+(58) 􏰎 t∆αi 􏰏
+(0.41)∆αi
+􏰆γτ0 + αio(0) + t∆αi􏰇
+(67)
+􏰇􏰏
+(68)
+􏰘 􏰎
+(0.41)∆αi
+􏰆γτ0 +αio(0)+t∆αi􏰇dt
+ i
+APYi =
+t
+􏰁 􏰎
+  (60) =(0.41) αo(0)t−αo(0)ln γτ0+αi(0)+t∆αi tii
+    Thus, we see that the subnet token holders have returns that grow linearly over time, whereas the passive root stakers have returns that only grow logarithmically.
+ 10
+
+Section 5.2: The Mechanics of Halving
+In this section, we look at the math behind the halving schedule as computed in practice. We consider a scenario where we have an initial quantity (say, 1) that we add up N many times. After this point, we halve the quantity and add it up N many times again. This is done indefinitely:
+􏰈1+1+...+1􏰉+􏰈1 + 1 +...+ 1􏰉+􏰈1 + 1 +...+ 1􏰉+... 22 2 44 4
+This is meant to represent the accumulating token supply. For example, if we let N = 10, 500, 000, then we have the TAO halving schedule represented as the following:
+􏰈10, 500, 000􏰉 + 􏰈5, 250, 000􏰉 + 􏰈2, 625, 000􏰉 + ... (69)
+Now, let us denote the current accumulated supply by S. The eventual total token supply, which we denote by S∗, will be given by using the well known formula for summing a convergent geometric series:
+􏰈N×1􏰉+􏰈N×1􏰉+􏰈N×1􏰉+...=N􏰄 1 􏰅=2N 2 4 1−1/2
+and so we see that
+S∗=2N (70)
+Thus, for example, if N = 10,500,000, then we see that the total supply of TAO will approach S∗ = 21, 000, 000.
+Now, suppose we are currently at some point in this process, where the amounts being currently summed are (1/2)k, indicated below:
+...+􏰆N×21 􏰇+... (71) k
+Let S↓ denote the accumulated supply up to the previous halving point, which we can sum as a finite geometric series:
+Section 5.3: Root reward claiming (accounting)
+   k-1 􏰁
+supply at the point of the next future halving event:
+S↑ = S∗􏰆1-(1/2)k+1􏰇 (73)
+We can solve equation (73) for the exponent k: 􏰎 S↓􏰏
+The root dividends (which are taken from the Alpha emissions) may be given to the root stakers in several ways. Initially, it will be done by auto-selling the dividends (in Alpha) into the subnet AMM and thus receiving TAO to then pass on to the root stakers (distributed on a pro-rate basis).
+However, there may be a point when this is switched over to an alternative system where Alpha dividends are given directly to the root stakers as Alpha tokens. In this case, the Alpha dividends that are delivered to the root subnet accumulate and can be claimed at any point by users (again, on a pro-rata basis, depending on how much TAO they hold). In this section, we look at a particular kind of efficient accounting done for the root dividends. This is straightforward to compute and store in principle, but the efficient accounting method in use is somewhat opaque. To describe it, we define the following variables:
+• ∆α = dividend injection of Alpha
+• τ =TAOstakedonrootbyauser
+• T = total TAO staked on root
+• ρ = a variable called ‘rewards per tao’ • δ = a variable called ‘debt’
+• αc = Alpha that can be claimed by user
+Now, for an injection ∆α, a user is entitled to the quantity:
+αc = (τ/T)∆α (78) In other words, it’s the fraction of the Alpha rewards that
+is equal by the user’s fraction of TAO ownership. Next we define the following update formulas (where an apostrophe denotes an updated value):
+S↓ = K× n=0
+n
+􏰎1-(1/2)k 􏰏 1-(1/2)
+􏰆
+k􏰇
+(1/2) = N
+In a similar way, we let S↑ denote the future accumulated
+= 2N 1-(1/2)
+(72)
+ k=−log2 1−S∗
+We can do the same for equation (74) and solve for k + 1:
+􏰎 S↑􏰏
+k+1=−log2 1−S∗ (75)
+Now, because the current supply satisfies S↓ ≤ S ≤ S↑,
+and because the logarithm is a monotonically increasing
+function, then we can say the following:
+􏰎S􏰏
+k≤−log2 1− ∗ ≤k+1 (76)
+S
+In other words, we can compute k by the expression
+􏰐 􏰎 S􏰏􏰑
+k= −log2 1−S∗ (77)
+Thus, at any point in time, we use the cumulative supply S and the total target supply S∗, and we can compute the amount of block emission N/2k according to (77).
+(74)
+We can confirm by induction that these formulas (77)-(80) achieve their desired goals. First, after an initial injection, equation (80) reduces to (76). Then, if we assume formula (80) holds for our inductive step, we consider another stake and/or injection. The amount that user should now be able to claim is αc + (τ ′ /T )∆α. However, we can rearrange this:
+αc′ =αc+(τ′/T)∆α
+= (τρ−δ)+(τ+∆τ)∆α/T +ρ∆τ −ρ∆τ
+= (τ +∆τ )(ρ +∆α/T ) − (δ+ρ∆α)
+=τ′ρ′ −δ′ (83)
+which completes the inductive step.
+11
+(initialize) (at stake ∆τ) (at inject ∆α) (toclaim)
+ρ=0, δ=0 (79) 􏰊τ′ = τ+∆τ, δ′ = δ+ρ∆τ􏰋 (80) ρ′ = ρ+∆α/T (81) αc=τρ−δ (82)

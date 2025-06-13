@@ -4,7 +4,7 @@ import GalaxyMap from './GalaxyMap';
 import GalaxyControls from './GalaxyControls';
 import SubnetDetail from './SubnetDetail';
 import { useAppContext } from '../../context/AppContext';
-import { CategoryType } from '../../types';
+import { CategoryType, SubnetType } from '../../types';
 
 const GalaxyView: React.FC = () => {
   const { 
@@ -15,7 +15,8 @@ const GalaxyView: React.FC = () => {
     showWelcome,
     setShowWelcome,
     searchQuery,
-    setSearchQuery
+    setSearchQuery,
+    filters
   } = useAppContext();
   
   const [isLoading, setIsLoading] = useState(true);
@@ -56,19 +57,193 @@ const GalaxyView: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [inputValue, activeSearchQuery]);
 
-  // Filter categories and subnets based on active search query
+  // Filter subnet based on filter criteria
+  const matchesFilters = (subnet: SubnetType): boolean => {
+    // Emissions filter
+    if (filters.emissions !== 'all') {
+      const emissions = subnet.emissions || 0;
+      switch (filters.emissions) {
+        case 'very_high':
+          if (emissions <= 10) return false;
+          break;
+        case 'high':
+          if (emissions <= 5 || emissions > 10) return false;
+          break;
+        case 'medium':
+          if (emissions <= 1 || emissions > 5) return false;
+          break;
+        case 'low':
+          if (emissions <= 0.1 || emissions > 1) return false;
+          break;
+        case 'very_low':
+          if (emissions > 0.1) return false;
+          break;
+      }
+    }
+
+    // Market Cap filter
+    if (filters.marketCap !== 'all') {
+      const marketCap = subnet.marketCap || 0;
+      switch (filters.marketCap) {
+        case 'very_high':
+          if (marketCap <= 100000) return false;
+          break;
+        case 'high':
+          if (marketCap <= 50000 || marketCap > 100000) return false;
+          break;
+        case 'medium':
+          if (marketCap <= 10000 || marketCap > 50000) return false;
+          break;
+        case 'low':
+          if (marketCap <= 1000 || marketCap > 10000) return false;
+          break;
+        case 'very_low':
+          if (marketCap > 1000) return false;
+          break;
+      }
+    }
+
+    // Rank filter
+    if (filters.rating !== 'all') {
+      const rank = subnet.rank || Infinity;
+      switch (filters.rating) {
+        case 'top_10':
+          if (rank > 10) return false;
+          break;
+        case 'top_25':
+          if (rank > 25) return false;
+          break;
+        case 'top_50':
+          if (rank > 50) return false;
+          break;
+        case 'bottom_50':
+          if (rank <= 50) return false;
+          break;
+      }
+    }
+
+    // Age filter
+    if (filters.age !== 'all') {
+      const age = subnet.daysSinceRegistration || 0;
+      switch (filters.age) {
+        case 'new':
+          if (age >= 30 && age > 0) return false;
+          break;
+        case 'recent':
+          if (age < 30 || age >= 90) return false;
+          break;
+        case 'established':
+          if (age < 90 || age >= 365) return false;
+          break;
+        case 'mature':
+          if (age < 365) return false;
+          break;
+        case 'unknown':
+          if (age > 0) return false;
+          break;
+      }
+    }
+
+    // Links filter (team)
+    if (filters.team !== 'all') {
+      const hasWebsite = !!(subnet.website && subnet.website.trim());
+      const hasGithub = !!(subnet.github && subnet.github.trim());
+      const hasDiscord = !!(subnet.discord && subnet.discord.trim());
+      
+      switch (filters.team) {
+        case 'full':
+          if (!hasWebsite || !hasGithub || !hasDiscord) return false;
+          break;
+        case 'partial':
+          if (!hasWebsite && !hasGithub && !hasDiscord) return false;
+          if (hasWebsite && hasGithub && hasDiscord) return false;
+          break;
+        case 'minimal':
+          if (!hasGithub || hasWebsite || hasDiscord) return false;
+          break;
+        case 'none':
+          if (hasWebsite || hasGithub || hasDiscord) return false;
+          break;
+      }
+    }
+
+    // Status filter
+    if (filters.liveProduct !== 'all') {
+      switch (filters.liveProduct) {
+        case 'active':
+          if (subnet.status !== 'active') return false;
+          break;
+        case 'inactive':
+          if (subnet.status !== 'inactive') return false;
+          break;
+      }
+    }
+
+    // Price change filter
+    if (filters.doxxedFounders !== 'all') {
+      const weeklyChange = subnet.weeklyChange || 0;
+      switch (filters.doxxedFounders) {
+        case 'positive':
+          if (weeklyChange <= 0) return false;
+          break;
+        case 'negative':
+          if (weeklyChange >= 0) return false;
+          break;
+        case 'stable':
+          if (Math.abs(weeklyChange) > 2) return false;
+          break;
+      }
+    }
+
+    // TAO Volume filter
+    if (filters.validators !== 'all') {
+      const volume = subnet.taoVolume24hr || 0;
+      switch (filters.validators) {
+        case 'very_high':
+          if (volume <= 10000) return false;
+          break;
+        case 'high':
+          if (volume <= 1000 || volume > 10000) return false;
+          break;
+        case 'medium':
+          if (volume <= 100 || volume > 1000) return false;
+          break;
+        case 'low':
+          if (volume > 100) return false;
+          break;
+      }
+    }
+
+    return true;
+  };
+
+  // Filter categories and subnets based on active search query and filters
   const filteredCategories = useMemo(() => {
-    if (!activeSearchQuery.trim() || !categories.length) {
+    if (!categories.length) {
       return categories;
     }
 
+    let filtered = categories;
+
+    // Apply category filter first
+    if (filters.category !== 'all') {
+      filtered = filtered.filter(category => category.id === filters.category);
+    }
+
+    // Then apply search query and other filters
     const query = activeSearchQuery.toLowerCase().trim();
-    console.log('Searching for:', query);
     
-    const filtered = categories
+    filtered = filtered
       .map(category => {
         // Filter subnets within this category
-        const filteredSubnets = category.subnets.filter(subnet => {
+        let filteredSubnets = category.subnets;
+
+        // Apply filter criteria
+        filteredSubnets = filteredSubnets.filter(subnet => matchesFilters(subnet));
+
+        // Apply search query if present
+        if (query) {
+          filteredSubnets = filteredSubnets.filter(subnet => {
           // Basic text matching with null checks
           const basicMatch = 
             (subnet.name && subnet.name.toLowerCase().includes(query)) ||
@@ -102,27 +277,22 @@ const GalaxyView: React.FC = () => {
             return nameParts.some(part => part.toLowerCase().includes(query));
           };
 
-          const isMatch = basicMatch || subnetNumberMatch() || namePartsMatch();
-          if (isMatch) {
-            console.log('Found matching subnet:', subnet.id, subnet.name);
+            return basicMatch || subnetNumberMatch() || namePartsMatch();
+          });
           }
-          return isMatch;
-        });
 
-        // Check if category itself matches with null checks
-        const categoryMatches = 
+        // Check if category itself matches search (only if searching)
+        const categoryMatches = query && (
           (category.name && category.name.toLowerCase().includes(query)) ||
-          (category.description && category.description.toLowerCase().includes(query));
-
-        if (categoryMatches) {
-          console.log('Found matching category:', category.name);
-        }
+          (category.description && category.description.toLowerCase().includes(query))
+        );
 
         // Include category if it matches or has matching subnets
         if (categoryMatches || filteredSubnets.length > 0) {
           return {
             ...category,
-            subnets: categoryMatches ? category.subnets : filteredSubnets
+            subnets: categoryMatches ? category.subnets.filter(subnet => matchesFilters(subnet)) : filteredSubnets,
+            marketCapTotal: filteredSubnets.reduce((sum, subnet) => sum + (subnet.marketCap || 0), 0)
           };
         }
 
@@ -130,17 +300,14 @@ const GalaxyView: React.FC = () => {
       })
       .filter((category): category is CategoryType => category !== null);
 
-    console.log('Filtered categories count:', filtered.length);
-    console.log('Original categories count:', categories.length);
-
-    // If no results found, return original categories (show everything)
-    if (filtered.length === 0) {
-      console.log('No matches found, showing all categories');
+    // If no results found and we have active filters, show empty instead of all
+    const hasActiveFilters = Object.values(filters).some(value => value !== 'all') || query;
+    if (filtered.length === 0 && !hasActiveFilters) {
       return categories;
     }
     
     return filtered;
-  }, [categories, activeSearchQuery]);
+  }, [categories, activeSearchQuery, filters]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -161,6 +328,12 @@ const GalaxyView: React.FC = () => {
     setInputValue('');
     setActiveSearchQuery('');
   };
+
+  // Calculate filtering stats
+  const totalSubnets = categories.reduce((sum, cat) => sum + cat.subnets.length, 0);
+  const filteredSubnets = filteredCategories.reduce((sum, cat) => sum + cat.subnets.length, 0);
+  const hasActiveFilters = Object.values(filters).some(value => value !== 'all');
+  const hasActiveQuery = !!activeSearchQuery.trim();
 
   if (isLoading) {
     return (
@@ -208,37 +381,20 @@ const GalaxyView: React.FC = () => {
             </>
           )}
         </div>
-        {/* Search results indicator */}
-        {(inputValue || activeSearchQuery) && (
+        {/* Search and filter results indicator */}
+        {(hasActiveQuery || hasActiveFilters) && (
           <div className="mt-2 text-xs text-slate-400 text-center bg-slate-800/60 rounded px-2 py-1">
             {(() => {
               if (inputValue && !activeSearchQuery) {
                 return `Type and press Enter to search for "${inputValue}"`;
               }
               
-              if (activeSearchQuery) {
-                const query = activeSearchQuery.toLowerCase().trim();
-                const hasMatches = categories.some(category => {
-                  const categoryMatches = 
-                    (category.name && category.name.toLowerCase().includes(query)) ||
-                    (category.description && category.description.toLowerCase().includes(query));
-                  const subnetMatches = category.subnets.some(subnet => 
-                    (subnet.name && subnet.name.toLowerCase().includes(query)) ||
-                    (subnet.id && subnet.id.toLowerCase().includes(query)) ||
-                    (subnet.description && subnet.description.toLowerCase().includes(query)) ||
-                    (subnet.id && subnet.id.match(/\d+/)?.[0] === query) ||
-                    (query.match(/sn\s*(\d+)/i)?.[1] === subnet.id?.match(/\d+/)?.[0]) ||
-                    (query.match(/subnet\s*(\d+)/i)?.[1] === subnet.id?.match(/\d+/)?.[0]) ||
-                    (subnet.name && subnet.name.split(/[\s\/\-_,]+/).some(part => part.toLowerCase().includes(query)))
-                  );
-                  return categoryMatches || subnetMatches;
-                });
-
-                if (hasMatches) {
-                  return `Showing filtered results for "${activeSearchQuery}"`;
-                } else {
-                  return `No matches for "${activeSearchQuery}" - showing all subnets`;
-                }
+              const parts = [];
+              if (hasActiveQuery) parts.push(`search: "${activeSearchQuery}"`);
+              if (hasActiveFilters) parts.push(`${Object.values(filters).filter(v => v !== 'all').length} filter(s)`);
+              
+              if (parts.length > 0) {
+                return `Showing ${filteredSubnets}/${totalSubnets} subnets (${parts.join(', ')})`;
               }
               
               return null;
@@ -259,7 +415,7 @@ const GalaxyView: React.FC = () => {
       
       {selectedSubnet && <SubnetDetail categories={categories} />}
       
-      {!selectedSubnet && !selectedCategory && showWelcome && !activeSearchQuery && (
+      {!selectedSubnet && !selectedCategory && showWelcome && !activeSearchQuery && !hasActiveFilters && (
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center max-w-xs">
           <div className="bg-slate-800/60 rounded-lg border border-slate-700/40 shadow px-3 py-2 text-xs flex flex-col items-center relative min-w-[220px]">
             <button 
@@ -279,7 +435,7 @@ const GalaxyView: React.FC = () => {
               <p className="text-slate-300 text-xs leading-snug flex-1 text-center">
                 {welcomeStep === 0
                   ? 'Explore the Bittensor ecosystem by navigating through subnets.'
-                  : 'Zoom in to discover more details, or click on nodes to see specifics.'}
+                  : 'Use filters in the sidebar and zoom in to discover more details.'}
                 <span className="ml-2 text-[10px] text-slate-400 align-middle">{welcomeStep + 1}/2</span>
               </p>
               {welcomeStep === 0 && (

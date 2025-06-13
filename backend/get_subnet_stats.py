@@ -16,7 +16,8 @@ logger = logging.getLogger(__name__)
 def get_subnet_latest_stats() -> Optional[pd.DataFrame]:
     """
     Fetch latest subnet statistics from TaoStats API.
-    Returns DataFrame with columns: netuid, emission, active (renamed from subtoken_enabled), timestamp
+    Returns DataFrame with columns: netuid, emission, active (renamed from subtoken_enabled), 
+    timestamp, registration_timestamp, days_since_registration
     """
     url = "https://api.taostats.io/api/subnet/latest/v1"
     api_key = os.getenv('TAOSTATS_API_KEY')
@@ -60,7 +61,8 @@ def get_subnet_latest_stats() -> Optional[pd.DataFrame]:
             'netuid': 'netuid',
             'emission': 'emission', 
             'subtoken_enabled': 'active',
-            'timestamp': 'timestamp'
+            'timestamp': 'timestamp',
+            'registration_timestamp': 'registration_timestamp'
         }
         
         # Check if required columns exist, handle missing ones
@@ -74,6 +76,8 @@ def get_subnet_latest_stats() -> Optional[pd.DataFrame]:
                     df[col] = 0.0  # Default emission to 0
                 elif col == 'timestamp':
                     df[col] = datetime.now().isoformat()  # Default to current time
+                elif col == 'registration_timestamp':
+                    df[col] = None  # Default to None if not available
                 else:
                     df[col] = ''
                 
@@ -86,8 +90,15 @@ def get_subnet_latest_stats() -> Optional[pd.DataFrame]:
         # Convert emission to numeric
         df['emission'] = pd.to_numeric(df['emission'], errors='coerce').fillna(0.0)
         
-        # Convert timestamp to datetime
+        # Convert timestamps to datetime
         df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
+        df['registration_timestamp'] = pd.to_datetime(df['registration_timestamp'], errors='coerce')
+        
+        # Calculate days since registration
+        current_time = datetime.now()
+        df['days_since_registration'] = df['registration_timestamp'].apply(
+            lambda x: (current_time - x.replace(tzinfo=None)).days if pd.notna(x) else None
+        )
         
         # Ensure active is boolean
         df['active'] = df['active'].astype(bool)
@@ -96,6 +107,7 @@ def get_subnet_latest_stats() -> Optional[pd.DataFrame]:
         df['netuid'] = pd.to_numeric(df['netuid'], errors='coerce').fillna(0).astype(int)
         
         logger.info(f"Processed subnet statistics: {df.shape[0]} rows, {df.shape[1]} columns")
+        logger.info(f"Calculated days since registration for all subnets")
         return df
         
     except requests.exceptions.RequestException as e:
@@ -134,6 +146,14 @@ if __name__ == "__main__":
         print(f"Total Emission: {stats_df['emission'].sum():.2f}")
         print(f"Average Emission: {stats_df['emission'].mean():.4f}")
         print(f"Active Subnets: {stats_df['active'].sum()}")
+        
+        # Show registration statistics
+        valid_reg_dates = stats_df['days_since_registration'].dropna()
+        if not valid_reg_dates.empty:
+            print(f"\nRegistration Summary:")
+            print(f"Oldest subnet: {valid_reg_dates.max()} days ago")
+            print(f"Newest subnet: {valid_reg_dates.min()} days ago")
+            print(f"Average age: {valid_reg_dates.mean():.1f} days")
         
         # Save to CSV
         save_subnet_stats(stats_df)

@@ -1,0 +1,26 @@
+{
+  "name": "tao-galaxy-report-api",
+  "version": "1.0.0",
+  "description": "API server for serving subnet report data",
+  "main": "reportApi.js",
+  "scripts": {
+    "start": "node reportApi.js",
+    "dev": "nodemon reportApi.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "bittensor",
+    "subnet",
+    "report",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC"
+} 

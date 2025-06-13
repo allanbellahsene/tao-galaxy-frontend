@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{basicInfo.name}} ({{basicInfo.id}}) - TAO Galaxy Report</title>
+    <link rel="stylesheet" href="../assets/report.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>{{basicInfo.name}} ({{basicInfo.id}})</h1>
+            <div class="rating-badge rating-{{investmentInfo.rating}}">
+                {{investmentInfo.ratingText}}
+            </div>
+        </header>
+
+        {{> executive-summary}}
+
+        <section class="mission">
+            <h2>Mission & Vision</h2>
+            <p>{{basicInfo.mission}}</p>
+            {{#if problemAnalysis.mission}}
+            <div class="vision">
+                <h3>Vision</h3>
+                <p>{{problemAnalysis.mission}}</p>
+            </div>
+            {{/if}}
+        </section>
+
+        {{> team-section}}
+        {{> market-analysis}}
+        {{> product-development}}
+        {{> financial-analysis}}
+
+        <section class="metrics">
+            <h2>Comparative Metrics</h2>
+            <div class="metrics-grid">
+                {{#each percentileData}}
+                {{> metric-card metric=metric value=value}}
+                {{/each}}
+            </div>
+        </section>
+
+        <section class="risks">
+            <h2>Risk Assessment</h2>
+            <div class="risk-grid">
+                {{#each riskData}}
+                {{> risk-card type=type level=level}}
+                {{/each}}
+            </div>
+        </section>
+
+        <section class="marketing">
+            <h2>Marketing & Community</h2>
+            <div class="marketing-grid">
+                <div class="marketing-card">
+                    <h3>Communication Channels</h3>
+                    <ul>
+                        {{#each marketingInfo.channels}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div class="marketing-card">
+                    <h3>Community Engagement</h3>
+                    <div class="engagement-metrics">
+                        <div class="metric">
+                            <h4>Communication Frequency</h4>
+                            <p>{{marketingInfo.frequency}}</p>
+                        </div>
+                        <div class="metric">
+                            <h4>Communication Effort</h4>
+                            <p>{{marketingInfo.effort}}</p>
+                        </div>
+                        <div class="metric">
+                            <h4>Community Responsiveness</h4>
+                            <p>{{marketingInfo.communityResponsiveness}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Generated on {{generatedDate}}</p>
+            <p>TAO Galaxy Research Report</p>
+        </footer>
+    </div>
+</body>
+</html> 

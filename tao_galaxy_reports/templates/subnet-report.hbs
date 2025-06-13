@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{subnetName}} ({{subnetId}}) - TAO Galaxy Research Report</title>
+    <link rel="stylesheet" href="../assets/report.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        {{> header}}
+        
+        <!-- Executive Summary -->
+        <section class="executive-summary">
+            <h2>Executive Summary</h2>
+            <div class="summary-grid">
+                <div class="rating-card">
+                    <h3>Investment Rating</h3>
+                    <div class="rating-display rating-{{extractRating analysis.I_INVESTMENT_THESIS.Overall_Investment_Rating}}">
+                        {{extractRatingText analysis.I_INVESTMENT_THESIS.Overall_Investment_Rating}}
+                    </div>
+                    <span class="rating-number">{{extractRating analysis.I_INVESTMENT_THESIS.Overall_Investment_Rating}}/5</span>
+                </div>
+                
+                <div class="allocation-card">
+                    <h3>Recommended Allocation</h3>
+                    <div class="allocation-display">
+                        {{analysis.VII_INVESTMENT_RECOMMENDATION.Recommended_Allocation_Percentage}}
+                    </div>
+                </div>
+                
+                <div class="timeline-card">
+                    <h3>Investment Timeline</h3>
+                    <div class="timeline-display">
+                        {{analysis.VII_INVESTMENT_RECOMMENDATION.Investment_Timeline}}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="thesis-summary">
+                <h3>Investment Thesis</h3>
+                <p>{{analysis.I_INVESTMENT_THESIS.Investment_Thesis_Summary}}</p>
+            </div>
+        </section>
+
+        <!-- Subnet Overview -->
+        <section class="subnet-overview">
+            <h2>Subnet Overview</h2>
+            <div class="overview-grid">
+                <div class="basic-info">
+                    <h3>Basic Information</h3>
+                    <table>
+                        <tr><td><strong>Name:</strong></td><td>{{research.I_BASIC_SUBNET_INFORMATION.Subnet_Name}}</td></tr>
+                        <tr><td><strong>ID:</strong></td><td>{{research.I_BASIC_SUBNET_INFORMATION.Subnet_ID}}</td></tr>
+                        <tr><td><strong>Mission:</strong></td><td>{{research.I_BASIC_SUBNET_INFORMATION.Subnet_Mission_One_Sentence}}</td></tr>
+                    </table>
+                </div>
+                
+                <div class="problem-solution">
+                    <h3>Problem & Solution</h3>
+                    <p><strong>Real-World Problem:</strong> {{research.III_PROBLEM_SOLVING.Real_World_Problem}}</p>
+                    <p><strong>Solution:</strong> {{research.III_PROBLEM_SOLVING.Problem_Description}}</p>
+                    <p><strong>TAM:</strong> {{research.III_PROBLEM_SOLVING.Estimated_TAM}}</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment Analysis -->
+        <section class="investment-analysis">
+            <h2>Investment Analysis</h2>
+            
+            <!-- Strengths & Risks -->
+            <div class="strengths-risks-grid">
+                <div class="strengths">
+                    <h3>Key Investment Strengths</h3>
+                    <ul>
+                        {{#each analysis.I_INVESTMENT_THESIS.Key_Investment_Strengths}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+                
+                <div class="risks">
+                    <h3>Key Investment Risks</h3>
+                    <ul>
+                        {{#each analysis.I_INVESTMENT_THESIS.Key_Investment_Risks}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Comparative Metrics Chart -->
+            <div class="metrics-chart">
+                <h3>Comparative Performance Metrics</h3>
+                <canvas id="percentileChart" width="400" height="200"></canvas>
+            </div>
+
+            <!-- Risk Assessment -->
+            <div class="risk-assessment">
+                <h3>Risk Assessment</h3>
+                <div class="risk-grid">
+                    {{#each riskData}}
+                    <div class="risk-item">
+                        <span class="risk-label">{{type}} Risk:</span>
+                        <span class="risk-level risk-{{riskColor level}}">{{level}}</span>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Opportunity -->
+        <section class="market-analysis">
+            <h2>Market Opportunity</h2>
+            <div class="market-grid">
+                <div class="market-size">
+                    <h3>Market Assessment</h3>
+                    <p><strong>Size:</strong> {{analysis.II_MARKET_OPPORTUNITY.Market_Size_Assessment}}</p>
+                    <p><strong>Timing:</strong> {{analysis.II_MARKET_OPPORTUNITY.Market_Timing_Assessment}}</p>
+                    <p><strong>Position:</strong> {{analysis.II_MARKET_OPPORTUNITY.Competitive_Position_Strength}}</p>
+                    <p><strong>Moat:</strong> {{analysis.II_MARKET_OPPORTUNITY.Moat_Assessment}}</p>
+                </div>
+                
+                <div class="competitive-landscape">
+                    <h3>Competitive Landscape</h3>
+                    <p><strong>Main Competitors:</strong> {{research.III_PROBLEM_SOLVING.Main_Competitors_Non_Web3}}</p>
+                    <p><strong>Competitive Advantage:</strong> {{research.III_PROBLEM_SOLVING.Competitive_Advantage}}</p>
+                    <p><strong>Vision Difference:</strong> {{research.III_PROBLEM_SOLVING.Vision_Difference}}</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team & Execution -->
+        <section class="team-execution">
+            <h2>Team & Execution</h2>
+            <div class="team-grid">
+                <div class="team-info">
+                    <h3>Team Information</h3>
+                    <p><strong>Team Disclosed:</strong> {{research.II_TEAM.Team_Doxxed}}</p>
+                    <p><strong>Founding Team:</strong> {{research.II_TEAM.Founding_Team}}</p>
+                    <p><strong>Background:</strong> {{research.II_TEAM.Founding_Team_Background}}</p>
+                    <p><strong>Affiliations:</strong> {{research.II_TEAM.Affiliated_Organizations}}</p>
+                </div>
+                
+                <div class="execution-metrics">
+                    <h3>Execution Capability</h3>
+                    <p><strong>Team Quality:</strong> {{analysis.III_EXECUTION_CAPABILITY.Team_Quality_Rating}}</p>
+                    <p><strong>Development Momentum:</strong> {{analysis.III_EXECUTION_CAPABILITY.Development_Momentum_Rating}}</p>
+                    <p><strong>Community Engagement:</strong> {{analysis.III_EXECUTION_CAPABILITY.Community_Engagement_Rating}}</p>
+                    <p><strong>Technical Innovation:</strong> {{analysis.III_EXECUTION_CAPABILITY.Technical_Innovation_Rating}}</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development & Technology -->
+        <section class="development">
+            <h2>Development & Technology</h2>
+            <div class="dev-grid">
+                <div class="codebase-info">
+                    <h3>Codebase</h3>
+                    <p><strong>Open Source:</strong> {{research.VI_DEVELOPMENT.Codebase_Open_Source}}</p>
+                    <p><strong>Repository:</strong> <a href="{{research.VI_DEVELOPMENT.Main_Repository_Link}}" target="_blank">{{research.VI_DEVELOPMENT.Main_Repository_Link}}</a></p>
+                    <p><strong>Recent Activity:</strong> {{research.VI_DEVELOPMENT.Recent_Update_Activity}}</p>
+                    <p><strong>Contributors:</strong> {{research.VI_DEVELOPMENT.Active_Contributors_Last_3_Months}}</p>
+                </div>
+                
+                <div class="dev-practices">
+                    <h3>Development Practices</h3>
+                    <p><strong>Professional Practices:</strong> {{research.VI_DEVELOPMENT.Professional_Development_Practices}}</p>
+                    <p><strong>Technical Roadmap:</strong> {{research.VI_DEVELOPMENT.Technical_Roadmap_Published}}</p>
+                    <p><strong>Documentation:</strong> {{research.VI_DEVELOPMENT.Technical_Documents_Status}}</p>
+                    <p><strong>Recent Releases:</strong> {{research.VI_DEVELOPMENT.Recent_Feature_Releases}}</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Financial Viability -->
+        <section class="financial-analysis">
+            <h2>Financial Viability</h2>
+            <div class="financial-grid">
+                <div class="revenue-streams">
+                    <h3>Revenue & Products</h3>
+                    <p><strong>Revenue Streams:</strong> {{research.IV_REVENUE_PRODUCT.Products_Revenue_Streams}}</p>
+                    <p><strong>Monetization Path:</strong> {{research.IV_REVENUE_PRODUCT.Path_to_Monetization}}</p>
+                    <p><strong>Development Phase:</strong> {{research.IV_REVENUE_PRODUCT.Product_Development_Phase}}</p>
+                    <p><strong>Generating Revenue:</strong> {{research.IV_REVENUE_PRODUCT.Product_Generating_Revenue}}</p>
+                </div>
+                
+                <div class="financial-assessment">
+                    <h3>Financial Assessment</h3>
+                    <p><strong>Revenue Potential:</strong> {{analysis.IV_FINANCIAL_VIABILITY.Revenue_Potential_Assessment}}</p>
+                    <p><strong>Monetization Clarity:</strong> {{analysis.IV_FINANCIAL_VIABILITY.Monetization_Clarity_Rating}}</p>
+                    <p><strong>Business Model Sustainability:</strong> {{analysis.IV_FINANCIAL_VIABILITY.Business_Model_Sustainability}}</p>
+                    <p><strong>Product-Market Fit:</strong> {{analysis.IV_FINANCIAL_VIABILITY.Product_Market_Fit_Stage}}</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment Recommendation -->
+        <section class="investment-recommendation">
+            <h2>Investment Recommendation</h2>
+            <div class="recommendation-grid">
+                <div class="milestones">
+                    <h3>Key Milestones to Watch</h3>
+                    <ul>
+                        {{#each analysis.VII_INVESTMENT_RECOMMENDATION.Key_Milestones_to_Watch}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+                
+                <div class="exit-triggers">
+                    <h3>Exit Triggers</h3>
+                    <ul>
+                        {{#each analysis.VII_INVESTMENT_RECOMMENDATION.Exit_Triggers}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        {{> footer}}
+    </div>
+
+    <script>
+        // Render percentile chart
+        const ctx = document.getElementById('percentileChart').getContext('2d');
+        const percentileData = {{{json percentileData}}};
+        
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: percentileData.map(d => d.metric),
+                datasets: [{
+                    label: '{{subnetName}} Performance',
+                    data: percentileData.map(d => d.value),
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 25
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

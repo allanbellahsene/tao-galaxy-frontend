@@ -20,6 +20,17 @@ export interface SubnetType {
   validators: number;
   age: number;
   metrics: MetricType[];
+  website?: string;
+  github?: string;
+  discord?: string;
+  registrationDate?: string;
+  daysSinceRegistration?: number;
+  rank?: number;
+  price?: number;
+  priceChange1Day?: number;
+  priceChange1Month?: number;
+  taoVolume24hr?: number;
+  timestamp?: string;
 }
 
 export interface CategoryType {

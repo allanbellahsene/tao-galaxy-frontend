@@ -1,0 +1,37 @@
+<section class="executive-summary">
+    <h2>Executive Summary</h2>
+    <div class="summary-grid">
+        <div class="summary-card rating">
+            <h3>Investment Rating</h3>
+            <div class="rating-badge rating-{{investmentInfo.rating}}">
+                {{investmentInfo.ratingText}}
+            </div>
+            <p class="allocation">Recommended Allocation: {{recommendation.allocation}}</p>
+            <p class="timeline">Investment Timeline: {{recommendation.timeline}}</p>
+        </div>
+        
+        <div class="summary-card thesis">
+            <h3>Investment Thesis</h3>
+            <p>{{investmentInfo.thesis}}</p>
+        </div>
+        
+        <div class="summary-card key-points">
+            <div class="strengths">
+                <h4>Key Strengths</h4>
+                <ul>
+                    {{#each investmentInfo.strengths}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="risks">
+                <h4>Key Risks</h4>
+                <ul>
+                    {{#each investmentInfo.risks}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section> 

@@ -15,8 +15,8 @@ def merge_subnet_data() -> Optional[pd.DataFrame]:
     """
     Merge subnet identity, statistics, and market data into a comprehensive dataset.
     Returns DataFrame with columns: Timestamp, Subnet ID, Subnet Name, Description, 
-    Emission (as %), Active, Website, Github, Discord, Rank, Market Cap, Price, 
-    Price Change 1 Day, Price Change 1 Week, Price Change 1 Month, TAO Volume 24hr
+    Emission (as %), Active, Website, Github, Discord, Registration Date, Days Since Registration,
+    Rank, Market Cap, Price, Price Change 1 Day, Price Change 1 Week, Price Change 1 Month, TAO Volume 24hr
     """
     logger.info("Starting comprehensive subnet data merge process...")
     
@@ -84,6 +84,8 @@ def merge_subnet_data() -> Optional[pd.DataFrame]:
         'subnet_url': 'Website',
         'github_repo': 'Github',
         'discord': 'Discord',
+        'registration_timestamp': 'Registration Date',
+        'days_since_registration': 'Days Since Registration',
         'rank': 'Rank',
         'market_cap': 'Market Cap',
         'price': 'Price',
@@ -102,10 +104,12 @@ def merge_subnet_data() -> Optional[pd.DataFrame]:
                 merged_df[original_col] = 0.0
             elif original_col in ['price_change_1_day', 'price_change_1_week', 'price_change_1_month']:
                 merged_df[original_col] = None
-            elif original_col in ['rank']:
+            elif original_col in ['rank', 'days_since_registration']:
                 merged_df[original_col] = 0
             elif original_col in ['active']:
                 merged_df[original_col] = False
+            elif original_col in ['registration_timestamp']:
+                merged_df[original_col] = None
             else:
                 merged_df[original_col] = ''
     
@@ -122,11 +126,12 @@ def merge_subnet_data() -> Optional[pd.DataFrame]:
     merged_df['Website'] = merged_df['Website'].fillna('')
     merged_df['Github'] = merged_df['Github'].fillna('')
     merged_df['Discord'] = merged_df['Discord'].fillna('')
+    merged_df['Days Since Registration'] = merged_df['Days Since Registration'].fillna(0)
     merged_df['Rank'] = merged_df['Rank'].fillna(0)
     merged_df['Market Cap'] = merged_df['Market Cap'].fillna(0.0)
     merged_df['Price'] = merged_df['Price'].fillna(0.0)
     merged_df['TAO Volume 24hr'] = merged_df['TAO Volume 24hr'].fillna(0.0)
-    # Note: Price change columns can remain as NaN for subnets without price history
+    # Note: Price change columns and Registration Date can remain as NaN for subnets without data
     
     # Sort by Subnet ID
     merged_df = merged_df.sort_values('Subnet ID').reset_index(drop=True)
@@ -195,26 +200,36 @@ def display_comprehensive_summary(df: pd.DataFrame):
     print(f"Average Price: ${df['Price'].mean():.4f}")
     print(f"Total 24h Volume: {df['TAO Volume 24hr'].sum():,.0f} TAO")
     
+    # Show registration statistics
+    valid_days = df['Days Since Registration'].replace(0, None).dropna()
+    if not valid_days.empty:
+        print(f"\nRegistration Statistics:")
+        print(f"Oldest subnet: {valid_days.max():.0f} days old")
+        print(f"Newest subnet: {valid_days.min():.0f} days old")
+        print(f"Average age: {valid_days.mean():.1f} days")
+        print(f"Subnets with registration data: {len(valid_days)}")
+    
     # Count subnets with various data fields
     print(f"\nData Completeness:")
     print(f"Subnets with Website: {(df['Website'] != '').sum()}")
     print(f"Subnets with Github: {(df['Github'] != '').sum()}")
     print(f"Subnets with Discord: {(df['Discord'] != '').sum()}")
     print(f"Subnets with Market Data: {(df['Market Cap'] > 0).sum()}")
+    print(f"Subnets with Registration Data: {(df['Days Since Registration'] > 0).sum()}")
     
     # Show top 10 by emission percentage
     print(f"\nTop 10 Subnets by Emission (%):")
-    top_subnets = df.nlargest(10, 'Emission')[['Subnet ID', 'Subnet Name', 'Emission', 'Active', 'Market Cap']]
+    top_subnets = df.nlargest(10, 'Emission')[['Subnet ID', 'Subnet Name', 'Emission', 'Active', 'Days Since Registration']]
     print(top_subnets.to_string(index=False))
     
     # Show top 10 by market cap
     print(f"\nTop 10 Subnets by Market Cap:")
-    top_market_cap = df.nlargest(10, 'Market Cap')[['Subnet ID', 'Subnet Name', 'Market Cap', 'Price', 'Rank']]
+    top_market_cap = df.nlargest(10, 'Market Cap')[['Subnet ID', 'Subnet Name', 'Market Cap', 'Price', 'Days Since Registration']]
     print(top_market_cap.to_string(index=False))
     
     # Show first few rows
     print(f"\nFirst 5 rows of comprehensive data:")
-    display_cols = ['Subnet ID', 'Subnet Name', 'Emission', 'Active', 'Market Cap', 'Price', 'Rank']
+    display_cols = ['Subnet ID', 'Subnet Name', 'Emission', 'Active', 'Days Since Registration', 'Market Cap']
     print(df[display_cols].head().to_string(index=False))
 
 if __name__ == "__main__":

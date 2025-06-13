@@ -1,0 +1,49 @@
+{
+    "I_BASIC_SUBNET_INFORMATION": {
+      "Subnet_Name": "Chutes",
+      "Subnet_ID": "64",
+      "Subnet_Mission_One_Sentence": "Chutes provides a serverless AI compute platform that enables users to deploy, run, and scale any AI model in seconds with cost-efficient infrastructure and easy-to-use APIs."
+    },
+    "II_TEAM": {
+      "Team_Doxxed": "Partially - some team members are publicly known (Namoray, BonOliver, Jon Durbin) while others remain anonymous as operational strategy",
+      "Founding_Team": "Namoray (recognized Bittensor ecosystem figure), BonOliver (French co-founder), Jon Durbin (publicly associated with subnet 64)",
+      "Founding_Team_Background": "Information not found - specific educational and professional backgrounds not publicly disclosed on official sources",
+      "Affiliated_Organizations": "Parent Company: Rayon Labs; operates three interconnected Bittensor subnets (Chutes 64, Gradients 56, Nineteen 19); Strategic partnerships with DeepSeek and OpenRouter"
+    },
+    "III_PROBLEM_SOLVING": {
+      "Mission": "Provide a decentralized, serverless AI compute platform enabling instant deployment and scaling of AI models without infrastructure management",
+      "Real_World_Problem": "Addresses complexity, cost, and vendor lock-in of traditional serverless computing, claiming 85% cost reduction vs. AWS with instant deployment",
+      "Problem_Description": "Eliminates bottlenecks in AI development including high infrastructure costs, lengthy deployment processes, DevOps complexity, and limited model access through unified decentralized platform",
+      "Estimated_TAM": "$21.9B in 2024, projected to reach $44.7-90.9B by 2029-2033 (15.3-22.2% CAGR) for serverless computing market",
+      "Path_to_Mass_Adoption": "Clear path demonstrated through $100M market cap achievement, developer-friendly APIs, 85% cost advantage, instant deployment, and no-code Squad platform",
+      "Key_Challenges": "Network effects against established players, technical complexity requiring Bittensor wallets, decentralized reliability concerns, developer education needs",
+      "Main_Competitors_Non_Web3": "AWS Lambda, Google Cloud Functions (86.22% PaaS market share), Microsoft Azure Functions (4.10%), Cloudflare Workers, Vercel, Netlify Functions, RunPod",
+      "Competitive_Advantage": "85% cost reduction vs. AWS, instant deployment, decentralized infrastructure, diverse model access, AI-optimized performance, auto-staking revenue mechanism",
+      "Subnet_Necessity": "Problem solvable without blockchain (existing solutions exist), but blockchain provides unique decentralization, economic incentives, transparent pricing, and censorship resistance benefits",
+      "Vision_Difference": "Emphasizes decentralization vs. centralization, AI-first design, token economics with revenue-sharing, open-source approach, unified API, miner incentives, and community ownership over profit maximization"
+    },
+    "IV_REVENUE_PRODUCT": {
+      "Products_Revenue_Streams": "YES - Multiple confirmed streams: Chutes Platform serverless AI compute with direct user payments, Squad AI subscription service ($40/month Pro plan), API usage fees for developers, developer deposits (anti-spam TAO deposits)",
+      "Path_to_Monetization": "YES - Established paths through micropayments in TAO for compute usage, subscription revenue, API fees, and platform integration revenue",
+      "Product_Development_Phase": "Production/Scaling Phase - Fully deployed with hundreds of H200/A6000 GPUs, processing 5+ billion tokens daily, enterprise-grade infrastructure",
+      "Product_Generating_Revenue": "YES - Confirmed active revenue from Squad AI subscriptions, compute usage, API access, and platform integrations with exponentially growing user base",
+      "Product_Lifecycle_Phase": "Growth/Scaling Phase - Mature infrastructure with enterprise features, integrated with major platforms, processing billions of daily requests"
+    },
+    "V_MARKETING": {
+      "Main_Communication_Channels": "Official website (chutes.ai), Twitter/X (@chutes_ai), GitHub repositories under Rayon Labs. No dedicated Discord/Telegram found",
+      "Communication_Frequency": "Moderate frequency focused on technical updates rather than marketing-heavy engagement, with active GitHub repository maintenance",
+      "Communication_Effort": "Moderate effort with product-first, marketing-light approach prioritizing technical documentation and development communication over aggressive marketing",
+      "Community_Responsiveness": "Mixed - strong technical community engagement through GitHub, limited broader community channels, well-integrated into Bittensor ecosystem"
+    },
+    "VI_DEVELOPMENT": {
+      "Codebase_Open_Source": "YES - Fully open-source with MIT License",
+      "Main_Repository_Link": "https://github.com/rayonlabs/chutes (primary), https://github.com/rayonlabs/chutes-miner, https://github.com/rayonlabs/chutes-api",
+      "Recent_Update_Activity": "Moderate activity with evidence of regular updates and active maintenance across multiple repositories",
+      "Active_Contributors_Last_3_Months": "Core team active including Jon Durbin and namoray from Rayon Labs, operating 3 Bittensor subnets",
+      "Professional_Development_Practices": "Strong professional practices including Git version control, pytest testing, ruff linting, Poetry dependency management, Kubernetes/Helm deployment",
+      "Technical_Roadmap_Published": "Limited public roadmap information beyond basic platform status indicators",
+      "Technical_Documents_Status": "Comprehensive documentation including API docs, OpenAPI schema, GraVal GPU validation library, Kubernetes guides, and architecture explanations",
+      "Recent_Feature_Releases": "Active development with AI model integrations (DeepSeek, Mistral), advanced GPU validation, Kubernetes infrastructure improvements, child hotkey support",
+      "Third_Party_Developer_Activity": "Growing ecosystem with community-developed tools (sn64-tools by minersunion), integration support for AI frameworks, public/private Docker image support"
+    }
+  }
