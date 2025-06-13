@@ -11,7 +11,7 @@ const router = express.Router();
 // Get list of available reports
 router.get('/list', async (req, res) => {
   try {
-    const reportsDir = path.join(process.cwd(), '../../tao_galaxy_reports/subnet-reports/output/reports');
+    const reportsDir = path.join(__dirname, '../../reports/subnet-reports/output/reports');
     const files = await fs.promises.readdir(reportsDir);
     
     const reports = files
@@ -41,14 +41,14 @@ router.get('/list', async (req, res) => {
 router.get('/subnet/:subnetId', async (req, res) => {
   try {
     const { subnetId } = req.params;
-    let reportPath = path.join(process.cwd(), '../../tao_galaxy_reports/subnet-reports/output/reports', `SN${subnetId}.html`);
+    let reportPath = path.join(__dirname, '../../reports/subnet-reports/output/reports', `SN${subnetId}.html`);
     
     console.log('Looking for report at:', reportPath);
     console.log('File exists:', fs.existsSync(reportPath));
     
     // If the requested report doesn't exist, try SN1 as fallback
     if (!fs.existsSync(reportPath) && subnetId !== '1') {
-      reportPath = path.join(process.cwd(), '../../tao_galaxy_reports/subnet-reports/output/reports', 'SN1.html');
+      reportPath = path.join(__dirname, '../../reports/subnet-reports/output/reports', 'SN1.html');
       console.log('Fallback to SN1 report at:', reportPath);
       console.log('SN1 file exists:', fs.existsSync(reportPath));
     }
@@ -57,7 +57,7 @@ router.get('/subnet/:subnetId', async (req, res) => {
       const reportContent = await readFileAsync(reportPath, 'utf-8');
       res.json({ 
         content: reportContent,
-        fallback: subnetId !== '1' && !fs.existsSync(path.join(process.cwd(), '../../tao_galaxy_reports/subnet-reports/output/reports', `SN${subnetId}.html`))
+        fallback: subnetId !== '1' && !fs.existsSync(path.join(__dirname, '../../reports/subnet-reports/output/reports', `SN${subnetId}.html`))
       });
     } else {
       res.status(404).json({ error: 'Report not found' });
@@ -72,7 +72,7 @@ router.get('/subnet/:subnetId', async (req, res) => {
 router.post('/generate/:subnetId', async (req, res) => {
   try {
     const { subnetId } = req.params;
-    const scriptPath = path.join(process.cwd(), '../../tao_galaxy_reports/subnet-reports/scripts/generate-report.js');
+    const scriptPath = path.join(__dirname, '../../reports/subnet-reports/scripts/generate-report.js');
     
     // Execute the report generation script
     await execAsync(`node ${scriptPath} ${subnetId}`);

@@ -7,6 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
 dist
 dist-ssr
@@ -38,15 +39,9 @@ backend/*.csv
 backend/*.json
 backend/daily_*.log
 
-# Prevent root-level frontend config files (keep them in frontend/ only)
-/package.json
-/package-lock.json
-/vite.config.ts
-/tsconfig*.json
-/index.html
-/eslint.config.js
-/postcss.config.js
-/tailwind.config.js
+# Reports output
+reports/output/
+reports/node_modules/
 
 # OS generated files
 .DS_Store
@@ -56,3 +51,11 @@ backend/daily_*.log
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Development tools
+.bolt/
+.venv/
+
+# Temporary files
+*.tmp
+*.temp
