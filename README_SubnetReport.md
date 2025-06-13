@@ -1,189 +1,280 @@
-# Scalable Subnet Report System
+# Institutional Subnet Report System
 
 ## Overview
 
-This system provides a scalable solution for generating institutional reports from subnet research data. It's designed to work with text-based report files (like `SN64_report.txt`) and can easily be extended for multiple subnets.
+TAO Galaxy's institutional report system provides professional-grade analysis for Bittensor subnets, featuring comprehensive market research, financial analysis, and investment recommendations. The system generates HTML reports with institutional-quality formatting and serves them through a scalable API architecture.
 
-## Architecture
+## 🏗️ Architecture
 
 ### Frontend Components
-- **SubnetReport/index.tsx**: Main React component that renders the report
-- **utils/reportParser.ts**: Utility for parsing report text data  
-- **api/subnetReport.ts**: API service layer for data loading
+- **`SubnetReport/index.tsx`**: Main React component rendering institutional reports
+- **`SubnetReportWrapper.tsx`**: Route wrapper extracting subnet ID from URL parameters
+- **`api/subnetReport.ts`**: API service layer for report data loading
+- **`utils/reportParser.ts`**: HTML parsing utilities for structured data extraction
 
-### Backend API  
-- **server/reportApi.js**: Express server serving report files
-- **server/package.json**: Backend dependencies
+### Backend API
+- **`backend/server/reportApi.js`**: Express server with health checks and legacy endpoints
+- **`backend/server/reports.js`**: Main reports router serving HTML reports
+- **`backend/server/package.json`**: API server dependencies
 
-## Key Features
+### Report Generation System
+- **`reports/subnet-reports/`**: Complete report generation pipeline
+  - **`output/reports/`**: Generated HTML reports (SN1.html, SN64.html, etc.)
+  - **`templates/`**: Handlebars templates for report structure
+  - **`scripts/`**: Report generation and processing scripts
+  - **`data/`**: Research data and analysis files
 
-### ✅ **Scalable Design**
-- Accepts `subnetId` prop to render any subnet report
-- Dynamic data loading from backend API
-- Consistent report structure across all subnets
+## 🌟 Key Features
 
-### ✅ **Data-Driven**
-- Parses data from `backend/results/research/SN{ID}_report.txt` files
-- Intelligent text parsing with fallback handling
-- No hard-coded subnet-specific data
+### ✅ **Institutional-Grade Reports**
+- Professional HTML reports with CSS styling
+- Executive summaries with investment ratings
+- Market analysis with TAM calculations
+- Competitive landscape assessment
+- Financial analysis and sustainability metrics
+- Risk assessment across multiple dimensions
 
-### ✅ **Error Handling**
-- Loading states with progress indicators
-- Graceful error handling with user-friendly messages
-- Fallback data for SN64 if API fails
+### ✅ **Scalable Architecture**
+- Dynamic subnet ID routing (`/app/subnet/:id`)
+- HTML report parsing with structured data extraction
+- Fallback mechanisms (defaults to SN1 when report not found)
+- RESTful API design for easy integration
 
-### ✅ **Professional UI**
-- Modern dark theme with responsive design  
-- Collapsible sections for better UX
-- Export functionality and navigation
+### ✅ **Professional UI/UX**
+- Dark theme matching platform design
+- Collapsible sections for better navigation
+- Interactive progress bars and metrics
+- Color-coded risk assessments
+- Export functionality and breadcrumb navigation
 
-## Usage
+### ✅ **Robust Data Parsing**
+- HTML DOM parsing for structured data extraction
+- Intelligent text pattern recognition
+- Market analysis data extraction (TAM, competitive advantage)
+- Team information and governance details
+- Financial metrics and development scores
+
+## 📊 Report Structure
+
+### Executive Summary
+- **Investment Rating**: Buy/Hold/Sell recommendations
+- **Allocation Guidance**: Recommended portfolio allocation
+- **Investment Timeline**: Short/medium/long-term outlook
+- **Investment Thesis**: Core value proposition
+- **Key Strengths**: Competitive advantages
+- **Key Risks**: Primary risk factors
+
+### Market Analysis
+- **Problem & Solution**: Market opportunity identification
+- **TAM (Total Addressable Market)**: Market size calculations
+- **Market Opportunity Metrics**: Size, timing, position, moat assessment
+- **Competitive Landscape**: Main competitors and positioning
+- **Competitive Advantage**: Unique value propositions
+
+### Team & Governance
+- **Team Status**: Doxxed/anonymous classification
+- **Founding Team**: Key personnel and backgrounds
+- **Team Background**: Experience and expertise
+- **Affiliated Organizations**: Corporate relationships
+
+### Financial Analysis
+- **Revenue Potential**: Monetization assessment
+- **Business Model**: Sustainability evaluation
+- **Investment Timeline**: Key milestones and triggers
+
+### Comparative Metrics
+- **Development Score**: Code activity and momentum
+- **Team Quality**: Leadership and execution capability
+- **Market Opportunity**: TAM and competitive position
+- **Innovation**: Technical differentiation
+
+### Risk Assessment
+- **Technical Risk**: Development and execution risks
+- **Market Risk**: Adoption and competition challenges
+- **Team Risk**: Personnel and governance concerns
+- **Regulatory Risk**: Compliance and legal factors
+- **Competition Risk**: Competitive threats
+
+## 🚀 Usage
 
 ### Basic Implementation
 ```tsx
 import SubnetReport from './components/SubnetReport';
 
-// Render SN64 report (default)
-<SubnetReport />
+// Render specific subnet report
+<SubnetReport subnetId="1" onBack={() => navigate('/reports')} />
 
-// Render any subnet report
-<SubnetReport subnetId="1" onBack={() => navigate('/subnets')} />
+// Use with React Router
+<Route path="/app/subnet/:id" element={<SubnetReportWrapper />} />
 ```
 
 ### Props Interface
 ```tsx
 interface SubnetReportProps {
-  subnetId?: string;     // Default: '64'
-  onBack?: () => void;   // Navigation callback
+  subnetId?: string;     // Subnet ID (defaults to '64')
+  onBack?: () => void;   // Navigation callback function
 }
 ```
 
-## Setup Instructions
+### URL Routing
+- `/app/subnet/1` - Apex (SN1) institutional report
+- `/app/subnet/64` - Chutes (SN64) institutional report
+- `/app/subnet/X` - Any subnet (falls back to SN1 if not found)
 
-### 1. Backend Setup
+## 🔧 Setup Instructions
+
+### 1. Backend API Setup
 ```bash
 cd backend/server
 npm install
 npm start
 ```
 
-The API server will run on port 3001 with endpoints:
-- `GET /api/subnet-report/:subnetId` - Get specific report
-- `GET /api/reports` - List available reports  
+**API Endpoints:**
+- `GET /api/reports/list` - List all available reports
+- `GET /api/reports/subnet/:id` - Get specific subnet report (HTML)
+- `POST /api/reports/generate/:id` - Generate new report
 - `GET /api/health` - Health check
 
-### 2. Frontend Setup
-The frontend automatically connects to the backend API. Set environment variable if needed:
+### 2. Frontend Integration
+The frontend automatically connects to the backend API:
 ```bash
-export REACT_APP_API_URL=http://localhost:3001
+cd frontend
+npm install
+npm run dev
 ```
 
-### 3. Data Structure
-Place report files in: `backend/results/research/SN{ID}_report.txt`
+### 3. Report Files Structure
+```
+reports/subnet-reports/output/reports/
+├── SN1.html          # Apex institutional report
+├── SN64.html         # Chutes institutional report
+└── SN{ID}.html       # Additional subnet reports
+```
 
-Example files:
-- `SN64_report.txt` (Chutes AI)
-- `SN1_report.txt` (Apex)  
-- `SN8_report.txt` (Future subnet)
+## 🔍 Data Parsing System
 
-## Data Parsing
+### HTML Structure Parsing
+The system parses structured HTML reports using DOM selectors:
 
-The system intelligently parses structured text reports:
+```javascript
+// TAM extraction
+const tamElement = Array.from(doc.querySelectorAll('.problem-content h4'))
+  .find(h4 => h4.textContent?.includes('Estimated TAM'));
+const tam = tamElement?.nextElementSibling?.textContent || '';
 
-### Supported Sections
-- **Basic Info**: Name, ID, mission statement
-- **Team**: Founding team, doxxed status, organizations
-- **Problem**: Market analysis, competitors, TAM
-- **Revenue**: Streams, monetization, development phase
-- **Marketing**: Channels, frequency, community engagement
-- **Development**: Open source status, repositories, practices
+// Competitive Advantage extraction
+const advantageElement = Array.from(doc.querySelectorAll('.competition-content h4'))
+  .find(h4 => h4.textContent?.includes('Competitive Advantage'));
+const advantage = advantageElement?.nextElementSibling?.textContent || '';
+```
 
-### Text Patterns
-The parser looks for specific patterns like:
-- `### What is [SubnetName]` for mission statements
-- `**Team:**` for team information  
-- `**Revenue Streams:**` for financial data
-- Markdown headers and bold formatting
+### Supported Data Extraction
+- **Executive Summary**: Ratings, allocations, thesis statements
+- **Market Data**: TAM, competitive positioning, market timing
+- **Team Information**: Founder details, backgrounds, organizations
+- **Financial Metrics**: Revenue potential, sustainability scores
+- **Risk Assessments**: Multi-dimensional risk evaluation
+- **Comparative Scores**: Development, team, market, innovation metrics
 
-## Extending for New Subnets
+## 🎯 Adding New Subnets
 
-### 1. Add Report File
-Create `backend/results/research/SN{NEW_ID}_report.txt` following the same structure as SN64.
+### 1. Generate Report
+Create new HTML report following the established template structure:
+```
+reports/subnet-reports/output/reports/SN{NEW_ID}.html
+```
 
-### 2. Use Component
+### 2. Report Template Structure
+Ensure the HTML includes these key sections:
+- `.executive-summary` with rating and thesis
+- `.market-analysis` with problem, solution, and TAM
+- `.team-section` with founder and background information
+- `.financial-analysis` with revenue and sustainability data
+- `.metrics` with comparative percentile scores
+- `.risks` with risk assessment cards
+
+### 3. Frontend Usage
 ```tsx
+// New subnet automatically supported
 <SubnetReport subnetId="NEW_ID" />
 ```
 
-### 3. Customize Parsing (if needed)
-Update `parseReportFromText` function in `api/subnetReport.ts` for subnet-specific parsing logic.
+### 4. API Integration
+The API automatically detects new report files and serves them through the standard endpoints.
 
-## Error Recovery
+## 🛡️ Error Handling & Fallbacks
 
-### Fallback Mechanisms
-- API failures → Fallback to hardcoded SN64 data
-- Missing sections → "Information not found" placeholders  
-- Parse errors → Graceful degradation with user notification
+### Robust Fallback System
+- **Missing Reports**: Automatically falls back to SN1 (Apex) report
+- **Parse Errors**: Graceful degradation with "Information not found" placeholders
+- **API Failures**: Loading states and user-friendly error messages
+- **Network Issues**: Retry mechanisms and offline indicators
 
-### Development Mode
-- Console logging for debugging parse issues
-- Health check endpoint for API monitoring
-- Detailed error messages in development
+### Development Debugging
+- Console logging for parse issues (development mode)
+- Health check endpoints for API monitoring
+- Detailed error reporting with stack traces
+- Performance monitoring for large reports
 
-## Future Enhancements
+## 🚀 Future Enhancements
 
 ### Planned Features
-- PDF export functionality
-- Real-time data updates
-- Advanced filtering/search
-- Multiple report formats
-- Caching layer for performance
+- **PDF Export**: Generate downloadable PDF reports
+- **Real-time Updates**: Live data integration with TaoStats
+- **Custom Reports**: User-configurable report sections
+- **Comparative Analysis**: Side-by-side subnet comparisons
+- **Historical Tracking**: Time-series analysis and trends
 
-### Scalability Considerations
-- Database integration for metadata
-- CDN for static report files
-- Rate limiting and caching
-- Multi-language support
+### Scalability Improvements
+- **Caching Layer**: Redis caching for improved performance
+- **CDN Integration**: Static asset optimization
+- **Database Storage**: Structured data storage for faster queries
+- **Rate Limiting**: API protection and usage monitoring
+- **Multi-language Support**: Internationalization capabilities
 
-## Technical Details
+## 📈 Performance Considerations
 
-### Dependencies
-**Frontend:**
-- React 18+ with TypeScript
-- Lucide React icons
-- Tailwind CSS for styling
+### Optimization Strategies
+- **Lazy Loading**: Components loaded on-demand
+- **Code Splitting**: Route-based bundle optimization
+- **Image Optimization**: Compressed assets and WebP format
+- **API Caching**: Intelligent caching strategies
+- **Bundle Analysis**: Regular performance auditing
 
-**Backend:**
-- Express.js server
-- CORS middleware  
-- File system API
+### Monitoring & Analytics
+- **Performance Metrics**: Core Web Vitals tracking
+- **Error Tracking**: Comprehensive error monitoring
+- **Usage Analytics**: User interaction insights
+- **API Monitoring**: Endpoint performance tracking
 
-### File Structure
-```
-frontend/src/
-├── components/SubnetReport/
-│   └── index.tsx              # Main component
-├── utils/
-│   └── reportParser.ts        # Data parsing utilities
-└── api/
-    └── subnetReport.ts        # API service layer
+## 🔒 Security & Compliance
 
-backend/
-├── server/
-│   ├── reportApi.js          # Express API server  
-│   └── package.json          # Dependencies
-└── results/research/
-    ├── SN64_report.txt       # Chutes report data
-    ├── SN1_report.txt        # Apex report data
-    └── SN8_report.txt        # Additional subnet data
-```
+### Security Measures
+- **Input Validation**: Sanitized user inputs
+- **CORS Configuration**: Proper cross-origin policies
+- **Rate Limiting**: API abuse prevention
+- **Error Handling**: No sensitive data exposure
 
-## Contributing
+### Data Privacy
+- **No Personal Data**: Reports contain only public information
+- **Anonymization**: Sensitive data properly handled
+- **Compliance**: GDPR and privacy regulation adherence
 
-When adding new subnets:
-1. Follow the existing report text structure
-2. Test with the `SubnetReport` component
-3. Update parsing logic if new data patterns emerge
-4. Maintain consistent section headers and formatting
+## 🤝 Contributing
 
-This system is designed to grow with your subnet ecosystem while maintaining consistency and reliability across all reports. 
+### Development Guidelines
+1. **Follow HTML Structure**: Maintain consistent report templates
+2. **Test Parsing Logic**: Verify data extraction for new sections
+3. **Update Documentation**: Keep README current with changes
+4. **Performance Testing**: Ensure scalability with new features
+5. **Error Handling**: Implement robust fallback mechanisms
+
+### Code Standards
+- **TypeScript**: Strict type checking enabled
+- **ESLint**: Code quality enforcement
+- **Prettier**: Consistent code formatting
+- **Testing**: Unit tests for parsing logic
+- **Documentation**: Comprehensive inline comments
+
+This institutional report system represents a professional-grade solution for Bittensor subnet analysis, providing investors and stakeholders with the detailed information needed for informed decision-making. 
