@@ -1,4 +1,4 @@
-# TAO Galaxy - Bittensor Explorer
+# TAO Galaxy - Bittensor, Made Easy
 
 A comprehensive platform for exploring, analyzing, and staying updated on the Bittensor ecosystem. TAO Galaxy provides an interactive subnet explorer, institutional-grade AI-powered reports, and real-time news aggregation.
 
